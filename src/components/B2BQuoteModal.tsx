@@ -56,15 +56,15 @@ export default function B2BQuoteModal({ isOpen, onClose }: B2BQuoteModalProps) {
     }
 
     const text = 
-`🏢 *B2B CORPORATE & BULK QUOTE INQUIRY - ${COMPANY_NAME}* 🏢
+`*B2B CORPORATE & BULK QUOTE INQUIRY - ${COMPANY_NAME}*
 
-🏢 *Company / Org:* ${formData.companyName || 'N/A'}
-👤 *Contact Person:* ${formData.contactName || 'N/A'}
-📱 *Phone / WhatsApp:* ${formData.phone || 'N/A'}
-📧 *Official Email:* ${formData.email || 'N/A'}
-📦 *Items / Requirement:* ${formData.requirementType || 'N/A'}
-💰 *Estimated Budget:* ${formData.estimatedBudget || 'N/A'}
-📝 *Detailed Specs / Notes:* ${formData.notes || 'Please share official wholesale quotation with GST invoice.'}
+*Company / Org:* ${formData.companyName || 'N/A'}
+*Contact Person:* ${formData.contactName || 'N/A'}
+*Phone / WhatsApp:* ${formData.phone || 'N/A'}
+*Official Email:* ${formData.email || 'N/A'}
+*Items / Requirement:* ${formData.requirementType || 'N/A'}
+*Estimated Budget:* ${formData.estimatedBudget || 'N/A'}
+*Detailed Specs / Notes:* ${formData.notes || 'Please share official wholesale quotation with GST invoice.'}
 
 Please connect with our corporate procurement desk.`;
 

@@ -42,17 +42,17 @@ export default function ChatBot() {
     {
       id: '1',
       sender: 'bot',
-      text: `Hello! 👋 Welcome to ${COMPANY_NAME}. I am your AI Assistant. How can I help you today with hardware, laptop repair, or custom software development?`,
+      text: `Hello! Welcome to ${COMPANY_NAME}. I am your AI Assistant. How can I help you today with hardware, laptop repair, or custom software development?`,
       time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     }
   ]);
 
   const quickPrompts = [
-    { label: '💻 Best Gaming / AI Laptops', query: 'Recommend the best gaming & AI laptops available' },
-    { label: '🛠️ Book Laptop / PC Repair', query: 'I need to repair my laptop / computer' },
-    { label: '👨‍💻 Custom Software / App Quote', query: 'I want a custom billing software & mobile app' },
-    { label: '📍 Store Address & Timings', query: 'Where is your store located and what are the timings?' },
-    { label: '💬 Talk to Engineer on WhatsApp', query: 'Connect me directly to a WhatsApp engineer' }
+    { label: 'Best Gaming & AI Laptops', query: 'Recommend the best gaming & AI laptops available', icon: <Laptop size={14} /> },
+    { label: 'Book Laptop / PC Repair', query: 'I need to repair my laptop / computer', icon: <Wrench size={14} /> },
+    { label: 'Custom Software & App Quote', query: 'I want a custom billing software & mobile app', icon: <Code2 size={14} /> },
+    { label: 'Store Address & Timings', query: 'Where is your store located and what are the timings?', icon: <MapPin size={14} /> },
+    { label: 'Talk to Engineer on WhatsApp', query: 'Connect me directly to a WhatsApp engineer', icon: <MessageCircle size={14} /> }
   ];
 
   useEffect(() => {
@@ -83,11 +83,11 @@ export default function ChatBot() {
     let actionText = '';
 
     if (q.includes('laptop') || q.includes('gaming') || q.includes('rog') || q.includes('macbook')) {
-      reply = `We have cutting-edge high performance laptops in stock! For creators and gamers, we highly recommend the **ASUS ROG Zephyrus G16 (2026 AI Edition)** powered by Intel Core Ultra 9 & RTX 4080 (₹1,84,990). Would you like to check the catalog or order via WhatsApp?`;
+      reply = `We have cutting-edge high performance laptops in stock! For creators and gamers, we highly recommend the ASUS ROG Zephyrus G16 (2026 AI Edition) powered by Intel Core Ultra 9 & RTX 4080 (₹1,84,990). Would you like to check the catalog or order via WhatsApp?`;
       actionUrl = '/products?category=laptop';
       actionText = 'View Laptop Catalog →';
     } else if (q.includes('gpu') || q.includes('rtx') || q.includes('4090') || q.includes('graphics')) {
-      reply = `We have genuine NVIDIA enterprise GPUs in stock, including the beast **NVIDIA GeForce RTX 4090 OC 24GB GDDR6X** with full manufacturer warranty and GST invoice.`;
+      reply = `We have genuine NVIDIA enterprise GPUs in stock, including the beast NVIDIA GeForce RTX 4090 OC 24GB GDDR6X with full manufacturer warranty and GST invoice.`;
       actionUrl = '/products/nvidia-geforce-rtx-4090-oc-24gb';
       actionText = 'View RTX 4090 Details →';
     } else if (q.includes('repair') || q.includes('service') || q.includes('screen') || q.includes('broken') || q.includes('amc') || q.includes('windows')) {
@@ -99,13 +99,13 @@ export default function ChatBot() {
       actionUrl = `https://wa.me/${WHATSAPP_PHONE_NUMBER}?text=${encodeURIComponent('Hello Evolution Infotech! I want a consultation for custom software / app development.')}`;
       actionText = 'Inquire on WhatsApp →';
     } else if (q.includes('address') || q.includes('location') || q.includes('where') || q.includes('timing') || q.includes('time') || q.includes('shop') || q.includes('store')) {
-      reply = `📍 **Our Store Address:**\n${STORE_ADDRESS}\n\n⏰ **Working Hours:**\n• Mon - Sat: 10:00 AM - 8:00 PM\n• Sunday: 10:00 AM - 2:00 PM`;
+      reply = `Our Store Address:\n${STORE_ADDRESS}\n\nWorking Hours:\n• Mon - Sat: 10:00 AM - 8:00 PM\n• Sunday: 10:00 AM - 2:00 PM`;
       actionUrl = 'https://maps.google.com/?q=116,+Shayona+Arcade,+Shyam+Shikhar,+Bapunagar,+Ahmedabad,+Gujarat+380024';
-      actionText = 'Open in Google Maps 📍';
+      actionText = 'Open in Google Maps';
     } else if (q.includes('whatsapp') || q.includes('human') || q.includes('call') || q.includes('contact') || q.includes('phone') || q.includes('engineer')) {
-      reply = `You can directly chat or call our senior engineer on **${WHATSAPP_DISPLAY_PHONE}**. We are online and ready to help!`;
+      reply = `You can directly chat or call our senior engineer on ${WHATSAPP_DISPLAY_PHONE}. We are online and ready to help!`;
       actionUrl = `https://wa.me/${WHATSAPP_PHONE_NUMBER}?text=${encodeURIComponent('Hello Evolution Infotech! I am chatting via the website and need direct assistance.')}`;
-      actionText = 'Chat on WhatsApp Now 🟢';
+      actionText = 'Chat on WhatsApp Now';
     } else if (q.includes('price') || q.includes('cost') || q.includes('b2b') || q.includes('gst') || q.includes('discount')) {
       reply = `We offer competitive wholesale & B2B pricing with 100% GST input tax credit invoices on all hardware and services. Contact us on WhatsApp for bulk discounts.`;
       actionUrl = `https://wa.me/${WHATSAPP_PHONE_NUMBER}?text=${encodeURIComponent('Hello Evolution Infotech! I need a corporate quotation with GST invoice.')}`;
@@ -113,7 +113,7 @@ export default function ChatBot() {
     } else {
       reply = `Thank you for reaching out! We provide genuine IT hardware (Laptops, Servers, GPUs, CCTV, Networking) and software development. Would you like to connect directly on WhatsApp with our team?`;
       actionUrl = `https://wa.me/${WHATSAPP_PHONE_NUMBER}?text=${encodeURIComponent(`Hello Evolution Infotech! I have an inquiry regarding: ${userInput}`)}`;
-      actionText = 'Chat on WhatsApp 🟢';
+      actionText = 'Chat on WhatsApp';
     }
 
     return { reply, actionUrl, actionText };
@@ -249,7 +249,7 @@ export default function ChatBot() {
                     {
                       id: '1',
                       sender: 'bot',
-                      text: `Hello! 👋 How can I help you today with hardware or IT software?`,
+                      text: `Hello! How can I help you today with hardware or IT software?`,
                       time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
                     }
                   ]);
@@ -319,12 +319,16 @@ export default function ChatBot() {
                   fontWeight: 700,
                   whiteSpace: 'nowrap',
                   cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px',
                   transition: 'all 0.2s ease'
                 }}
                 onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(6, 182, 212, 0.25)')}
                 onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(6, 182, 212, 0.12)')}
               >
-                {qp.label}
+                {qp.icon}
+                <span>{qp.label}</span>
               </button>
             ))}
           </div>

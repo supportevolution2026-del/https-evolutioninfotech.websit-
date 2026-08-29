@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Computer Repair Shop Near Me | #1 Laptop & PC Repairing in Ahmedabad',
     description:
-      'Fast doorstep & walk-in computer repair at 116 Shayona Arcade, Shyam Shikhar, Bapunagar, Ahmedabad. 30-min express diagnostic, genuine parts & 4.9★ rating.',
+      'Fast doorstep & walk-in computer repair at 116 Shayona Arcade, Shyam Shikhar, Bapunagar, Ahmedabad. 30-min express diagnostic, genuine parts & 4.9/5 top rating.',
     url: 'https://evolutioninfotech.in/computer-repair-shop-near-me',
     siteName: 'Evolution Infotech',
     locale: 'en_IN',

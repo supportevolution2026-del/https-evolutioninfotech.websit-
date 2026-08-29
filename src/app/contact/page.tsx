@@ -71,13 +71,13 @@ export default function ContactPage() {
     }
 
     const text = 
-`👋 *NEW CONTACT INQUIRY - ${COMPANY_NAME}* 👋
+`*NEW CONTACT INQUIRY - ${COMPANY_NAME}*
 
-👤 *Name:* ${formData.name || 'Not Provided'}
-📱 *Phone:* ${formData.phone || 'Not Provided'}
-📧 *Email:* ${formData.email || 'Not Provided'}
-📌 *Subject:* ${formData.subject}
-📝 *Message:* ${formData.message || 'I would like to get in touch with Evolution Infotech.'}
+*Name:* ${formData.name || 'Not Provided'}
+*Phone:* ${formData.phone || 'Not Provided'}
+*Email:* ${formData.email || 'Not Provided'}
+*Subject:* ${formData.subject}
+*Message:* ${formData.message || 'I would like to get in touch with Evolution Infotech.'}
 
 Please connect with me.`;
 

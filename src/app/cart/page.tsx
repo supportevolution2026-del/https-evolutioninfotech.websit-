@@ -14,7 +14,8 @@ import {
   ShieldCheck,
   Tag,
   Truck,
-  ArrowLeft
+  ArrowLeft,
+  Sparkles
 } from 'lucide-react';
 
 export default function CartPage() {
@@ -109,7 +110,10 @@ export default function CartPage() {
                 }}>
                   <Truck size={18} />
                   {subtotal >= 5000 ? (
-                    <span>🎉 Your order qualifies for <strong>FREE Pan-India Express Delivery</strong>!</span>
+                    <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                      <Sparkles size={16} color="#06b6d4" />
+                      <span>Your order qualifies for <strong>FREE Pan-India Express Delivery</strong>!</span>
+                    </span>
                   ) : (
                     <span>Add <strong>₹{(5000 - subtotal).toLocaleString('en-IN')}</strong> more for Free Shipping!</span>
                   )}

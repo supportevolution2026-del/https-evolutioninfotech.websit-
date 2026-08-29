@@ -67,17 +67,17 @@ export default function ServiceInquiryModal({
 
   const handleSendWhatsApp = () => {
     const text = 
-`🛠️ *NEW SERVICE & SOFTWARE INQUIRY - ${COMPANY_NAME}* 🛠️
+`*NEW SERVICE & SOFTWARE INQUIRY - ${COMPANY_NAME}*
 
-👤 *Customer Name:* ${formData.name || 'N/A'}
-📱 *Phone Number:* ${formData.phone || 'N/A'}
-📧 *Email:* ${formData.email || 'N/A'}
-📍 *Location / City:* ${formData.city}
-🔧 *Service Requested:* ${formData.serviceType}
-⏰ *Preferred Time:* ${formData.preferredTime}
-📝 *Problem / Requirements:* ${formData.notes || 'Please connect for service scheduling and quotation.'}
+*Customer Name:* ${formData.name || 'N/A'}
+*Phone Number:* ${formData.phone || 'N/A'}
+*Email:* ${formData.email || 'N/A'}
+*Location / City:* ${formData.city}
+*Service Requested:* ${formData.serviceType}
+*Preferred Time:* ${formData.preferredTime}
+*Problem / Requirements:* ${formData.notes || 'Please connect for service scheduling and quotation.'}
 
-Please confirm technician visit / development consultation.`;
+Please connect with me regarding service estimation and dispatch.`;
 
     const url = `https://wa.me/${WHATSAPP_PHONE_NUMBER}?text=${encodeURIComponent(text)}`;
     window.open(url, '_blank', 'noopener,noreferrer');
@@ -218,14 +218,14 @@ Please confirm technician visit / development consultation.`;
                   className="form-input"
                   style={{ fontSize: '0.9rem', fontWeight: 600, color: '#38bdf8' }}
                 >
-                  <option value="Computer Repair">💻 Computer / Laptop Repair (Hardware, Virus, OS)</option>
-                  <option value="AMC Support">🛡️ AMC Support (Yearly Maintenance Plan)</option>
-                  <option value="Networking">🌐 Networking (WiFi, LAN, Router & Switch Setup)</option>
-                  <option value="Printer Service">🖨️ Printer Service (Repair, Refill, Cartridge)</option>
-                  <option value="Software Install">💿 Software Install (Windows, Office, Antivirus)</option>
-                  <option value="CCTV Setup">📹 CCTV Setup & Security Surveillance</option>
-                  <option value="Software & App Development">👨‍💻 Custom Software & Mobile/Web App Development</option>
-                  <option value="Dedicated Developer Hiring">⚡ Hire Dedicated Software Developer</option>
+                  <option value="Computer Repair">Computer / Laptop Repair (Hardware, Virus, OS)</option>
+                  <option value="AMC Support">AMC Support (Yearly Maintenance Plan)</option>
+                  <option value="Networking">Networking (WiFi, LAN, Router & Switch Setup)</option>
+                  <option value="Printer Service">Printer Service (Repair, Refill, Cartridge)</option>
+                  <option value="Software Install">Software Install (Windows, Office, Antivirus)</option>
+                  <option value="CCTV Setup">CCTV Setup & Security Surveillance</option>
+                  <option value="Software & App Development">Custom Software & Mobile/Web App Development</option>
+                  <option value="Dedicated Developer Hiring">Hire Dedicated Software Developer</option>
                 </select>
               </div>
 

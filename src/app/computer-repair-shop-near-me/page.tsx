@@ -125,7 +125,7 @@ export default function ComputerRepairShopNearMePage() {
   ];
 
   const handleWhatsAppBooking = (serviceName: string) => {
-    const text = `Hello Evolution Infotech! 👋\nI need to book *${serviceName}* for my computer/laptop.\n\n📍 My Area/Location in Ahmedabad: `;
+    const text = `Hello Evolution Infotech!\nI need to book *${serviceName}* for my computer/laptop.\n\nMy Area/Location in Ahmedabad: `;
     window.open(`https://wa.me/${WHATSAPP_PHONE_NUMBER}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
   };
 
