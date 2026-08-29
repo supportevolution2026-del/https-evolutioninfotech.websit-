@@ -98,30 +98,64 @@ export function mapSupabaseToProduct(item: any): Product {
 }
 
 export async function fetchAllProducts(): Promise<Product[]> {
-  if (!isSupabaseConfigured || !supabase) {
-    return [];
+  let supabaseProducts: Product[] = [];
+
+  if (isSupabaseConfigured && supabase) {
+    try {
+      const { data, error } = await supabase
+        .from('products')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (!error && data && data.length > 0) {
+        supabaseProducts = data.map(mapSupabaseToProduct);
+      } else if (error) {
+        console.warn('Supabase fetch error:', error.message);
+      }
+    } catch (err) {
+      console.error('Error connecting to Supabase:', err);
+    }
   }
 
-  try {
-    const { data, error } = await supabase
-      .from('products')
-      .select('*')
-      .order('created_at', { ascending: false });
-
-    if (error) {
-      console.warn('Supabase fetch error:', error.message);
-      return [];
+  // Check localStorage for offline / client cached custom products
+  let localCustomProducts: Product[] = [];
+  if (typeof window !== 'undefined') {
+    try {
+      const saved = localStorage.getItem('evo_custom_products');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed)) {
+          localCustomProducts = parsed;
+        }
+      }
+    } catch (e) {
+      console.warn('Error reading localStorage custom products:', e);
     }
-
-    if (!data || data.length === 0) {
-      return [];
-    }
-
-    return data.map(mapSupabaseToProduct);
-  } catch (err) {
-    console.error('Error connecting to Supabase:', err);
-    return [];
   }
+
+  // Combine Supabase products, local custom products, and initial catalog
+  // Supabase items always take highest priority
+  const combined = [...supabaseProducts];
+  const existingIds = new Set(combined.map((p) => p.id));
+  const existingSlugs = new Set(combined.map((p) => p.slug));
+
+  for (const cp of localCustomProducts) {
+    if (!existingIds.has(cp.id) && !existingSlugs.has(cp.slug)) {
+      combined.push(cp);
+      existingIds.add(cp.id);
+      existingSlugs.add(cp.slug);
+    }
+  }
+
+  for (const lp of localProducts) {
+    if (!existingIds.has(lp.id) && !existingSlugs.has(lp.slug)) {
+      combined.push(lp);
+      existingIds.add(lp.id);
+      existingSlugs.add(lp.slug);
+    }
+  }
+
+  return combined;
 }
 
 export async function fetchProductBySlug(slug: string): Promise<Product | null> {
