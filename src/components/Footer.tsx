@@ -1,179 +1,193 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
-import { useToast } from '@/context/ToastContext';
 import {
   Cpu,
   Mail,
   Phone,
   MapPin,
-  Send,
-  ShieldCheck,
-  Globe,
-  Heart
+  Code2,
+  MessageCircle,
+  Sparkles
 } from 'lucide-react';
+import {
+  WHATSAPP_PHONE_NUMBER,
+  WHATSAPP_DISPLAY_PHONE,
+  SUPPORT_EMAIL,
+  COMPANY_NAME,
+  STORE_ADDRESS,
+  GOOGLE_MAPS_URL,
+  getCustomWhatsAppUrl
+} from '@/utils/whatsapp';
+import BrandLogo from './BrandLogo';
 
 export default function Footer() {
-  const { addToast } = useToast();
-  const [email, setEmail] = useState('');
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email.trim()) {
-      addToast({
-        type: 'success',
-        title: 'Subscribed Successfully!',
-        message: 'You have been enrolled in exclusive Evolution Infotech hardware deal alerts.',
-      });
-      setEmail('');
-    }
-  };
-
   return (
     <footer style={{
       background: '#070a10',
       borderTop: '1px solid rgba(255, 255, 255, 0.08)',
-      paddingTop: '60px',
+      paddingTop: '45px',
       paddingBottom: '30px',
       marginTop: '60px'
     }}>
       <div className="container">
-        {/* Main 4 Columns */}
+
+        {/* Main 4 Footer Columns */}
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-          gap: '40px',
-          marginBottom: '50px'
+          gap: '36px',
+          marginBottom: '40px'
         }}>
-          {/* Brand Info */}
+          {/* Column 1: Brand Info & Contact */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <div style={{
-                width: '38px',
-                height: '38px',
-                borderRadius: '8px',
-                background: 'linear-gradient(135deg, #06b6d4, #3b82f6)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                boxShadow: '0 0 12px rgba(6, 182, 212, 0.4)'
-              }}>
-                <Cpu size={20} color="#ffffff" />
-              </div>
-              <span style={{ fontSize: '1.2rem', fontWeight: 800, color: '#ffffff' }}>
-                EVOLUTION <span style={{ color: '#06b6d4' }}>INFOTECH</span>
-              </span>
-            </div>
+            <BrandLogo size="md" showSubtitle={true} />
 
             <p style={{ fontSize: '0.85rem', color: '#94a3b8', lineHeight: 1.6 }}>
-              India&apos;s leading next-gen enterprise IT hardware, custom AI rigs, networking infrastructure and licensed software solutions provider.
+              Your trusted partner for genuine IT hardware, laptop & computer repairs, networking, and technology solutions in Ahmedabad.
             </p>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.82rem', color: '#cbd5e1' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.82rem', color: '#cbd5e1' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Globe size={15} color="#06b6d4" />
-                <a href="https://evolutioninfotech.in" target="_blank" rel="noopener noreferrer" style={{ color: '#38bdf8', textDecoration: 'none' }}>
-                  https://evolutioninfotech.in
-                </a>
+                <Phone size={15} color="#10b981" />
+                <strong style={{ color: '#ffffff' }}>{WHATSAPP_DISPLAY_PHONE}</strong>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <Mail size={15} color="#06b6d4" />
-                <span>sales@evolutioninfotech.in</span>
+                <span>{SUPPORT_EMAIL}</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Phone size={15} color="#06b6d4" />
-                <span>+91 98790 12345 / +91 (0261) 2233445</span>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <MapPin size={15} color="#06b6d4" />
-                <span>Infotech Tower, Ring Road, Gujarat, India</span>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
+                <MapPin size={15} color="#f59e0b" style={{ flexShrink: 0, marginTop: '2px' }} />
+                <a
+                  href={GOOGLE_MAPS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: '#cbd5e1', textDecoration: 'none', lineHeight: 1.4 }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = '#38bdf8')}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = '#cbd5e1')}
+                >
+                  {STORE_ADDRESS}
+                </a>
               </div>
             </div>
           </div>
 
-          {/* Quick Hardware Links */}
+          {/* Column 2: Hardware Products */}
           <div>
             <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#f8fafc', marginBottom: '16px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-              Hardware Catalog
+              Hardware Products
             </h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.85rem' }}>
-              <Link href="/products?category=laptops-desktops" style={{ color: '#94a3b8', textDecoration: 'none', transition: 'color 0.2s' }}>
-                AI Laptops & Workstations
+              <Link href="/products?category=laptop" style={{ color: '#94a3b8', textDecoration: 'none', transition: 'color 0.2s' }}>
+                Laptop
               </Link>
-              <Link href="/products?category=pc-components" style={{ color: '#94a3b8', textDecoration: 'none', transition: 'color 0.2s' }}>
-                NVIDIA GeForce RTX GPUs
+              <Link href="/products?category=desktop" style={{ color: '#94a3b8', textDecoration: 'none', transition: 'color 0.2s' }}>
+                Desktop
               </Link>
-              <Link href="/products?category=networking-servers" style={{ color: '#94a3b8', textDecoration: 'none', transition: 'color 0.2s' }}>
-                Enterprise Dell & HP Servers
+              <Link href="/products?category=printer" style={{ color: '#94a3b8', textDecoration: 'none', transition: 'color 0.2s' }}>
+                Printer
               </Link>
-              <Link href="/products?category=storage-memory" style={{ color: '#94a3b8', textDecoration: 'none', transition: 'color 0.2s' }}>
-                PCIe Gen5 NVMe Storage
+              <Link href="/products?category=network" style={{ color: '#94a3b8', textDecoration: 'none', transition: 'color 0.2s' }}>
+                Network
               </Link>
-              <Link href="/products?category=peripherals-accessories" style={{ color: '#94a3b8', textDecoration: 'none', transition: 'color 0.2s' }}>
-                4K OLED Curved Displays
+              <Link href="/products?category=cctv" style={{ color: '#94a3b8', textDecoration: 'none', transition: 'color 0.2s' }}>
+                CCTV
+              </Link>
+              <Link href="/products?category=accessories" style={{ color: '#94a3b8', textDecoration: 'none', transition: 'color 0.2s' }}>
+                Accessories
               </Link>
             </div>
           </div>
 
-          {/* Corporate & Services */}
+          {/* Column 3: IT Services & AMC */}
           <div>
             <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#f8fafc', marginBottom: '16px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-              Corporate & IT
+              IT Services & Repair
             </h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.85rem' }}>
-              <Link href="/services" style={{ color: '#94a3b8', textDecoration: 'none' }}>
-                Corporate IT Infrastructure
-              </Link>
-              <Link href="/services" style={{ color: '#94a3b8', textDecoration: 'none' }}>
-                Datacenter & Server Setup
-              </Link>
-              <Link href="/services" style={{ color: '#94a3b8', textDecoration: 'none' }}>
-                Microsoft 365 & Cloud Migration
-              </Link>
-              <Link href="/track-order" style={{ color: '#94a3b8', textDecoration: 'none' }}>
-                Track Order & Consignment
-              </Link>
-              <Link href="/contact" style={{ color: '#94a3b8', textDecoration: 'none' }}>
-                GST Invoicing & B2B Purchase
-              </Link>
+              <a
+                href={getCustomWhatsAppUrl('Laptop Motherboard Chip Repair', 'Hello Evolution Infotech! I need laptop motherboard / chip repair service.')}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: '#94a3b8', textDecoration: 'none', transition: 'color 0.2s' }}
+              >
+                Laptop Motherboard Chip Repair
+              </a>
+              <a
+                href={getCustomWhatsAppUrl('Yearly AMC Maintenance Contract', 'Hello Evolution Infotech! I want a quote for corporate yearly AMC IT support.')}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: '#94a3b8', textDecoration: 'none', transition: 'color 0.2s' }}
+              >
+                Yearly AMC Maintenance Contract
+              </a>
+              <a
+                href={getCustomWhatsAppUrl('Office Networking & WiFi Setup', 'Hello Evolution Infotech! I need office networking, router & server rack setup.')}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: '#94a3b8', textDecoration: 'none', transition: 'color 0.2s' }}
+              >
+                Office Networking & WiFi Setup
+              </a>
+              <a
+                href={getCustomWhatsAppUrl('Printer Repair & Cartridge Refill', 'Hello Evolution Infotech! I need printer repair / toner refill service.')}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: '#94a3b8', textDecoration: 'none', transition: 'color 0.2s' }}
+              >
+                Printer Repair & Cartridge Refill
+              </a>
+              <a
+                href={getCustomWhatsAppUrl('Software & Windows Installation', 'Hello Evolution Infotech! I need licensed software / Windows OS installation.')}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: '#94a3b8', textDecoration: 'none', transition: 'color 0.2s' }}
+              >
+                Software & Windows Installation
+              </a>
             </div>
           </div>
 
-          {/* Newsletter Subscribe */}
+          {/* Column 4: Software & Dev Inquiries (Clean Direct WhatsApp Action) */}
           <div>
-            <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#f8fafc', marginBottom: '16px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-              Tech Intelligence & Deals
+            <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#38bdf8', marginBottom: '16px', textTransform: 'uppercase', letterSpacing: '0.5px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <Code2 size={16} /> Software & Dev Inquiries
             </h4>
-            <p style={{ fontSize: '0.82rem', color: '#94a3b8', marginBottom: '12px', lineHeight: 1.5 }}>
-              Subscribe to receive instant notifications on next-gen hardware drops and wholesale corporate offers.
-            </p>
 
-            <form onSubmit={handleSubscribe} style={{ display: 'flex', gap: '8px' }}>
-              <input
-                type="email"
-                required
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="form-input"
-                style={{ fontSize: '0.82rem', padding: '10px 12px' }}
-              />
-              <button type="submit" className="btn-primary" style={{ padding: '10px 16px', flexShrink: 0 }}>
-                <Send size={16} />
-              </button>
-            </form>
-
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.72rem', color: '#64748b', marginTop: '10px' }}>
-              <ShieldCheck size={14} color="#10b981" /> No spam. Unsubscribe anytime.
-            </div>
+            <a
+              href={getCustomWhatsAppUrl('Software & Mobile App Project Inquiry', 'Hello Evolution Infotech! I want to consult and get a quote for custom software / website / mobile app development.')}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                color: '#ffffff',
+                border: 'none',
+                borderRadius: '12px',
+                padding: '13px 18px',
+                fontSize: '0.92rem',
+                fontWeight: 700,
+                textDecoration: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '8px',
+                boxShadow: '0 4px 15px rgba(16, 185, 129, 0.4)',
+                width: '100%',
+                transition: 'transform 0.2s ease'
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.transform = 'translateY(-2px)')}
+              onMouseLeave={(e) => (e.currentTarget.style.transform = 'translateY(0)')}
+            >
+              <MessageCircle size={18} /> Inquire for Software
+            </a>
           </div>
         </div>
 
-        {/* Bottom Bar */}
+        {/* Bottom Copyright Bar */}
         <div style={{
           borderTop: '1px solid rgba(255, 255, 255, 0.06)',
-          paddingTop: '24px',
+          paddingTop: '20px',
           display: 'flex',
           flexWrap: 'wrap',
           alignItems: 'center',
@@ -183,13 +197,12 @@ export default function Footer() {
           color: '#64748b'
         }}>
           <div>
-            &copy; {new Date().getFullYear()} <strong>Evolution Infotech</strong> (evolutioninfotech.in). All Rights Reserved.
+            &copy; {new Date().getFullYear()} <strong>{COMPANY_NAME}</strong>. All Rights Reserved.
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-            <Link href="/contact" style={{ color: '#94a3b8', textDecoration: 'none' }}>Privacy Policy</Link>
-            <Link href="/contact" style={{ color: '#94a3b8', textDecoration: 'none' }}>Terms of Service</Link>
-            <Link href="/contact" style={{ color: '#94a3b8', textDecoration: 'none' }}>Warranty & Refund Policy</Link>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+            <Link href="/privacy-policy" style={{ color: '#94a3b8', textDecoration: 'none', transition: 'color 0.2s' }}>Privacy Policy</Link>
+            <Link href="/terms-of-service" style={{ color: '#94a3b8', textDecoration: 'none', transition: 'color 0.2s' }}>Terms of Service</Link>
           </div>
         </div>
       </div>

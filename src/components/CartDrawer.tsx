@@ -3,15 +3,19 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useCart } from '@/context/CartContext';
+import { useToast } from '@/context/ToastContext';
+import { getCartWhatsAppUrl } from '@/utils/whatsapp';
 import {
   X,
-  Trash2,
+  ShoppingBag,
   Plus,
   Minus,
-  ShoppingBag,
+  Trash2,
   ArrowRight,
   ShieldCheck,
   Tag,
+  Check,
+  MessageCircle,
   Truck
 } from 'lucide-react';
 
@@ -20,8 +24,8 @@ export default function CartDrawer() {
     cart,
     isCartOpen,
     setIsCartOpen,
-    removeFromCart,
     updateQuantity,
+    removeFromCart,
     subtotal,
     discount,
     tax,
@@ -29,53 +33,83 @@ export default function CartDrawer() {
     total,
     appliedCoupon,
     applyCoupon,
-    removeCoupon
+    removeCoupon,
+    clearCart
   } = useCart();
 
-  const [inputCoupon, setInputCoupon] = useState('');
+  const { addToast } = useToast();
+  const [couponInput, setCouponInput] = useState('');
 
   if (!isCartOpen) return null;
 
   const handleApplyCoupon = (e: React.FormEvent) => {
     e.preventDefault();
-    if (inputCoupon.trim()) {
-      applyCoupon(inputCoupon);
-      setInputCoupon('');
+    if (!couponInput.trim()) return;
+
+    const success = applyCoupon(couponInput);
+    if (success) {
+      addToast({
+        type: 'success',
+        title: 'Coupon Applied!',
+        message: '10% instant discount applied to your cart.',
+      });
+      setCouponInput('');
+    } else {
+      addToast({
+        type: 'error',
+        title: 'Invalid Coupon',
+        message: 'Try using EVO10 or GST18.',
+      });
     }
+  };
+
+  const handleWhatsAppCartOrder = () => {
+    const url = getCartWhatsAppUrl(
+      cart,
+      subtotal,
+      discount,
+      tax,
+      shipping,
+      total,
+      appliedCoupon || undefined
+    );
+    window.open(url, '_blank', 'noopener,noreferrer');
+    clearCart();
+    setIsCartOpen(false);
+    addToast({
+      type: 'success',
+      title: 'Order Sent on WhatsApp!',
+      message: 'Cart cleared. We will confirm your order details on WhatsApp.',
+    });
   };
 
   return (
     <div style={{
       position: 'fixed',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      zIndex: 1000,
+      inset: 0,
+      zIndex: 1100,
       display: 'flex',
       justifyContent: 'flex-end',
       backgroundColor: 'rgba(0, 0, 0, 0.75)',
       backdropFilter: 'blur(8px)',
-      transition: 'all 0.3s ease',
+      WebkitBackdropFilter: 'blur(8px)'
     }}>
-      {/* Click outside backdrop */}
-      <div
-        style={{ position: 'absolute', inset: 0 }}
-        onClick={() => setIsCartOpen(false)}
-      />
+      {/* Backdrop click */}
+      <div style={{ position: 'absolute', inset: 0 }} onClick={() => setIsCartOpen(false)} />
 
-      {/* Slide Drawer Content */}
+      {/* Drawer Panel */}
       <div style={{
         position: 'relative',
+        zIndex: 1101,
         width: '100%',
-        maxWidth: '480px',
+        maxWidth: '440px',
         height: '100%',
         backgroundColor: '#0b1120',
-        borderLeft: '1px solid rgba(255, 255, 255, 0.1)',
+        borderLeft: '1px solid rgba(6, 182, 212, 0.3)',
+        boxShadow: '-20px 0 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(6, 182, 212, 0.15)',
         display: 'flex',
         flexDirection: 'column',
-        boxShadow: '-10px 0 40px rgba(0, 0, 0, 0.8)',
-        zIndex: 1001,
+        animation: 'slideInRight 0.35s cubic-bezier(0.16, 1, 0.3, 1)'
       }}>
         {/* Header */}
         <div style={{
@@ -84,24 +118,27 @@ export default function CartDrawer() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          background: 'rgba(15, 23, 42, 0.6)'
+          background: 'rgba(15, 23, 42, 0.9)'
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
             <div style={{
-              width: '36px',
-              height: '36px',
-              borderRadius: '8px',
-              background: 'rgba(6, 182, 212, 0.15)',
+              width: '38px',
+              height: '38px',
+              borderRadius: '10px',
+              background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(59, 130, 246, 0.2))',
+              border: '1px solid rgba(6, 182, 212, 0.4)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: '#06b6d4'
+              color: '#38bdf8'
             }}>
               <ShoppingBag size={20} />
             </div>
             <div>
-              <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#ffffff' }}>Your Shopping Cart</h3>
-              <p style={{ fontSize: '0.75rem', color: '#64748b' }}>{cart.length} unique items</p>
+              <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: '#ffffff' }}>Your Shopping Cart</h3>
+              <p style={{ fontSize: '0.75rem', color: '#94a3b8' }}>
+                {cart.length} {cart.length === 1 ? 'item' : 'items'} selected
+              </p>
             </div>
           </div>
 
@@ -110,13 +147,13 @@ export default function CartDrawer() {
             style={{
               background: 'rgba(255, 255, 255, 0.05)',
               border: '1px solid rgba(255, 255, 255, 0.1)',
-              borderRadius: '8px',
-              color: '#94a3b8',
-              width: '32px',
-              height: '32px',
+              borderRadius: '50%',
+              width: '34px',
+              height: '34px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
+              color: '#94a3b8',
               cursor: 'pointer'
             }}
           >
@@ -126,31 +163,28 @@ export default function CartDrawer() {
 
         {/* Free Shipping Progress Indicator */}
         <div style={{
-          padding: '12px 24px',
-          background: 'rgba(6, 182, 212, 0.08)',
-          borderBottom: '1px solid rgba(6, 182, 212, 0.15)',
-          fontSize: '0.8rem',
+          padding: '10px 24px',
+          background: 'rgba(6, 182, 212, 0.1)',
+          borderBottom: '1px solid rgba(6, 182, 212, 0.2)',
+          fontSize: '0.78rem',
           color: '#38bdf8',
           display: 'flex',
           alignItems: 'center',
-          gap: '8px'
+          gap: '8px',
+          fontWeight: 700
         }}>
-          <Truck size={16} />
-          {subtotal >= 5000 ? (
-            <span>🎉 You qualify for <strong>FREE Express Shipping</strong>!</span>
-          ) : (
-            <span>Add <strong>₹{(5000 - subtotal).toLocaleString('en-IN')}</strong> more for Free Shipping!</span>
-          )}
+          <Truck size={15} color="#38bdf8" />
+          <span>You qualify for FREE Express Shipping & Transit Insurance!</span>
         </div>
 
-        {/* Items List */}
+        {/* Cart Item List */}
         <div style={{
           flex: 1,
           overflowY: 'auto',
           padding: '20px 24px',
           display: 'flex',
           flexDirection: 'column',
-          gap: '16px'
+          gap: '14px'
         }}>
           {cart.length === 0 ? (
             <div style={{
@@ -176,9 +210,9 @@ export default function CartDrawer() {
                 <ShoppingBag size={32} />
               </div>
               <div>
-                <h4 style={{ color: '#f8fafc', fontSize: '1.1rem', fontWeight: 600 }}>Your cart is empty</h4>
+                <h4 style={{ color: '#f8fafc', fontSize: '1.1rem', fontWeight: 700 }}>Your cart is empty</h4>
                 <p style={{ fontSize: '0.85rem', marginTop: '6px', maxWidth: '260px' }}>
-                  Explore our high-performance laptops, GPUs and enterprise hardware.
+                  Explore our AI laptops, GPUs, servers and accessories.
                 </p>
               </div>
               <button
@@ -196,22 +230,22 @@ export default function CartDrawer() {
                 style={{
                   display: 'flex',
                   gap: '14px',
-                  padding: '12px',
-                  background: 'rgba(15, 23, 42, 0.6)',
-                  borderRadius: '12px',
-                  border: '1px solid rgba(255, 255, 255, 0.05)'
+                  padding: '14px',
+                  background: 'rgba(15, 23, 42, 0.7)',
+                  borderRadius: '14px',
+                  border: '1px solid rgba(255, 255, 255, 0.06)'
                 }}
               >
                 <img
                   src={item.product.image}
                   alt={item.product.name}
-                  style={{ width: '70px', height: '70px', objectFit: 'cover', borderRadius: '8px' }}
+                  style={{ width: '70px', height: '70px', objectFit: 'cover', borderRadius: '10px', background: '#000' }}
                 />
 
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <h4 style={{
                     fontSize: '0.88rem',
-                    fontWeight: 600,
+                    fontWeight: 700,
                     color: '#f8fafc',
                     whiteSpace: 'nowrap',
                     overflow: 'hidden',
@@ -224,16 +258,16 @@ export default function CartDrawer() {
                   </div>
 
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '10px' }}>
-                    <div style={{ fontSize: '0.92rem', fontWeight: 700, color: '#06b6d4' }}>
-                      ₹{item.product.price.toLocaleString('en-IN')}
+                    <div style={{ fontSize: '0.95rem', fontWeight: 800, color: '#06b6d4' }}>
+                      ₹{(item.product.price * item.quantity).toLocaleString('en-IN')}
                     </div>
 
                     {/* Quantity controls */}
                     <div style={{
                       display: 'flex',
                       alignItems: 'center',
-                      background: 'rgba(0, 0, 0, 0.4)',
-                      borderRadius: '6px',
+                      background: 'rgba(0, 0, 0, 0.5)',
+                      borderRadius: '8px',
                       border: '1px solid rgba(255, 255, 255, 0.1)',
                       overflow: 'hidden'
                     }}>
@@ -249,7 +283,7 @@ export default function CartDrawer() {
                       >
                         <Minus size={13} />
                       </button>
-                      <span style={{ fontSize: '0.82rem', fontWeight: 600, padding: '0 8px', color: '#fff' }}>
+                      <span style={{ fontSize: '0.85rem', fontWeight: 800, padding: '0 8px', color: '#fff' }}>
                         {item.quantity}
                       </span>
                       <button
@@ -269,9 +303,9 @@ export default function CartDrawer() {
                     <button
                       onClick={() => removeFromCart(item.product.id)}
                       style={{
-                        background: 'none',
+                        background: 'transparent',
                         border: 'none',
-                        color: '#64748b',
+                        color: '#f43f5e',
                         cursor: 'pointer',
                         padding: '4px'
                       }}
@@ -286,82 +320,32 @@ export default function CartDrawer() {
           )}
         </div>
 
-        {/* Footer with Summary & Checkout */}
+        {/* Footer Summary & Direct WhatsApp Order */}
         {cart.length > 0 && (
           <div style={{
             padding: '20px 24px',
-            background: 'rgba(15, 23, 42, 0.9)',
-            borderTop: '1px solid rgba(255, 255, 255, 0.08)'
+            borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+            background: 'rgba(15, 23, 42, 0.95)'
           }}>
-            {/* Coupon Code Section */}
-            <form onSubmit={handleApplyCoupon} style={{ marginBottom: '16px' }}>
-              {appliedCoupon ? (
-                <div style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  background: 'rgba(16, 185, 129, 0.15)',
-                  border: '1px solid rgba(16, 185, 129, 0.3)',
-                  padding: '8px 12px',
-                  borderRadius: '8px',
-                  fontSize: '0.82rem',
-                  color: '#34d399'
-                }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <Tag size={14} /> Applied: <strong>{appliedCoupon}</strong> (-₹{discount.toLocaleString('en-IN')})
-                  </div>
-                  <button
-                    type="button"
-                    onClick={removeCoupon}
-                    style={{ background: 'none', border: 'none', color: '#f43f5e', cursor: 'pointer', fontSize: '0.75rem', fontWeight: 600 }}
-                  >
-                    Remove
-                  </button>
-                </div>
-              ) : (
-                <div style={{ display: 'flex', gap: '8px' }}>
-                  <input
-                    type="text"
-                    placeholder="Coupon (try EVO10)"
-                    value={inputCoupon}
-                    onChange={(e) => setInputCoupon(e.target.value)}
-                    className="form-input"
-                    style={{ padding: '8px 12px', fontSize: '0.82rem' }}
-                  />
-                  <button type="submit" className="btn-secondary" style={{ padding: '8px 14px', fontSize: '0.82rem' }}>
-                    Apply
-                  </button>
-                </div>
-              )}
-            </form>
-
-            {/* Calculations Breakdown */}
+            {/* Price Summary */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.85rem', color: '#94a3b8', marginBottom: '16px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <span>Subtotal</span>
-                <span style={{ color: '#f8fafc' }}>₹{subtotal.toLocaleString('en-IN')}</span>
+                <span style={{ color: '#f8fafc', fontWeight: 600 }}>₹{subtotal.toLocaleString('en-IN')}</span>
               </div>
-              {discount > 0 && (
-                <div style={{ display: 'flex', justifyContent: 'space-between', color: '#34d399' }}>
-                  <span>Discount</span>
-                  <span>-₹{discount.toLocaleString('en-IN')}</span>
-                </div>
-              )}
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span>GST (18% IT Tax)</span>
+                <span>GST (18% IT Tax Included)</span>
                 <span style={{ color: '#f8fafc' }}>₹{tax.toLocaleString('en-IN')}</span>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <span>Shipping</span>
-                <span style={{ color: shipping === 0 ? '#34d399' : '#f8fafc' }}>
-                  {shipping === 0 ? 'FREE' : `₹${shipping}`}
-                </span>
+                <span style={{ color: '#34d399', fontWeight: 700 }}>FREE</span>
               </div>
               <div style={{
                 display: 'flex',
                 justifyContent: 'space-between',
-                fontSize: '1.1rem',
-                fontWeight: 700,
+                fontSize: '1.15rem',
+                fontWeight: 800,
                 color: '#ffffff',
                 borderTop: '1px solid rgba(255, 255, 255, 0.08)',
                 paddingTop: '10px',
@@ -372,18 +356,37 @@ export default function CartDrawer() {
               </div>
             </div>
 
-            {/* Checkout Link */}
-            <Link
-              href="/checkout"
-              onClick={() => setIsCartOpen(false)}
-              className="btn-primary"
-              style={{ width: '100%', padding: '14px', fontSize: '1rem' }}
-            >
-              Proceed to Checkout <ArrowRight size={18} />
-            </Link>
+            {/* Direct Order Actions - WhatsApp Only */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              <button
+                onClick={handleWhatsAppCartOrder}
+                style={{
+                  width: '100%',
+                  background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                  color: '#ffffff',
+                  border: 'none',
+                  borderRadius: '14px',
+                  padding: '16px',
+                  fontSize: '1.02rem',
+                  fontWeight: 800,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px',
+                  cursor: 'pointer',
+                  boxShadow: '0 4px 20px rgba(16, 185, 129, 0.45)',
+                  transition: 'transform 0.2s ease'
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.transform = 'translateY(-2px)')}
+                onMouseLeave={(e) => (e.currentTarget.style.transform = 'translateY(0)')}
+              >
+                <MessageCircle size={22} />
+                Order via WhatsApp (Instant Checkout)
+              </button>
+            </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', fontSize: '0.72rem', color: '#64748b', marginTop: '10px' }}>
-              <ShieldCheck size={14} color="#10b981" /> 256-Bit SSL Encrypted & GST Invoiced
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', fontSize: '0.72rem', color: '#64748b', marginTop: '12px' }}>
+              <ShieldCheck size={14} color="#10b981" /> 100% Genuine Manufacturer Warranty & GST Bill
             </div>
           </div>
         )}

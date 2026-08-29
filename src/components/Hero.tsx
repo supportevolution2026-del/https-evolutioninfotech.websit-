@@ -126,12 +126,6 @@ export default function Hero({ onOpenQuoteModal }: { onOpenQuoteModal?: () => vo
                   </Link>
                 )}
               </div>
-
-              {/* Verified Domain Seal */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', color: '#64748b', marginTop: '8px' }}>
-                <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10b981', display: 'inline-block' }} />
-                Verified Next-Gen Portal &bull; <strong>evolutioninfotech.in</strong>
-              </div>
             </div>
 
             {/* Right Visual Image */}

@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useCart } from '@/context/CartContext';
 import { products } from '@/data/products';
+import { getCustomWhatsAppUrl } from '@/utils/whatsapp';
+import BrandLogo from './BrandLogo';
 import {
   ShoppingBag,
   Heart,
@@ -70,7 +72,7 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
   };
 
   return (
-    <header style={{ position: 'sticky', top: 0, zIndex: 50, width: '100%' }}>
+    <header style={{ position: 'sticky', top: 0, zIndex: 100, width: '100%', background: '#0b1120', boxShadow: '0 10px 30px rgba(0, 0, 0, 0.7)' }}>
       {/* Top Notification Bar */}
       <div style={{
         background: 'linear-gradient(90deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%)',
@@ -82,8 +84,7 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
         <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
             <span style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#38bdf8' }}>
-              <Sparkles size={14} /> Official Domain: evolutioninfotech.in
-            </span>
+              <Sparkles size={14} />             </span>
             <span className="desktop-inline" style={{ color: '#64748b' }}>|</span>
             <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
               <Truck size={14} color="#10b981" /> Free Express Delivery on Orders &gt; ₹5,000
@@ -105,38 +106,10 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
       {/* Main Glass Navbar */}
       <nav className="glass-nav" style={{ padding: '14px 0' }}>
         <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '20px' }}>
-          
-          {/* Logo */}
-          <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <div style={{
-              width: '42px',
-              height: '42px',
-              borderRadius: '10px',
-              background: 'linear-gradient(135deg, #06b6d4, #3b82f6)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              boxShadow: '0 0 15px rgba(6, 182, 212, 0.4)'
-            }}>
-              <Cpu size={24} color="#ffffff" />
-            </div>
-            <div>
-              <div style={{
-                fontSize: '1.25rem',
-                fontWeight: 800,
-                letterSpacing: '-0.5px',
-                color: '#ffffff',
-                lineHeight: 1.1,
-                display: 'flex',
-                alignItems: 'center',
-                gap: '4px'
-              }}>
-                EVOLUTION <span style={{ color: '#06b6d4' }}>INFOTECH</span>
-              </div>
-              <div style={{ fontSize: '0.65rem', color: '#64748b', letterSpacing: '1.5px', fontWeight: 600 }}>
-                NEXT-GEN IT & HARDWARE
-              </div>
-            </div>
+
+          {/* Official Brand Logo */}
+          <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+            <BrandLogo size="md" showSubtitle={true} />
           </Link>
 
           {/* Search Bar with Autocomplete */}
@@ -234,22 +207,36 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
                     <ChevronRight size={16} color="#64748b" />
                   </Link>
                 ))}
+
+                {/* View All Search Results in Catalog */}
+                <Link
+                  href={`/products?search=${encodeURIComponent(searchQuery.trim())}`}
+                  onClick={() => setIsSearchFocused(false)}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '6px',
+                    padding: '10px',
+                    marginTop: '6px',
+                    borderRadius: '8px',
+                    background: 'rgba(6, 182, 212, 0.12)',
+                    border: '1px solid rgba(6, 182, 212, 0.3)',
+                    color: '#38bdf8',
+                    textDecoration: 'none',
+                    fontSize: '0.85rem',
+                    fontWeight: 700
+                  }}
+                >
+                  <span>View all {searchResults.length} matching products in Catalog</span>
+                  <ChevronRight size={15} />
+                </Link>
               </div>
             )}
           </div>
 
           {/* Action Buttons */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-            {/* B2B Quote Button */}
-            {onOpenQuoteModal && (
-              <button
-                onClick={onOpenQuoteModal}
-                className="btn-outline-cyan desktop-only"
-                style={{ fontSize: '0.85rem', padding: '8px 16px' }}
-              >
-                <PhoneCall size={15} /> B2B Quote
-              </button>
-            )}
 
             {/* Wishlist Link */}
             <Link
@@ -350,33 +337,41 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
         {/* Navigation Categories Row */}
         <div className="container" style={{ marginTop: '10px', borderTop: '1px solid rgba(255,255,255,0.04)', paddingTop: '10px' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', overflowX: 'auto', gap: '20px', scrollbarWidth: 'none' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-              <Link href="/products" style={{ color: '#f8fafc', fontSize: '0.88rem', fontWeight: 600, textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <Cpu size={16} color="#06b6d4" /> All Products
+            <div style={{ display: 'flex', alignItems: 'center', gap: '18px' }}>
+              <Link href="/products" style={{ color: '#f8fafc', fontSize: '0.85rem', fontWeight: 700, textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <Cpu size={15} color="#06b6d4" /> Store
               </Link>
-              <Link href="/products?category=laptops-desktops" style={{ color: '#94a3b8', fontSize: '0.88rem', fontWeight: 500, textDecoration: 'none' }}>
-                Laptops & Workstations
+              <Link href="/products?category=laptop" style={{ color: '#cbd5e1', fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none' }}>
+                Laptop
               </Link>
-              <Link href="/products?category=pc-components" style={{ color: '#94a3b8', fontSize: '0.88rem', fontWeight: 500, textDecoration: 'none' }}>
-                PC Components & GPU
+              <Link href="/products?category=desktop" style={{ color: '#cbd5e1', fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none' }}>
+                Desktop
               </Link>
-              <Link href="/products?category=networking-servers" style={{ color: '#94a3b8', fontSize: '0.88rem', fontWeight: 500, textDecoration: 'none' }}>
-                Networking & Servers
+              <Link href="/products?category=printer" style={{ color: '#cbd5e1', fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none' }}>
+                Printer
               </Link>
-              <Link href="/products?category=peripherals-accessories" style={{ color: '#94a3b8', fontSize: '0.88rem', fontWeight: 500, textDecoration: 'none' }}>
-                Displays & Peripherals
+              <Link href="/products?category=network" style={{ color: '#cbd5e1', fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none' }}>
+                Network
               </Link>
-              <Link href="/products?category=software-cloud" style={{ color: '#94a3b8', fontSize: '0.88rem', fontWeight: 500, textDecoration: 'none' }}>
-                Software & Cloud
+              <Link href="/products?category=cctv" style={{ color: '#cbd5e1', fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none' }}>
+                CCTV
+              </Link>
+              <Link href="/products?category=accessories" style={{ color: '#cbd5e1', fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none' }}>
+                Accessories
               </Link>
             </div>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-              <Link href="/services" style={{ color: '#38bdf8', fontSize: '0.88rem', fontWeight: 600, textDecoration: 'none' }}>
-                IT Services
-              </Link>
-              <Link href="/contact" style={{ color: '#94a3b8', fontSize: '0.88rem', fontWeight: 500, textDecoration: 'none' }}>
-                Support & Contact
+              <a
+                href={getCustomWhatsAppUrl('IT Hardware & Repair Services Inquiry', 'Hello Evolution Infotech! I want to inquire about IT Services, Computer / Laptop Repair, and AMC Maintenance.')}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: '#38bdf8', fontSize: '0.85rem', fontWeight: 700, textDecoration: 'none' }}
+              >
+                IT & Software Services
+              </a>
+              <Link href="/contact" style={{ color: '#94a3b8', fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none' }}>
+                Contact
               </Link>
             </div>
           </div>
@@ -407,18 +402,24 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
             <Link href="/products" onClick={() => setMobileMenuOpen(false)} style={{ color: '#38bdf8', textDecoration: 'none', padding: '8px 0', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
               All Products Catalog
             </Link>
-            <Link href="/products?category=laptops-desktops" onClick={() => setMobileMenuOpen(false)} style={{ color: '#94a3b8', textDecoration: 'none', padding: '8px 0' }}>
+            <Link href="/products?category=laptop" onClick={() => setMobileMenuOpen(false)} style={{ color: '#94a3b8', textDecoration: 'none', padding: '8px 0' }}>
               Laptops & Workstations
             </Link>
-            <Link href="/products?category=pc-components" onClick={() => setMobileMenuOpen(false)} style={{ color: '#94a3b8', textDecoration: 'none', padding: '8px 0' }}>
-              PC Components & GPU
+            <Link href="/products?category=desktop" onClick={() => setMobileMenuOpen(false)} style={{ color: '#94a3b8', textDecoration: 'none', padding: '8px 0' }}>
+              Desktops & Components
             </Link>
-            <Link href="/products?category=networking-servers" onClick={() => setMobileMenuOpen(false)} style={{ color: '#94a3b8', textDecoration: 'none', padding: '8px 0' }}>
+            <Link href="/products?category=network" onClick={() => setMobileMenuOpen(false)} style={{ color: '#94a3b8', textDecoration: 'none', padding: '8px 0' }}>
               Networking & Servers
             </Link>
-            <Link href="/services" onClick={() => setMobileMenuOpen(false)} style={{ color: '#94a3b8', textDecoration: 'none', padding: '8px 0' }}>
-              IT Services & Solutions
-            </Link>
+            <a
+              href={getCustomWhatsAppUrl('IT Hardware & Repair Services Inquiry', 'Hello Evolution Infotech! I want to inquire about IT Services, Computer / Laptop Repair, and AMC Maintenance.')}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMobileMenuOpen(false)}
+              style={{ color: '#38bdf8', textDecoration: 'none', padding: '8px 0', fontWeight: 700 }}
+            >
+              IT Services & Repair (WhatsApp)
+            </a>
             <Link href="/track-order" onClick={() => setMobileMenuOpen(false)} style={{ color: '#94a3b8', textDecoration: 'none', padding: '8px 0' }}>
               Track My Order
             </Link>

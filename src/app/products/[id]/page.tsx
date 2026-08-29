@@ -8,8 +8,10 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ProductCard from '@/components/ProductCard';
 import B2BQuoteModal from '@/components/B2BQuoteModal';
-import { products } from '@/data/products';
+import { useProducts } from '@/hooks/useProducts';
 import { useCart } from '@/context/CartContext';
+import { useToast } from '@/context/ToastContext';
+import { getProductWhatsAppUrl } from '@/utils/whatsapp';
 import {
   Star,
   ShoppingCart,
@@ -23,14 +25,23 @@ import {
   ChevronRight,
   Zap,
   Building2,
-  Check
+  Check,
+  MessageCircle
 } from 'lucide-react';
 
-export default function ProductDetailPage() {
+export default function ProductDetailPage({
+  params
+}: {
+  params: Promise<{ id: string }> | { id: string };
+}) {
   const router = useRouter();
-  const params = useParams();
-  const slug = params.id as string;
-  const { addToCart, toggleWishlist, isInWishlist } = useCart();
+  const { addToast } = useToast();
+  const { products } = useProducts();
+  const unwrappedParams = typeof (params as any)?.then === 'function' ? React.use(params as Promise<{ id: string }>) : (params as { id: string });
+  const clientParams = useParams();
+  const rawId = unwrappedParams?.id || clientParams?.id;
+  const slug = Array.isArray(rawId) ? rawId[0] : (rawId as string);
+  const { addToCart, toggleWishlist, isInWishlist, setIsCartOpen } = useCart();
 
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
@@ -38,7 +49,7 @@ export default function ProductDetailPage() {
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
 
-  const product = products.find((p) => p.slug === slug || p.id === slug);
+  const product = products.find((p) => p.slug === slug || p.id === slug) || products[0];
 
   if (!product) {
     return notFound();
@@ -50,6 +61,7 @@ export default function ProductDetailPage() {
 
   const handleAddToCart = () => {
     addToCart(product, quantity);
+    setIsCartOpen(true);
   };
 
   const handleBuyNow = () => {
@@ -57,11 +69,46 @@ export default function ProductDetailPage() {
     router.push('/checkout');
   };
 
-  const handleShare = () => {
-    if (typeof window !== 'undefined') {
-      navigator.clipboard.writeText(window.location.href);
+  const handleShare = async () => {
+    const url = typeof window !== 'undefined' ? window.location.href : '';
+    if (typeof navigator !== 'undefined' && navigator.share) {
+      try {
+        await navigator.share({
+          title: `${product.name} | Evolution Infotech`,
+          text: `Check out ${product.name} at Evolution Infotech!`,
+          url: url
+        });
+        return;
+      } catch (e) {
+        // Fallback to clipboard
+      }
+    }
+
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(url);
+      } else {
+        const textArea = document.createElement('textarea');
+        textArea.value = url;
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+      }
       setIsCopied(true);
-      setTimeout(() => setIsCopied(false), 2000);
+      addToast({
+        type: 'success',
+        title: 'Product Link Copied!',
+        message: 'Direct product link copied to clipboard.'
+      });
+      setTimeout(() => setIsCopied(false), 2500);
+    } catch (err) {
+      addToast({
+        type: 'info',
+        title: 'Product URL',
+        message: url
+      });
     }
   };
 
@@ -145,42 +192,51 @@ export default function ProductDetailPage() {
                   </span>
                 </div>
 
-                <div style={{ display: 'flex', gap: '8px' }}>
+                <div style={{ display: 'flex', gap: '10px' }}>
+                  {/* Share Button */}
                   <button
                     onClick={handleShare}
                     style={{
-                      width: '38px',
-                      height: '38px',
-                      borderRadius: '8px',
-                      background: 'rgba(255, 255, 255, 0.05)',
-                      border: '1px solid rgba(255, 255, 255, 0.1)',
-                      color: isCopied ? '#10b981' : '#94a3b8',
+                      width: '42px',
+                      height: '42px',
+                      borderRadius: '10px',
+                      background: isCopied ? 'rgba(16, 185, 129, 0.25)' : 'rgba(255, 255, 255, 0.06)',
+                      border: isCopied ? '1px solid #10b981' : '1px solid rgba(255, 255, 255, 0.12)',
+                      color: isCopied ? '#34d399' : '#cbd5e1',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      cursor: 'pointer'
+                      cursor: 'pointer',
+                      transition: 'all 0.2s ease',
+                      boxShadow: isCopied ? '0 0 15px rgba(16, 185, 129, 0.4)' : 'none'
                     }}
-                    title="Copy Link"
+                    title={isCopied ? 'Link Copied!' : 'Share Product Link'}
+                    aria-label="Share Product"
                   >
-                    {isCopied ? <Check size={16} /> : <Share2 size={16} />}
+                    {isCopied ? <Check size={18} /> : <Share2 size={18} />}
                   </button>
 
+                  {/* Wishlist Button */}
                   <button
                     onClick={() => toggleWishlist(product.id)}
                     style={{
-                      width: '38px',
-                      height: '38px',
-                      borderRadius: '8px',
-                      background: 'rgba(255, 255, 255, 0.05)',
-                      border: '1px solid rgba(255, 255, 255, 0.1)',
-                      color: inWishlist ? '#ec4899' : '#94a3b8',
+                      width: '42px',
+                      height: '42px',
+                      borderRadius: '10px',
+                      background: inWishlist ? 'rgba(236, 72, 153, 0.25)' : 'rgba(255, 255, 255, 0.06)',
+                      border: inWishlist ? '1px solid #ec4899' : '1px solid rgba(255, 255, 255, 0.12)',
+                      color: inWishlist ? '#ec4899' : '#cbd5e1',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      cursor: 'pointer'
+                      cursor: 'pointer',
+                      transition: 'all 0.2s ease',
+                      boxShadow: inWishlist ? '0 0 15px rgba(236, 72, 153, 0.4)' : 'none'
                     }}
+                    title={inWishlist ? 'Remove from Wishlist' : 'Add to Wishlist'}
+                    aria-label="Toggle Wishlist"
                   >
-                    <Heart size={18} fill={inWishlist ? '#ec4899' : 'none'} />
+                    <Heart size={20} fill={inWishlist ? '#ec4899' : 'none'} />
                   </button>
                 </div>
               </div>
@@ -263,7 +319,7 @@ export default function ProductDetailPage() {
                 <button
                   onClick={handleAddToCart}
                   className="btn-secondary"
-                  style={{ flex: 1, padding: '14px 20px', fontSize: '1rem' }}
+                  style={{ flex: 1, padding: '14px 20px', fontSize: '0.95rem' }}
                 >
                   <ShoppingCart size={20} color="#06b6d4" /> Add to Cart
                 </button>
@@ -271,11 +327,41 @@ export default function ProductDetailPage() {
                 <button
                   onClick={handleBuyNow}
                   className="btn-primary"
-                  style={{ flex: 1, padding: '14px 24px', fontSize: '1rem' }}
+                  style={{ flex: 1, padding: '14px 24px', fontSize: '0.95rem' }}
                 >
                   <Zap size={20} /> Buy Now
                 </button>
               </div>
+
+              {/* Direct WhatsApp Instant Order Button */}
+              <a
+                href={getProductWhatsAppUrl(product, quantity)}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  width: '100%',
+                  background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                  color: '#ffffff',
+                  border: 'none',
+                  borderRadius: '12px',
+                  padding: '14px 24px',
+                  fontSize: '1rem',
+                  fontWeight: 700,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '10px',
+                  textDecoration: 'none',
+                  cursor: 'pointer',
+                  boxShadow: '0 4px 20px rgba(16, 185, 129, 0.35)',
+                  transition: 'transform 0.2s ease'
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.transform = 'translateY(-2px)')}
+                onMouseLeave={(e) => (e.currentTarget.style.transform = 'translateY(0)')}
+              >
+                <MessageCircle size={22} />
+                Order Directly on WhatsApp (Instant Order)
+              </a>
 
               {/* B2B Quote Prompt */}
               <div style={{

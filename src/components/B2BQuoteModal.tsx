@@ -2,16 +2,17 @@
 
 import React, { useState } from 'react';
 import { useToast } from '@/context/ToastContext';
+import { WHATSAPP_PHONE_NUMBER, COMPANY_NAME } from '@/utils/whatsapp';
 import {
   X,
-  Send,
   Building2,
-  CheckCircle2,
-  FileSpreadsheet,
   Cpu,
   Mail,
   Phone,
-  User
+  User,
+  MessageCircle,
+  IndianRupee,
+  PackageCheck
 } from 'lucide-react';
 
 interface B2BQuoteModalProps {
@@ -26,32 +27,49 @@ export default function B2BQuoteModal({ isOpen, onClose }: B2BQuoteModalProps) {
     contactName: '',
     email: '',
     phone: '',
-    requirementType: 'Bulk Hardware & Workstations',
-    estimatedBudget: '₹1,00,000 - ₹5,00,000',
+    requirementType: '',
+    estimatedBudget: '',
     notes: '',
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSendWhatsApp = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
 
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSuccess(true);
+    if (!formData.contactName.trim() && !formData.companyName.trim()) {
       addToast({
-        type: 'success',
-        title: 'Quote Request Received!',
-        message: 'Our corporate IT sales team will contact you within 2 hours with wholesale pricing.',
+        type: 'error',
+        title: 'Details Required',
+        message: 'Please enter your name or company name.',
       });
-    }, 1200);
-  };
+      return;
+    }
 
-  const handleClose = () => {
-    setIsSuccess(false);
+    if (!formData.phone.trim()) {
+      addToast({
+        type: 'error',
+        title: 'Phone Required',
+        message: 'Please enter your contact phone / WhatsApp number.',
+      });
+      return;
+    }
+
+    const text = 
+`🏢 *B2B CORPORATE & BULK QUOTE INQUIRY - ${COMPANY_NAME}* 🏢
+
+🏢 *Company / Org:* ${formData.companyName || 'N/A'}
+👤 *Contact Person:* ${formData.contactName || 'N/A'}
+📱 *Phone / WhatsApp:* ${formData.phone || 'N/A'}
+📧 *Official Email:* ${formData.email || 'N/A'}
+📦 *Items / Requirement:* ${formData.requirementType || 'N/A'}
+💰 *Estimated Budget:* ${formData.estimatedBudget || 'N/A'}
+📝 *Detailed Specs / Notes:* ${formData.notes || 'Please share official wholesale quotation with GST invoice.'}
+
+Please connect with our corporate procurement desk.`;
+
+    const url = `https://wa.me/${WHATSAPP_PHONE_NUMBER}?text=${encodeURIComponent(text)}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
     onClose();
   };
 
@@ -67,7 +85,7 @@ export default function B2BQuoteModal({ isOpen, onClose }: B2BQuoteModalProps) {
       justifyContent: 'center',
       padding: '20px'
     }}>
-      <div style={{ position: 'absolute', inset: 0 }} onClick={handleClose} />
+      <div style={{ position: 'absolute', inset: 0 }} onClick={onClose} />
 
       <div style={{
         position: 'relative',
@@ -75,15 +93,16 @@ export default function B2BQuoteModal({ isOpen, onClose }: B2BQuoteModalProps) {
         width: '100%',
         maxWidth: '580px',
         backgroundColor: '#0b1120',
-        borderRadius: '20px',
-        border: '1px solid rgba(6, 182, 212, 0.3)',
+        borderRadius: '24px',
+        border: '1px solid rgba(6, 182, 212, 0.35)',
         boxShadow: '0 25px 60px rgba(0, 0, 0, 0.9), 0 0 30px rgba(6, 182, 212, 0.2)',
         padding: '30px',
         maxHeight: '90vh',
         overflowY: 'auto'
       }}>
+        {/* Close button */}
         <button
-          onClick={handleClose}
+          onClick={onClose}
           style={{
             position: 'absolute',
             top: '20px',
@@ -91,8 +110,8 @@ export default function B2BQuoteModal({ isOpen, onClose }: B2BQuoteModalProps) {
             background: 'rgba(255, 255, 255, 0.05)',
             border: '1px solid rgba(255, 255, 255, 0.1)',
             borderRadius: '50%',
-            width: '34px',
-            height: '34px',
+            width: '36px',
+            height: '36px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -103,194 +122,187 @@ export default function B2BQuoteModal({ isOpen, onClose }: B2BQuoteModalProps) {
           <X size={18} />
         </button>
 
-        {isSuccess ? (
-          <div style={{ textAlign: 'center', padding: '30px 10px' }}>
+        <div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
             <div style={{
-              width: '64px',
-              height: '64px',
-              borderRadius: '50%',
-              background: 'rgba(16, 185, 129, 0.15)',
-              border: '2px solid #10b981',
+              width: '46px',
+              height: '46px',
+              borderRadius: '12px',
+              background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(59, 130, 246, 0.2))',
+              border: '1px solid rgba(6, 182, 212, 0.4)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              margin: '0 auto 16px auto',
-              color: '#10b981'
+              color: '#38bdf8'
             }}>
-              <CheckCircle2 size={36} />
+              <Building2 size={24} />
             </div>
-            <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#ffffff' }}>Corporate Inquiry Submitted</h3>
-            <p style={{ color: '#94a3b8', fontSize: '0.9rem', marginTop: '8px', lineHeight: 1.5 }}>
-              Thank you, <strong>{formData.contactName}</strong>. Our enterprise IT hardware specialist will reach out to <strong>{formData.email}</strong> with customized pricing & GST invoice terms.
-            </p>
-            <button onClick={handleClose} className="btn-primary" style={{ marginTop: '24px', padding: '10px 24px' }}>
-              Done
-            </button>
+            <div>
+              <h2 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#ffffff' }}>
+                B2B Corporate & Bulk Quote
+              </h2>
+              <p style={{ fontSize: '0.8rem', color: '#94a3b8' }}>
+                {COMPANY_NAME} &bull; GST Invoicing & Wholesale Corporate Discounts
+              </p>
+            </div>
           </div>
-        ) : (
-          <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
-              <div style={{
-                width: '36px',
-                height: '36px',
-                borderRadius: '8px',
-                background: 'rgba(6, 182, 212, 0.15)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: '#06b6d4'
-              }}>
-                <Building2 size={20} />
-              </div>
+
+          <form onSubmit={handleSendWhatsApp} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
               <div>
-                <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#f8fafc' }}>
-                  B2B Corporate & Bulk Quote
-                </h3>
-                <p style={{ fontSize: '0.75rem', color: '#64748b' }}>
-                  Evolution Infotech &bull; GST Input Tax Credit & Wholesale Discounts
-                </p>
-              </div>
-            </div>
-
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginTop: '18px' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
-                <div>
-                  <label style={{ fontSize: '0.78rem', color: '#94a3b8', marginBottom: '4px', display: 'block', fontWeight: 600 }}>
-                    Company / Organization *
-                  </label>
-                  <div style={{ position: 'relative' }}>
-                    <Building2 size={16} color="#64748b" style={{ position: 'absolute', left: '12px', top: '14px' }} />
-                    <input
-                      type="text"
-                      required
-                      placeholder="e.g. Infotech Solutions Ltd"
-                      value={formData.companyName}
-                      onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
-                      className="form-input"
-                      style={{ paddingLeft: '36px', fontSize: '0.85rem' }}
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label style={{ fontSize: '0.78rem', color: '#94a3b8', marginBottom: '4px', display: 'block', fontWeight: 600 }}>
-                    Contact Person *
-                  </label>
-                  <div style={{ position: 'relative' }}>
-                    <User size={16} color="#64748b" style={{ position: 'absolute', left: '12px', top: '14px' }} />
-                    <input
-                      type="text"
-                      required
-                      placeholder="Your Name"
-                      value={formData.contactName}
-                      onChange={(e) => setFormData({ ...formData, contactName: e.target.value })}
-                      className="form-input"
-                      style={{ paddingLeft: '36px', fontSize: '0.85rem' }}
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
-                <div>
-                  <label style={{ fontSize: '0.78rem', color: '#94a3b8', marginBottom: '4px', display: 'block', fontWeight: 600 }}>
-                    Official Email *
-                  </label>
-                  <div style={{ position: 'relative' }}>
-                    <Mail size={16} color="#64748b" style={{ position: 'absolute', left: '12px', top: '14px' }} />
-                    <input
-                      type="email"
-                      required
-                      placeholder="name@company.com"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="form-input"
-                      style={{ paddingLeft: '36px', fontSize: '0.85rem' }}
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label style={{ fontSize: '0.78rem', color: '#94a3b8', marginBottom: '4px', display: 'block', fontWeight: 600 }}>
-                    Phone / WhatsApp *
-                  </label>
-                  <div style={{ position: 'relative' }}>
-                    <Phone size={16} color="#64748b" style={{ position: 'absolute', left: '12px', top: '14px' }} />
-                    <input
-                      type="tel"
-                      required
-                      placeholder="+91 98765 43210"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="form-input"
-                      style={{ paddingLeft: '36px', fontSize: '0.85rem' }}
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
-                <div>
-                  <label style={{ fontSize: '0.78rem', color: '#94a3b8', marginBottom: '4px', display: 'block', fontWeight: 600 }}>
-                    Requirement Category
-                  </label>
-                  <select
-                    value={formData.requirementType}
-                    onChange={(e) => setFormData({ ...formData, requirementType: e.target.value })}
+                <label style={{ fontSize: '0.78rem', color: '#94a3b8', marginBottom: '4px', display: 'block', fontWeight: 600 }}>
+                  Company / Organization
+                </label>
+                <div style={{ position: 'relative' }}>
+                  <Building2 size={16} color="#64748b" style={{ position: 'absolute', left: '12px', top: '14px' }} />
+                  <input
+                    type="text"
+                    placeholder="e.g. Infotech Solutions Ltd"
+                    value={formData.companyName}
+                    onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
                     className="form-input"
-                    style={{ fontSize: '0.85rem' }}
-                  >
-                    <option value="Bulk Hardware & Workstations">Bulk Laptops & Workstations</option>
-                    <option value="Server Stacks & Networking">Enterprise Servers & Networking</option>
-                    <option value="Custom Gaming/AI Rigs">Custom AI Rig & GPU Server</option>
-                    <option value="Software Licences">Microsoft / Enterprise Software</option>
-                    <option value="Annual IT Maintenance">AMC & Managed IT Infrastructure</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label style={{ fontSize: '0.78rem', color: '#94a3b8', marginBottom: '4px', display: 'block', fontWeight: 600 }}>
-                    Estimated Budget Range
-                  </label>
-                  <select
-                    value={formData.estimatedBudget}
-                    onChange={(e) => setFormData({ ...formData, estimatedBudget: e.target.value })}
-                    className="form-input"
-                    style={{ fontSize: '0.85rem' }}
-                  >
-                    <option value="₹50,000 - ₹2,00,000">₹50,000 - ₹2,00,000</option>
-                    <option value="₹2,00,000 - ₹10,00,000">₹2,00,000 - ₹10,00,000</option>
-                    <option value="₹10,00,000 - ₹50,00,000">₹10,00,000 - ₹50,00,000</option>
-                    <option value="₹50,00,000+">₹50,00,000+ Enterprise</option>
-                  </select>
+                    style={{ paddingLeft: '36px', fontSize: '0.85rem' }}
+                  />
                 </div>
               </div>
 
               <div>
                 <label style={{ fontSize: '0.78rem', color: '#94a3b8', marginBottom: '4px', display: 'block', fontWeight: 600 }}>
-                  Detailed Requirements / Model Numbers
+                  Contact Person *
                 </label>
-                <textarea
-                  rows={3}
-                  placeholder="Specify model numbers, quantities, RAM/SSD configurations, delivery location..."
-                  value={formData.notes}
-                  onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                  className="form-input"
-                  style={{ fontSize: '0.85rem', resize: 'vertical' }}
-                />
+                <div style={{ position: 'relative' }}>
+                  <User size={16} color="#64748b" style={{ position: 'absolute', left: '12px', top: '14px' }} />
+                  <input
+                    type="text"
+                    required
+                    placeholder="Your Full Name"
+                    value={formData.contactName}
+                    onChange={(e) => setFormData({ ...formData, contactName: e.target.value })}
+                    className="form-input"
+                    style={{ paddingLeft: '36px', fontSize: '0.85rem' }}
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+              <div>
+                <label style={{ fontSize: '0.78rem', color: '#94a3b8', marginBottom: '4px', display: 'block', fontWeight: 600 }}>
+                  Official Email
+                </label>
+                <div style={{ position: 'relative' }}>
+                  <Mail size={16} color="#64748b" style={{ position: 'absolute', left: '12px', top: '14px' }} />
+                  <input
+                    type="email"
+                    placeholder="name@company.com"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="form-input"
+                    style={{ paddingLeft: '36px', fontSize: '0.85rem' }}
+                  />
+                </div>
               </div>
 
+              <div>
+                <label style={{ fontSize: '0.78rem', color: '#94a3b8', marginBottom: '4px', display: 'block', fontWeight: 600 }}>
+                  Phone / WhatsApp *
+                </label>
+                <div style={{ position: 'relative' }}>
+                  <Phone size={16} color="#64748b" style={{ position: 'absolute', left: '12px', top: '14px' }} />
+                  <input
+                    type="tel"
+                    required
+                    placeholder="+91 98765 43210"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    className="form-input"
+                    style={{ paddingLeft: '36px', fontSize: '0.85rem' }}
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Manual Requirement & Manual Budget (No dropdowns) */}
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+              <div>
+                <label style={{ fontSize: '0.78rem', color: '#94a3b8', marginBottom: '4px', display: 'block', fontWeight: 600 }}>
+                  Requirement / Products Needed
+                </label>
+                <div style={{ position: 'relative' }}>
+                  <PackageCheck size={16} color="#64748b" style={{ position: 'absolute', left: '12px', top: '14px' }} />
+                  <input
+                    type="text"
+                    placeholder="e.g. 20 Laptops / 5 Server Racks..."
+                    value={formData.requirementType}
+                    onChange={(e) => setFormData({ ...formData, requirementType: e.target.value })}
+                    className="form-input"
+                    style={{ paddingLeft: '36px', fontSize: '0.85rem' }}
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label style={{ fontSize: '0.78rem', color: '#94a3b8', marginBottom: '4px', display: 'block', fontWeight: 600 }}>
+                  Estimated Budget
+                </label>
+                <div style={{ position: 'relative' }}>
+                  <IndianRupee size={16} color="#64748b" style={{ position: 'absolute', left: '12px', top: '14px' }} />
+                  <input
+                    type="text"
+                    placeholder="e.g. ₹2,00,000 / Flexible"
+                    value={formData.estimatedBudget}
+                    onChange={(e) => setFormData({ ...formData, estimatedBudget: e.target.value })}
+                    className="form-input"
+                    style={{ paddingLeft: '36px', fontSize: '0.85rem' }}
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label style={{ fontSize: '0.78rem', color: '#94a3b8', marginBottom: '4px', display: 'block', fontWeight: 600 }}>
+                Detailed Specifications / Model Requirements
+              </label>
+              <textarea
+                rows={3}
+                placeholder="Specify exact model numbers, quantities, RAM/SSD configs, delivery location or custom software needs..."
+                value={formData.notes}
+                onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
+                className="form-input"
+                style={{ fontSize: '0.85rem', resize: 'vertical' }}
+              />
+            </div>
+
+            {/* Single Full-Width Direct WhatsApp Button */}
+            <div style={{ marginTop: '8px' }}>
               <button
                 type="submit"
-                disabled={isSubmitting}
-                className="btn-primary"
-                style={{ width: '100%', padding: '12px', fontSize: '0.95rem', marginTop: '6px' }}
+                style={{
+                  width: '100%',
+                  background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                  color: '#ffffff',
+                  border: 'none',
+                  borderRadius: '14px',
+                  padding: '15px',
+                  fontSize: '1rem',
+                  fontWeight: 800,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px',
+                  cursor: 'pointer',
+                  boxShadow: '0 4px 20px rgba(16, 185, 129, 0.45)',
+                  transition: 'transform 0.2s ease'
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.transform = 'translateY(-2px)')}
+                onMouseLeave={(e) => (e.currentTarget.style.transform = 'translateY(0)')}
               >
-                {isSubmitting ? 'Submitting Quote Request...' : 'Submit Official RFP / Quote'} <Send size={16} />
+                <MessageCircle size={20} />
+                Send Quote Request via WhatsApp (Instant Quote)
               </button>
-            </form>
-          </div>
-        )}
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );

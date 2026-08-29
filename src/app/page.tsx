@@ -4,13 +4,14 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
+import BrandMarquee from '@/components/BrandMarquee';
 import CategoryBar from '@/components/CategoryBar';
 import ProductCard from '@/components/ProductCard';
 import TechFeatures from '@/components/TechFeatures';
 import Testimonials from '@/components/Testimonials';
 import Footer from '@/components/Footer';
 import B2BQuoteModal from '@/components/B2BQuoteModal';
-import { products } from '@/data/products';
+import { useProducts } from '@/hooks/useProducts';
 import {
   ArrowRight,
   Flame,
@@ -23,11 +24,12 @@ import {
 } from 'lucide-react';
 
 export default function HomePage() {
+  const { products, loading } = useProducts();
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
 
-  const featuredProducts = products.filter((p) => p.isFeatured);
-  const bestSellers = products.filter((p) => p.isBestSeller);
-  const dealOfTheDay = products.find((p) => p.isDealOfTheDay) || products[0];
+  const featuredProducts = products;
+  const bestSellers = products;
+  const dealOfTheDay = products.length > 0 ? products[0] : null;
 
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
@@ -36,6 +38,9 @@ export default function HomePage() {
       <main style={{ flex: 1 }}>
         {/* Hero Showcase */}
         <Hero onOpenQuoteModal={() => setIsQuoteModalOpen(true)} />
+
+        {/* Animated Brand Marquee */}
+        <BrandMarquee />
 
         {/* Hardware Categories */}
         <CategoryBar />

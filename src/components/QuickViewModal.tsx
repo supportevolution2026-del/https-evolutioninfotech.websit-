@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useCart } from '@/context/CartContext';
+import { getProductWhatsAppUrl } from '@/utils/whatsapp';
 import {
   X,
   Star,
@@ -11,7 +12,8 @@ import {
   ShieldCheck,
   Truck,
   CheckCircle2,
-  ExternalLink
+  ExternalLink,
+  MessageCircle
 } from 'lucide-react';
 
 export default function QuickViewModal() {
@@ -211,27 +213,54 @@ export default function QuickViewModal() {
               <button
                 onClick={handleAddToCart}
                 className="btn-primary"
-                style={{ flex: 1, padding: '12px 20px' }}
+                style={{ flex: 1, padding: '12px 18px', fontSize: '0.88rem' }}
               >
                 <ShoppingCart size={18} /> Add to Cart
               </button>
 
               <button
-                onClick={() => toggleWishlist(quickViewProduct.id)}
+                onClick={() => {
+                  const url = getProductWhatsAppUrl(quickViewProduct, quantity);
+                  window.open(url, '_blank', 'noopener,noreferrer');
+                }}
                 style={{
-                  width: '44px',
-                  height: '44px',
-                  borderRadius: '10px',
-                  background: 'rgba(255, 255, 255, 0.05)',
-                  border: '1px solid rgba(255, 255, 255, 0.1)',
-                  color: inWishlist ? '#ec4899' : '#94a3b8',
+                  background: 'linear-gradient(135deg, #10b981, #059669)',
+                  color: '#ffffff',
+                  border: 'none',
+                  borderRadius: '12px',
+                  padding: '12px 18px',
+                  fontSize: '0.88rem',
+                  fontWeight: 700,
                   display: 'flex',
                   alignItems: 'center',
-                  justifyContent: 'center',
+                  gap: '8px',
                   cursor: 'pointer'
                 }}
               >
-                <Heart size={20} fill={inWishlist ? '#ec4899' : 'none'} />
+                <MessageCircle size={18} /> Order on WhatsApp
+              </button>
+
+              <button
+                type="button"
+                onClick={() => toggleWishlist(quickViewProduct.id)}
+                style={{
+                  width: '46px',
+                  height: '46px',
+                  borderRadius: '12px',
+                  background: inWishlist ? '#ec4899' : 'rgba(255, 255, 255, 0.08)',
+                  border: inWishlist ? '1px solid #f472b6' : '1px solid rgba(255, 255, 255, 0.15)',
+                  color: inWishlist ? '#ffffff' : '#cbd5e1',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  boxShadow: inWishlist ? '0 0 15px rgba(236, 72, 153, 0.6)' : 'none',
+                  transition: 'all 0.2s ease'
+                }}
+                title={inWishlist ? 'Remove from Wishlist' : 'Add to Wishlist'}
+                aria-label="Toggle Wishlist"
+              >
+                <Heart size={22} fill={inWishlist ? '#ffffff' : 'none'} color={inWishlist ? '#ffffff' : '#cbd5e1'} />
               </button>
             </div>
 

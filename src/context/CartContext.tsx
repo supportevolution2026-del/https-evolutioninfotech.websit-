@@ -118,23 +118,22 @@ export function CartProvider({ children }: { children: ReactNode }) {
   };
 
   const toggleWishlist = (productId: string) => {
-    setWishlist((prev) => {
-      if (prev.includes(productId)) {
-        addToast({
-          type: 'info',
-          title: 'Removed from Wishlist',
-          message: 'Item removed from your wishlist.',
-        });
-        return prev.filter((id) => id !== productId);
-      } else {
-        addToast({
-          type: 'success',
-          title: 'Added to Wishlist',
-          message: 'Item saved to your wishlist.',
-        });
-        return [...prev, productId];
-      }
-    });
+    const isCurrentlyInWishlist = wishlist.includes(productId);
+    if (isCurrentlyInWishlist) {
+      setWishlist((prev) => prev.filter((id) => id !== productId));
+      addToast({
+        type: 'info',
+        title: 'Removed from Wishlist',
+        message: 'Item removed from your wishlist.',
+      });
+    } else {
+      setWishlist((prev) => [...prev, productId]);
+      addToast({
+        type: 'success',
+        title: 'Added to Wishlist',
+        message: 'Item saved to your wishlist.',
+      });
+    }
   };
 
   const isInWishlist = (productId: string) => {
