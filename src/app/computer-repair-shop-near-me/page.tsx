@@ -7,15 +7,10 @@ import ServiceInquiryModal from '@/components/ServiceInquiryModal';
 import {
   WHATSAPP_PHONE_NUMBER,
   WHATSAPP_DISPLAY_PHONE,
-  COMPANY_NAME,
   STORE_ADDRESS,
   GOOGLE_MAPS_URL
 } from '@/utils/whatsapp';
 import {
-  Monitor,
-  Laptop,
-  Cpu,
-  HardDrive,
   ShieldCheck,
   Wrench,
   Clock,
@@ -25,9 +20,6 @@ import {
   CheckCircle2,
   Star,
   Sparkles,
-  Award,
-  Truck,
-  Zap,
   Navigation,
   ChevronDown,
   ChevronUp,
@@ -130,7 +122,7 @@ export default function ComputerRepairShopNearMePage() {
   };
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#f8fafc' }}>
       <Navbar />
 
       <main style={{ flex: 1 }}>
@@ -186,8 +178,8 @@ export default function ComputerRepairShopNearMePage() {
         {/* Hero Section */}
         <section style={{
           padding: '50px 0 60px 0',
-          background: 'radial-gradient(ellipse at top, rgba(6, 182, 212, 0.15), rgba(8, 12, 20, 0.95))',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.08)'
+          background: 'linear-gradient(135deg, #ffffff 0%, #eff6ff 50%, #f0fdf4 100%)',
+          borderBottom: '1px solid #e2e8f0'
         }}>
           <div className="container">
             <div style={{ maxWidth: '860px', margin: '0 auto', textAlign: 'center' }}>
@@ -199,9 +191,9 @@ export default function ComputerRepairShopNearMePage() {
                 gap: '8px',
                 padding: '6px 16px',
                 borderRadius: '9999px',
-                background: 'rgba(6, 182, 212, 0.12)',
-                border: '1px solid rgba(6, 182, 212, 0.35)',
-                color: '#38bdf8',
+                background: '#e0f2fe',
+                border: '1px solid #bae6fd',
+                color: '#0284c7',
                 fontSize: '0.82rem',
                 fontWeight: 800,
                 letterSpacing: '0.5px',
@@ -215,17 +207,17 @@ export default function ComputerRepairShopNearMePage() {
               <h1 style={{
                 fontSize: 'clamp(2.2rem, 5vw, 3.4rem)',
                 fontWeight: 900,
-                color: '#ffffff',
+                color: '#0f172a',
                 lineHeight: 1.18,
                 letterSpacing: '-0.5px'
               }}>
-                Fast, Reliable <span className="text-gradient">Computer Repair Shop Near You</span> in Ahmedabad
+                Fast, Reliable Computer Repair Shop Near You in Ahmedabad
               </h1>
 
-              {/* High-Intent SEO Subtitle */}
+              {/* Subtitle */}
               <p style={{
                 fontSize: '1.1rem',
-                color: '#94a3b8',
+                color: '#475569',
                 marginTop: '16px',
                 lineHeight: 1.6
               }}>
@@ -240,14 +232,14 @@ export default function ComputerRepairShopNearMePage() {
                 gap: '12px',
                 marginTop: '24px'
               }}>
-                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'rgba(16, 185, 129, 0.12)', border: '1px solid #10b981', color: '#34d399', padding: '6px 14px', borderRadius: '8px', fontSize: '0.82rem', fontWeight: 700 }}>
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: '#ecfdf5', border: '1px solid #a7f3d0', color: '#15803d', padding: '6px 14px', borderRadius: '10px', fontSize: '0.84rem', fontWeight: 700 }}>
                   <CheckCircle2 size={15} /> Same-Day 30 Min Express Service
                 </span>
-                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'rgba(59, 130, 246, 0.12)', border: '1px solid #3b82f6', color: '#60a5fa', padding: '6px 14px', borderRadius: '8px', fontSize: '0.82rem', fontWeight: 700 }}>
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: '#eff6ff', border: '1px solid #bfdbfe', color: '#2563eb', padding: '6px 14px', borderRadius: '10px', fontSize: '0.84rem', fontWeight: 700 }}>
                   <ShieldCheck size={15} /> 100% Genuine Replacement Parts
                 </span>
-                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'rgba(245, 158, 11, 0.12)', border: '1px solid #f59e0b', color: '#fbbf24', padding: '6px 14px', borderRadius: '8px', fontSize: '0.82rem', fontWeight: 700 }}>
-                  <Star size={15} fill="#fbbf24" /> 4.9/5 Star Rating (248+ Reviews)
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: '#fffbeb', border: '1px solid #fde68a', color: '#b45309', padding: '6px 14px', borderRadius: '10px', fontSize: '0.84rem', fontWeight: 700 }}>
+                  <Star size={15} fill="#f59e0b" /> 4.9/5 Star Rating (248+ Reviews)
                 </span>
               </div>
 
@@ -273,10 +265,10 @@ export default function ComputerRepairShopNearMePage() {
                     alignItems: 'center',
                     gap: '10px',
                     cursor: 'pointer',
-                    boxShadow: '0 8px 25px rgba(16, 185, 129, 0.4)',
+                    boxShadow: '0 8px 25px rgba(16, 185, 129, 0.35)',
                     transition: 'transform 0.2s'
                   }}
-                  onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.04)')}
+                  onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.03)')}
                   onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
                 >
                   <MessageCircle size={22} /> Book Repair on WhatsApp (Instant)
@@ -287,9 +279,9 @@ export default function ComputerRepairShopNearMePage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
-                    background: 'rgba(15, 23, 42, 0.9)',
-                    border: '1px solid rgba(6, 182, 212, 0.4)',
-                    color: '#38bdf8',
+                    background: '#ffffff',
+                    border: '1.5px solid #e2e8f0',
+                    color: '#0284c7',
                     borderRadius: '14px',
                     padding: '14px 24px',
                     fontSize: '0.95rem',
@@ -298,7 +290,7 @@ export default function ComputerRepairShopNearMePage() {
                     alignItems: 'center',
                     gap: '8px',
                     textDecoration: 'none',
-                    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.5)'
+                    boxShadow: 'var(--shadow-sm)'
                   }}
                 >
                   <Navigation size={18} /> Open Store Location in Google Maps
@@ -310,7 +302,7 @@ export default function ComputerRepairShopNearMePage() {
         </section>
 
         {/* Quick Contact & Store Banner */}
-        <section style={{ padding: '24px 0', background: '#0b1120', borderBottom: '1px solid rgba(255, 255, 255, 0.06)' }}>
+        <section style={{ padding: '24px 0', background: '#ffffff', borderBottom: '1px solid #e2e8f0' }}>
           <div className="container">
             <div style={{
               display: 'flex',
@@ -320,14 +312,14 @@ export default function ComputerRepairShopNearMePage() {
               gap: '20px'
             }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-                <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: 'rgba(6, 182, 212, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#06b6d4' }}>
+                <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: '#eff6ff', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#2563eb' }}>
                   <MapPin size={24} />
                 </div>
                 <div>
                   <div style={{ fontSize: '0.75rem', color: '#64748b', fontWeight: 800, textTransform: 'uppercase' }}>
                     STORE & REPAIR WORKSHOP
                   </div>
-                  <div style={{ fontSize: '1rem', fontWeight: 800, color: '#ffffff', marginTop: '2px' }}>
+                  <div style={{ fontSize: '1rem', fontWeight: 900, color: '#0f172a', marginTop: '2px' }}>
                     {STORE_ADDRESS}
                   </div>
                 </div>
@@ -338,7 +330,7 @@ export default function ComputerRepairShopNearMePage() {
                   <div style={{ fontSize: '0.75rem', color: '#64748b', fontWeight: 800, textTransform: 'uppercase' }}>
                     DIRECT HELPLINE
                   </div>
-                  <div style={{ fontSize: '1.1rem', fontWeight: 900, color: '#10b981', marginTop: '2px' }}>
+                  <div style={{ fontSize: '1.1rem', fontWeight: 900, color: '#16a34a', marginTop: '2px' }}>
                     {WHATSAPP_DISPLAY_PHONE}
                   </div>
                 </div>
@@ -346,9 +338,9 @@ export default function ComputerRepairShopNearMePage() {
                 <a
                   href={`tel:${WHATSAPP_PHONE_NUMBER}`}
                   style={{
-                    background: 'rgba(255, 255, 255, 0.08)',
-                    border: '1px solid rgba(255, 255, 255, 0.15)',
-                    color: '#ffffff',
+                    background: '#f8fafc',
+                    border: '1px solid #e2e8f0',
+                    color: '#0f172a',
                     padding: '10px 18px',
                     borderRadius: '10px',
                     fontSize: '0.85rem',
@@ -370,13 +362,13 @@ export default function ComputerRepairShopNearMePage() {
         <section style={{ padding: '60px 0' }}>
           <div className="container">
             <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-              <div style={{ fontSize: '0.82rem', color: '#06b6d4', fontWeight: 800, letterSpacing: '1px', textTransform: 'uppercase' }}>
+              <div style={{ fontSize: '0.82rem', color: '#0284c7', fontWeight: 800, letterSpacing: '1px', textTransform: 'uppercase' }}>
                 COMPLETE HARDWARE & SOFTWARE SOLUTIONS
               </div>
-              <h2 style={{ fontSize: '2.2rem', fontWeight: 900, color: '#ffffff', marginTop: '6px' }}>
+              <h2 style={{ fontSize: '2.2rem', fontWeight: 900, color: '#0f172a', marginTop: '6px' }}>
                 Our Specialized Computer & Laptop Repair Services
               </h2>
-              <p style={{ color: '#94a3b8', fontSize: '1rem', maxWidth: '600px', margin: '10px auto 0 auto' }}>
+              <p style={{ color: '#64748b', fontSize: '1rem', maxWidth: '600px', margin: '10px auto 0 auto' }}>
                 We repair all computer issues from simple software formatting to microscopic motherboard chip-level reballing.
               </p>
             </div>
@@ -390,31 +382,33 @@ export default function ComputerRepairShopNearMePage() {
                 <div
                   key={idx}
                   style={{
-                    background: '#0f172a',
-                    border: '1px solid rgba(255, 255, 255, 0.08)',
-                    borderRadius: '20px',
+                    background: '#ffffff',
+                    border: '1px solid #e2e8f0',
+                    borderRadius: '24px',
                     padding: '28px',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'space-between',
-                    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.5)',
+                    boxShadow: 'var(--shadow-sm)',
                     transition: 'all 0.3s ease'
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = 'rgba(6, 182, 212, 0.4)';
+                    e.currentTarget.style.borderColor = '#93c5fd';
                     e.currentTarget.style.transform = 'translateY(-4px)';
+                    e.currentTarget.style.boxShadow = 'var(--shadow-md)';
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.08)';
+                    e.currentTarget.style.borderColor = '#e2e8f0';
                     e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = 'var(--shadow-sm)';
                   }}
                 >
                   <div>
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
                       <span style={{
-                        background: 'rgba(6, 182, 212, 0.15)',
-                        border: '1px solid rgba(6, 182, 212, 0.3)',
-                        color: '#38bdf8',
+                        background: '#eff6ff',
+                        border: '1px solid #bfdbfe',
+                        color: '#2563eb',
                         padding: '4px 10px',
                         borderRadius: '6px',
                         fontSize: '0.75rem',
@@ -422,31 +416,31 @@ export default function ComputerRepairShopNearMePage() {
                       }}>
                         {srv.badge}
                       </span>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '4px', color: '#94a3b8', fontSize: '0.78rem' }}>
-                        <Clock size={14} color="#10b981" /> {srv.turnaround}
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '4px', color: '#64748b', fontSize: '0.78rem' }}>
+                        <Clock size={14} color="#16a34a" /> {srv.turnaround}
                       </div>
                     </div>
 
-                    <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#ffffff', lineHeight: 1.3 }}>
+                    <h3 style={{ fontSize: '1.25rem', fontWeight: 900, color: '#0f172a', lineHeight: 1.3 }}>
                       {srv.title}
                     </h3>
 
-                    <p style={{ color: '#94a3b8', fontSize: '0.88rem', marginTop: '10px', lineHeight: 1.6 }}>
+                    <p style={{ color: '#475569', fontSize: '0.9rem', marginTop: '10px', lineHeight: 1.6 }}>
                       {srv.desc}
                     </p>
                   </div>
 
-                  <div style={{ marginTop: '24px', paddingTop: '16px', borderTop: '1px solid rgba(255, 255, 255, 0.06)' }}>
+                  <div style={{ marginTop: '24px', paddingTop: '16px', borderTop: '1px solid #f1f5f9' }}>
                     <button
                       onClick={() => handleWhatsAppBooking(srv.title)}
                       style={{
                         width: '100%',
-                        background: 'rgba(6, 182, 212, 0.12)',
-                        border: '1px solid rgba(6, 182, 212, 0.35)',
-                        color: '#38bdf8',
-                        borderRadius: '10px',
-                        padding: '10px',
-                        fontSize: '0.88rem',
+                        background: '#eff6ff',
+                        border: '1px solid #bfdbfe',
+                        color: '#2563eb',
+                        borderRadius: '12px',
+                        padding: '11px',
+                        fontSize: '0.9rem',
                         fontWeight: 700,
                         display: 'flex',
                         alignItems: 'center',
@@ -456,12 +450,12 @@ export default function ComputerRepairShopNearMePage() {
                         transition: 'all 0.2s'
                       }}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.background = 'linear-gradient(135deg, #06b6d4, #3b82f6)';
+                        e.currentTarget.style.background = 'linear-gradient(135deg, #0284c7, #2563eb)';
                         e.currentTarget.style.color = '#ffffff';
                       }}
                       onMouseLeave={(e) => {
-                        e.currentTarget.style.background = 'rgba(6, 182, 212, 0.12)';
-                        e.currentTarget.style.color = '#38bdf8';
+                        e.currentTarget.style.background = '#eff6ff';
+                        e.currentTarget.style.color = '#2563eb';
                       }}
                     >
                       <Wrench size={16} /> Book This Repair <ArrowRight size={14} />
@@ -473,14 +467,14 @@ export default function ComputerRepairShopNearMePage() {
           </div>
         </section>
 
-        {/* Local Areas Coverage Section (For Rank #1 Local Search) */}
-        <section style={{ padding: '50px 0', background: '#0b1120', borderTop: '1px solid rgba(255, 255, 255, 0.06)', borderBottom: '1px solid rgba(255, 255, 255, 0.06)' }}>
+        {/* Local Areas Coverage Section */}
+        <section style={{ padding: '50px 0', background: '#ffffff', borderTop: '1px solid #e2e8f0', borderBottom: '1px solid #e2e8f0' }}>
           <div className="container">
             <div style={{ textAlign: 'center', marginBottom: '30px' }}>
-              <h3 style={{ fontSize: '1.8rem', fontWeight: 800, color: '#ffffff' }}>
+              <h3 style={{ fontSize: '1.8rem', fontWeight: 900, color: '#0f172a' }}>
                 Areas We Serve in Ahmedabad (Doorstep & Walk-In)
               </h3>
-              <p style={{ color: '#94a3b8', fontSize: '0.95rem', marginTop: '6px' }}>
+              <p style={{ color: '#64748b', fontSize: '0.95rem', marginTop: '6px' }}>
                 Our service engineers cover the entire Ahmedabad region for urgent on-site PC & laptop support:
               </p>
             </div>
@@ -497,19 +491,19 @@ export default function ComputerRepairShopNearMePage() {
                 <div
                   key={idx}
                   style={{
-                    background: 'rgba(15, 23, 42, 0.8)',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
-                    color: '#e2e8f0',
+                    background: '#f8fafc',
+                    border: '1px solid #e2e8f0',
+                    color: '#334155',
                     padding: '8px 16px',
                     borderRadius: '9999px',
                     fontSize: '0.85rem',
-                    fontWeight: 600,
+                    fontWeight: 700,
                     display: 'flex',
                     alignItems: 'center',
                     gap: '6px'
                   }}
                 >
-                  <MapPin size={13} color="#06b6d4" /> {area}
+                  <MapPin size={13} color="#0284c7" /> {area}
                 </div>
               ))}
             </div>
@@ -521,10 +515,10 @@ export default function ComputerRepairShopNearMePage() {
           <div className="container">
             <div style={{ maxWidth: '800px', margin: '0 auto' }}>
               <div style={{ textAlign: 'center', marginBottom: '36px' }}>
-                <h3 style={{ fontSize: '2rem', fontWeight: 900, color: '#ffffff' }}>
+                <h3 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a' }}>
                   Frequently Asked Questions (FAQ)
                 </h3>
-                <p style={{ color: '#94a3b8', fontSize: '0.95rem', marginTop: '6px' }}>
+                <p style={{ color: '#64748b', fontSize: '0.95rem', marginTop: '6px' }}>
                   Everything you need to know about our computer repair process, pricing, and warranties.
                 </p>
               </div>
@@ -536,10 +530,11 @@ export default function ComputerRepairShopNearMePage() {
                     <div
                       key={idx}
                       style={{
-                        background: '#0f172a',
-                        border: '1px solid rgba(255, 255, 255, 0.08)',
+                        background: '#ffffff',
+                        border: '1px solid #e2e8f0',
                         borderRadius: '16px',
-                        overflow: 'hidden'
+                        overflow: 'hidden',
+                        boxShadow: 'var(--shadow-sm)'
                       }}
                     >
                       <button
@@ -549,9 +544,9 @@ export default function ComputerRepairShopNearMePage() {
                           padding: '18px 22px',
                           background: 'transparent',
                           border: 'none',
-                          color: '#ffffff',
+                          color: '#0f172a',
                           fontSize: '1.02rem',
-                          fontWeight: 700,
+                          fontWeight: 800,
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'space-between',
@@ -560,16 +555,16 @@ export default function ComputerRepairShopNearMePage() {
                         }}
                       >
                         <span>{faq.q}</span>
-                        {isOpen ? <ChevronUp size={18} color="#06b6d4" /> : <ChevronDown size={18} color="#94a3b8" />}
+                        {isOpen ? <ChevronUp size={18} color="#2563eb" /> : <ChevronDown size={18} color="#94a3b8" />}
                       </button>
 
                       {isOpen && (
                         <div style={{
                           padding: '0 22px 18px 22px',
-                          color: '#94a3b8',
-                          fontSize: '0.92rem',
+                          color: '#475569',
+                          fontSize: '0.94rem',
                           lineHeight: 1.6,
-                          borderTop: '1px solid rgba(255, 255, 255, 0.04)',
+                          borderTop: '1px solid #f1f5f9',
                           paddingTop: '14px'
                         }}>
                           {faq.a}
@@ -583,16 +578,16 @@ export default function ComputerRepairShopNearMePage() {
               {/* Bottom Emergency Banner */}
               <div style={{
                 marginTop: '40px',
-                padding: '30px',
-                borderRadius: '20px',
-                background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(16, 185, 129, 0.15))',
-                border: '1px solid rgba(6, 182, 212, 0.3)',
+                padding: '32px',
+                borderRadius: '24px',
+                background: 'linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%)',
+                border: '1.5px solid #bbf7d0',
                 textAlign: 'center'
               }}>
-                <h4 style={{ fontSize: '1.3rem', fontWeight: 800, color: '#ffffff' }}>
+                <h4 style={{ fontSize: '1.35rem', fontWeight: 900, color: '#0f172a' }}>
                   Need Immediate Computer or Laptop Repair?
                 </h4>
-                <p style={{ color: '#94a3b8', fontSize: '0.92rem', marginTop: '6px' }}>
+                <p style={{ color: '#475569', fontSize: '0.94rem', marginTop: '6px' }}>
                   Speak directly with our senior engineer now for a quick diagnosis & estimate.
                 </p>
                 <div style={{ display: 'flex', justifyContent: 'center', gap: '14px', marginTop: '18px', flexWrap: 'wrap' }}>
@@ -602,14 +597,15 @@ export default function ComputerRepairShopNearMePage() {
                       background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
                       color: '#ffffff',
                       border: 'none',
-                      padding: '12px 24px',
+                      padding: '13px 26px',
                       borderRadius: '12px',
                       fontSize: '0.95rem',
                       fontWeight: 800,
                       display: 'flex',
                       alignItems: 'center',
                       gap: '8px',
-                      cursor: 'pointer'
+                      cursor: 'pointer',
+                      boxShadow: '0 4px 15px rgba(16, 185, 129, 0.35)'
                     }}
                   >
                     <MessageCircle size={18} /> WhatsApp Hotline: {WHATSAPP_DISPLAY_PHONE}

@@ -73,31 +73,32 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
   };
 
   return (
-    <header style={{ position: 'sticky', top: 0, zIndex: 100, width: '100%', background: '#0b1120', boxShadow: '0 10px 30px rgba(0, 0, 0, 0.7)' }}>
+    <header style={{ position: 'sticky', top: 0, zIndex: 100, width: '100%', background: '#ffffff', boxShadow: '0 4px 20px -2px rgba(15, 23, 42, 0.06)' }}>
       {/* Top Notification Bar */}
       <div style={{
-        background: 'linear-gradient(90deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%)',
-        borderBottom: '1px solid rgba(255,255,255,0.06)',
-        padding: '6px 0',
+        background: 'linear-gradient(90deg, #f8fafc 0%, #eff6ff 50%, #f8fafc 100%)',
+        borderBottom: '1px solid #e2e8f0',
+        padding: '7px 0',
         fontSize: '0.8rem',
-        color: '#94a3b8',
+        color: '#475569',
       }}>
         <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#38bdf8' }}>
-              <Sparkles size={14} />             </span>
-            <span className="desktop-inline" style={{ color: '#64748b' }}>|</span>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#0284c7', fontWeight: 600 }}>
+              <Sparkles size={14} /> Official Store & IT Solution Partner
+            </span>
+            <span className="desktop-inline" style={{ color: '#cbd5e1' }}>|</span>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '6px', fontWeight: 500 }}>
               <Truck size={14} color="#10b981" /> Free Express Delivery on Orders &gt; ₹5,000
             </span>
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-            <Link href="/track-order" style={{ color: '#cbd5e1', textDecoration: 'none', transition: 'color 0.2s' }}>
+            <Link href="/track-order" style={{ color: '#334155', textDecoration: 'none', fontWeight: 600, transition: 'color 0.2s' }}>
               Track Order
             </Link>
-            <span style={{ color: '#64748b' }}>|</span>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '4px', color: '#cbd5e1' }}>
+            <span style={{ color: '#cbd5e1' }}>|</span>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '4px', color: '#15803d', fontWeight: 600 }}>
               <ShieldCheck size={14} color="#10b981" /> 100% Genuine Hardware
             </span>
           </div>
@@ -105,7 +106,7 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
       </div>
 
       {/* Main Glass Navbar */}
-      <nav className="glass-nav" style={{ padding: '14px 0' }}>
+      <nav className="glass-nav" style={{ padding: '12px 0' }}>
         <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '20px' }}>
 
           {/* Official Brand Logo */}
@@ -117,7 +118,7 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
           <div ref={searchRef} className="desktop-only" style={{ position: 'relative', flex: 1, maxWidth: '480px' }}>
             <form onSubmit={handleSearchSubmit} style={{ width: '100%' }}>
               <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
-                <Search size={18} color="#64748b" style={{ position: 'absolute', left: '14px' }} />
+                <Search size={18} color="#94a3b8" style={{ position: 'absolute', left: '14px' }} />
                 <input
                   type="text"
                   placeholder="Search RTX 4090, Laptops, Servers, Crucial SSD..."
@@ -131,8 +132,8 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
                     borderRadius: '9999px',
                     height: '42px',
                     fontSize: '0.88rem',
-                    background: 'rgba(15, 23, 42, 0.8)',
-                    borderColor: isSearchFocused ? '#06b6d4' : 'rgba(255, 255, 255, 0.1)'
+                    background: '#f8fafc',
+                    borderColor: isSearchFocused ? '#2563eb' : '#e2e8f0'
                   }}
                 />
                 {searchQuery && (
@@ -144,7 +145,7 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
                       right: '12px',
                       background: 'none',
                       border: 'none',
-                      color: '#64748b',
+                      color: '#94a3b8',
                       cursor: 'pointer'
                     }}
                   >
@@ -161,18 +162,17 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
                 top: '48px',
                 left: 0,
                 right: 0,
-                background: 'rgba(15, 23, 42, 0.98)',
-                backdropFilter: 'blur(20px)',
-                border: '1px solid rgba(6, 182, 212, 0.3)',
-                borderRadius: '14px',
-                boxShadow: '0 20px 40px rgba(0, 0, 0, 0.8)',
-                padding: '8px',
+                background: '#ffffff',
+                border: '1px solid #e2e8f0',
+                borderRadius: '16px',
+                boxShadow: '0 20px 48px -8px rgba(15, 23, 42, 0.15)',
+                padding: '10px',
                 zIndex: 100,
                 maxHeight: '380px',
                 overflowY: 'auto'
               }}>
-                <div style={{ padding: '6px 12px', fontSize: '0.75rem', color: '#64748b', fontWeight: 600 }}>
-                  MATCHING PRODUCTS ({searchResults.length})
+                <div style={{ padding: '6px 12px', fontSize: '0.75rem', color: '#64748b', fontWeight: 700, letterSpacing: '0.5px', textTransform: 'uppercase' }}>
+                  Matching Products ({searchResults.length})
                 </div>
                 {searchResults.map((item) => (
                   <Link
@@ -184,28 +184,28 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
                       alignItems: 'center',
                       gap: '12px',
                       padding: '10px 12px',
-                      borderRadius: '8px',
+                      borderRadius: '10px',
                       textDecoration: 'none',
-                      color: '#f8fafc',
+                      color: '#0f172a',
                       transition: 'background 0.2s',
                     }}
-                    onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255,255,255,0.06)')}
+                    onMouseEnter={(e) => (e.currentTarget.style.background = '#f1f5f9')}
                     onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
                   >
                     <img
                       src={item.image}
                       alt={item.name}
-                      style={{ width: '40px', height: '40px', objectFit: 'cover', borderRadius: '6px' }}
+                      style={{ width: '42px', height: '42px', objectFit: 'cover', borderRadius: '8px', border: '1px solid #e2e8f0' }}
                     />
                     <div style={{ flex: 1, minWidth: 0 }}>
-                      <div style={{ fontSize: '0.85rem', fontWeight: 600, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                      <div style={{ fontSize: '0.88rem', fontWeight: 700, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                         {item.name}
                       </div>
-                      <div style={{ fontSize: '0.75rem', color: '#06b6d4', fontWeight: 700 }}>
+                      <div style={{ fontSize: '0.78rem', color: '#2563eb', fontWeight: 800 }}>
                         ₹{item.price.toLocaleString('en-IN')}
                       </div>
                     </div>
-                    <ChevronRight size={16} color="#64748b" />
+                    <ChevronRight size={16} color="#94a3b8" />
                   </Link>
                 ))}
 
@@ -219,17 +219,17 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
                     justifyContent: 'center',
                     gap: '6px',
                     padding: '10px',
-                    marginTop: '6px',
-                    borderRadius: '8px',
-                    background: 'rgba(6, 182, 212, 0.12)',
-                    border: '1px solid rgba(6, 182, 212, 0.3)',
-                    color: '#38bdf8',
+                    marginTop: '8px',
+                    borderRadius: '10px',
+                    background: '#eff6ff',
+                    border: '1px solid #bfdbfe',
+                    color: '#2563eb',
                     textDecoration: 'none',
                     fontSize: '0.85rem',
                     fontWeight: 700
                   }}
                 >
-                  <span>View all {searchResults.length} matching products in Catalog</span>
+                  <span>View all {searchResults.length} matching products</span>
                   <ChevronRight size={15} />
                 </Link>
               </div>
@@ -237,7 +237,7 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
           </div>
 
           {/* Action Buttons */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
 
             {/* Wishlist Link */}
             <Link
@@ -247,32 +247,42 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                width: '40px',
-                height: '40px',
-                borderRadius: '10px',
-                background: 'rgba(255, 255, 255, 0.05)',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
-                color: wishlist.length > 0 ? '#ec4899' : '#94a3b8',
+                width: '42px',
+                height: '42px',
+                borderRadius: '12px',
+                background: '#ffffff',
+                border: '1px solid #e2e8f0',
+                color: wishlist.length > 0 ? '#db2777' : '#64748b',
                 textDecoration: 'none',
+                boxShadow: 'var(--shadow-sm)',
                 transition: 'all 0.2s ease'
               }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = '#fbcfe8';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = '#e2e8f0';
+                e.currentTarget.style.transform = 'translateY(0)';
+              }}
             >
-              <Heart size={20} fill={wishlist.length > 0 ? '#ec4899' : 'none'} />
+              <Heart size={20} fill={wishlist.length > 0 ? '#db2777' : 'none'} />
               {wishlist.length > 0 && (
                 <span style={{
                   position: 'absolute',
                   top: '-4px',
                   right: '-4px',
-                  background: '#ec4899',
+                  background: '#db2777',
                   color: '#fff',
                   fontSize: '0.7rem',
-                  fontWeight: 700,
+                  fontWeight: 800,
                   width: '18px',
                   height: '18px',
                   borderRadius: '50%',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
+                  boxShadow: '0 2px 6px rgba(219, 39, 119, 0.4)'
                 }}>
                   {wishlist.length}
                 </span>
@@ -287,27 +297,36 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
                 display: 'flex',
                 alignItems: 'center',
                 gap: '8px',
-                padding: '8px 14px',
-                borderRadius: '10px',
-                background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(59, 130, 246, 0.15))',
-                border: '1px solid rgba(6, 182, 212, 0.4)',
-                color: '#38bdf8',
+                padding: '9px 16px',
+                borderRadius: '12px',
+                background: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)',
+                border: '1px solid #bfdbfe',
+                color: '#1d4ed8',
                 cursor: 'pointer',
-                fontWeight: 600,
+                fontWeight: 700,
                 fontSize: '0.9rem',
+                boxShadow: 'var(--shadow-sm)',
                 transition: 'all 0.2s ease'
               }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 6px 16px rgba(37, 99, 235, 0.15)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = 'var(--shadow-sm)';
+              }}
             >
-              <ShoppingBag size={20} color="#38bdf8" />
+              <ShoppingBag size={20} color="#2563eb" />
               <span className="desktop-inline">Cart</span>
               <span style={{
-                background: '#06b6d4',
-                color: '#080c14',
+                background: '#2563eb',
+                color: '#ffffff',
                 fontSize: '0.75rem',
                 fontWeight: 800,
-                padding: '2px 7px',
+                padding: '2px 8px',
                 borderRadius: '9999px',
-                minWidth: '20px',
+                minWidth: '22px',
                 textAlign: 'center'
               }}>
                 {totalItems}
@@ -321,12 +340,12 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
               style={{
                 alignItems: 'center',
                 justifyContent: 'center',
-                width: '40px',
-                height: '40px',
-                background: 'rgba(255, 255, 255, 0.05)',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
-                borderRadius: '8px',
-                color: '#fff',
+                width: '42px',
+                height: '42px',
+                background: '#ffffff',
+                border: '1px solid #e2e8f0',
+                borderRadius: '10px',
+                color: '#0f172a',
                 cursor: 'pointer'
               }}
             >
@@ -336,42 +355,42 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
         </div>
 
         {/* Navigation Categories Row */}
-        <div className="container" style={{ marginTop: '10px', borderTop: '1px solid rgba(255,255,255,0.04)', paddingTop: '10px' }}>
+        <div className="container" style={{ marginTop: '10px', borderTop: '1px solid #f1f5f9', paddingTop: '10px' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', overflowX: 'auto', gap: '20px', scrollbarWidth: 'none' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '18px' }}>
-              <Link href="/products" style={{ color: '#f8fafc', fontSize: '0.85rem', fontWeight: 700, textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <Cpu size={15} color="#06b6d4" /> Store
+            <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+              <Link href="/products" style={{ color: '#0f172a', fontSize: '0.88rem', fontWeight: 800, textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <Cpu size={16} color="#2563eb" /> Store
               </Link>
-              <Link href="/products?category=laptop" style={{ color: '#cbd5e1', fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none' }}>
+              <Link href="/products?category=laptop" style={{ color: '#475569', fontSize: '0.88rem', fontWeight: 600, textDecoration: 'none', transition: 'color 0.2s' }}>
                 Laptop
               </Link>
-              <Link href="/products?category=desktop" style={{ color: '#cbd5e1', fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none' }}>
+              <Link href="/products?category=desktop" style={{ color: '#475569', fontSize: '0.88rem', fontWeight: 600, textDecoration: 'none', transition: 'color 0.2s' }}>
                 Desktop
               </Link>
-              <Link href="/products?category=printer" style={{ color: '#cbd5e1', fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none' }}>
+              <Link href="/products?category=printer" style={{ color: '#475569', fontSize: '0.88rem', fontWeight: 600, textDecoration: 'none', transition: 'color 0.2s' }}>
                 Printer
               </Link>
-              <Link href="/products?category=network" style={{ color: '#cbd5e1', fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none' }}>
+              <Link href="/products?category=network" style={{ color: '#475569', fontSize: '0.88rem', fontWeight: 600, textDecoration: 'none', transition: 'color 0.2s' }}>
                 Network
               </Link>
-              <Link href="/products?category=cctv" style={{ color: '#cbd5e1', fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none' }}>
+              <Link href="/products?category=cctv" style={{ color: '#475569', fontSize: '0.88rem', fontWeight: 600, textDecoration: 'none', transition: 'color 0.2s' }}>
                 CCTV
               </Link>
-              <Link href="/products?category=accessories" style={{ color: '#cbd5e1', fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none' }}>
+              <Link href="/products?category=accessories" style={{ color: '#475569', fontSize: '0.88rem', fontWeight: 600, textDecoration: 'none', transition: 'color 0.2s' }}>
                 Accessories
               </Link>
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
               <a
                 href={getCustomWhatsAppUrl('IT Hardware & Repair Services Inquiry', 'Hello Evolution Infotech! I want to inquire about IT Services, Computer / Laptop Repair, and AMC Maintenance.')}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ color: '#38bdf8', fontSize: '0.85rem', fontWeight: 700, textDecoration: 'none' }}
+                style={{ color: '#0284c7', fontSize: '0.88rem', fontWeight: 700, textDecoration: 'none' }}
               >
                 IT & Software Services
               </a>
-              <Link href="/contact" style={{ color: '#94a3b8', fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none' }}>
+              <Link href="/contact" style={{ color: '#64748b', fontSize: '0.88rem', fontWeight: 600, textDecoration: 'none' }}>
                 Contact
               </Link>
             </div>
@@ -381,14 +400,15 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
         {/* Mobile Dropdown Menu */}
         {mobileMenuOpen && (
           <div style={{
-            background: 'rgba(8, 12, 20, 0.98)',
-            borderTop: '1px solid rgba(255,255,255,0.1)',
+            background: '#ffffff',
+            borderTop: '1px solid #e2e8f0',
             padding: '20px',
             display: 'flex',
             flexDirection: 'column',
-            gap: '12px'
+            gap: '14px',
+            boxShadow: '0 20px 40px rgba(0, 0, 0, 0.08)'
           }}>
-            <form onSubmit={handleSearchSubmit} style={{ marginBottom: '10px' }}>
+            <form onSubmit={handleSearchSubmit} style={{ marginBottom: '6px' }}>
               <input
                 type="text"
                 placeholder="Search products..."
@@ -397,19 +417,19 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
                 className="form-input"
               />
             </form>
-            <Link href="/" onClick={() => setMobileMenuOpen(false)} style={{ color: '#fff', textDecoration: 'none', padding: '8px 0', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+            <Link href="/" onClick={() => setMobileMenuOpen(false)} style={{ color: '#0f172a', fontWeight: 700, textDecoration: 'none', padding: '8px 0', borderBottom: '1px solid #f1f5f9' }}>
               Home
             </Link>
-            <Link href="/products" onClick={() => setMobileMenuOpen(false)} style={{ color: '#38bdf8', textDecoration: 'none', padding: '8px 0', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+            <Link href="/products" onClick={() => setMobileMenuOpen(false)} style={{ color: '#2563eb', fontWeight: 700, textDecoration: 'none', padding: '8px 0', borderBottom: '1px solid #f1f5f9' }}>
               All Products Catalog
             </Link>
-            <Link href="/products?category=laptop" onClick={() => setMobileMenuOpen(false)} style={{ color: '#94a3b8', textDecoration: 'none', padding: '8px 0' }}>
+            <Link href="/products?category=laptop" onClick={() => setMobileMenuOpen(false)} style={{ color: '#475569', textDecoration: 'none', padding: '8px 0' }}>
               Laptops & Workstations
             </Link>
-            <Link href="/products?category=desktop" onClick={() => setMobileMenuOpen(false)} style={{ color: '#94a3b8', textDecoration: 'none', padding: '8px 0' }}>
+            <Link href="/products?category=desktop" onClick={() => setMobileMenuOpen(false)} style={{ color: '#475569', textDecoration: 'none', padding: '8px 0' }}>
               Desktops & Components
             </Link>
-            <Link href="/products?category=network" onClick={() => setMobileMenuOpen(false)} style={{ color: '#94a3b8', textDecoration: 'none', padding: '8px 0' }}>
+            <Link href="/products?category=network" onClick={() => setMobileMenuOpen(false)} style={{ color: '#475569', textDecoration: 'none', padding: '8px 0' }}>
               Networking & Servers
             </Link>
             <a
@@ -417,14 +437,14 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setMobileMenuOpen(false)}
-              style={{ color: '#38bdf8', textDecoration: 'none', padding: '8px 0', fontWeight: 700 }}
+              style={{ color: '#16a34a', textDecoration: 'none', padding: '8px 0', fontWeight: 700 }}
             >
               IT Services & Repair (WhatsApp)
             </a>
-            <Link href="/track-order" onClick={() => setMobileMenuOpen(false)} style={{ color: '#94a3b8', textDecoration: 'none', padding: '8px 0' }}>
+            <Link href="/track-order" onClick={() => setMobileMenuOpen(false)} style={{ color: '#64748b', textDecoration: 'none', padding: '8px 0' }}>
               Track My Order
             </Link>
-            <Link href="/contact" onClick={() => setMobileMenuOpen(false)} style={{ color: '#94a3b8', textDecoration: 'none', padding: '8px 0' }}>
+            <Link href="/contact" onClick={() => setMobileMenuOpen(false)} style={{ color: '#64748b', textDecoration: 'none', padding: '8px 0' }}>
               Contact Us
             </Link>
           </div>

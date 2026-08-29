@@ -7,8 +7,8 @@ import CartDrawer from '@/components/CartDrawer';
 import QuickViewModal from '@/components/QuickViewModal';
 import WhatsAppWidget from '@/components/WhatsAppWidget';
 import MobileBottomNav from '@/components/MobileBottomNav';
-
 import CyberBackground from '@/components/CyberBackground';
+import CursorGlow from '@/components/CursorGlow';
 
 export const metadata: Metadata = {
   title: 'Evolution Infotech',
@@ -57,6 +57,7 @@ export default function RootLayout({
       </head>
       <body>
         <CyberBackground />
+        <CursorGlow />
         <ToastProvider>
           <CartProvider>
             {children}
@@ -71,4 +72,3 @@ export default function RootLayout({
     </html>
   );
 }
-

@@ -7,16 +7,13 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { useCart } from '@/context/CartContext';
 import { useToast } from '@/context/ToastContext';
-import { getCartWhatsAppUrl, WHATSAPP_DISPLAY_PHONE } from '@/utils/whatsapp';
+import { getCartWhatsAppUrl } from '@/utils/whatsapp';
 import {
-  ShieldCheck,
   Truck,
   CheckCircle2,
   Lock,
-  ArrowRight,
   ArrowLeft,
   MessageCircle,
-  ShoppingBag,
   User,
   Phone,
   Mail,
@@ -28,7 +25,6 @@ export default function CheckoutPage() {
   const { cart, subtotal, discount, tax, shipping, total, appliedCoupon, clearCart } = useCart();
   const { addToast } = useToast();
 
-  // All fields are blank/empty for user to fill manually
   const [formData, setFormData] = useState({
     fullName: '',
     phone: '',
@@ -113,7 +109,7 @@ export default function CheckoutPage() {
   };
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#f8fafc' }}>
       <Navbar />
 
       <main style={{ flex: 1, padding: '30px 0 60px 0' }}>
@@ -121,13 +117,13 @@ export default function CheckoutPage() {
           
           {/* Top Breadcrumb & Title */}
           <div style={{ marginBottom: '24px' }}>
-            <Link href="/products" style={{ color: '#06b6d4', textDecoration: 'none', fontSize: '0.85rem', display: 'inline-flex', alignItems: 'center', gap: '6px', marginBottom: '8px' }}>
+            <Link href="/products" style={{ color: '#2563eb', textDecoration: 'none', fontSize: '0.88rem', display: 'inline-flex', alignItems: 'center', gap: '6px', marginBottom: '8px', fontWeight: 700 }}>
               <ArrowLeft size={14} /> Back to Catalog
             </Link>
-            <h1 style={{ fontSize: '2.2rem', fontWeight: 900, color: '#ffffff' }}>
+            <h1 style={{ fontSize: '2.2rem', fontWeight: 900, color: '#0f172a' }}>
               Checkout & Delivery Details
             </h1>
-            <p style={{ color: '#94a3b8', fontSize: '0.9rem' }}>
+            <p style={{ color: '#64748b', fontSize: '0.94rem' }}>
               Fill in your delivery address below to place your order directly via WhatsApp.
             </p>
           </div>
@@ -143,14 +139,14 @@ export default function CheckoutPage() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
                 
                 {/* 1. Customer & Delivery Address */}
-                <div className="glass-panel" style={{ padding: '28px' }}>
+                <div className="glass-panel" style={{ padding: '28px', background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '24px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
                     <div style={{
                       width: '32px',
                       height: '32px',
                       borderRadius: '50%',
-                      background: 'rgba(6, 182, 212, 0.15)',
-                      color: '#06b6d4',
+                      background: '#eff6ff',
+                      color: '#2563eb',
                       fontWeight: 800,
                       display: 'flex',
                       alignItems: 'center',
@@ -158,18 +154,18 @@ export default function CheckoutPage() {
                     }}>
                       1
                     </div>
-                    <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#ffffff' }}>
+                    <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#0f172a' }}>
                       Customer & Shipping Details
                     </h3>
                   </div>
 
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
                     <div>
-                      <label style={{ fontSize: '0.8rem', fontWeight: 600, color: '#94a3b8', marginBottom: '6px', display: 'block' }}>
+                      <label style={{ fontSize: '0.8rem', fontWeight: 700, color: '#475569', marginBottom: '6px', display: 'block' }}>
                         Full Name *
                       </label>
                       <div style={{ position: 'relative' }}>
-                        <User size={15} color="#64748b" style={{ position: 'absolute', left: '12px', top: '14px' }} />
+                        <User size={15} color="#94a3b8" style={{ position: 'absolute', left: '12px', top: '14px' }} />
                         <input
                           type="text"
                           name="fullName"
@@ -184,11 +180,11 @@ export default function CheckoutPage() {
                     </div>
 
                     <div>
-                      <label style={{ fontSize: '0.8rem', fontWeight: 600, color: '#94a3b8', marginBottom: '6px', display: 'block' }}>
+                      <label style={{ fontSize: '0.8rem', fontWeight: 700, color: '#475569', marginBottom: '6px', display: 'block' }}>
                         WhatsApp / Phone Number *
                       </label>
                       <div style={{ position: 'relative' }}>
-                        <Phone size={15} color="#64748b" style={{ position: 'absolute', left: '12px', top: '14px' }} />
+                        <Phone size={15} color="#94a3b8" style={{ position: 'absolute', left: '12px', top: '14px' }} />
                         <input
                           type="tel"
                           name="phone"
@@ -203,11 +199,11 @@ export default function CheckoutPage() {
                     </div>
 
                     <div style={{ gridColumn: 'span 2' }}>
-                      <label style={{ fontSize: '0.8rem', fontWeight: 600, color: '#94a3b8', marginBottom: '6px', display: 'block' }}>
+                      <label style={{ fontSize: '0.8rem', fontWeight: 700, color: '#475569', marginBottom: '6px', display: 'block' }}>
                         Email Address (for GST invoice)
                       </label>
                       <div style={{ position: 'relative' }}>
-                        <Mail size={15} color="#64748b" style={{ position: 'absolute', left: '12px', top: '14px' }} />
+                        <Mail size={15} color="#94a3b8" style={{ position: 'absolute', left: '12px', top: '14px' }} />
                         <input
                           type="email"
                           name="email"
@@ -221,11 +217,11 @@ export default function CheckoutPage() {
                     </div>
 
                     <div style={{ gridColumn: 'span 2' }}>
-                      <label style={{ fontSize: '0.8rem', fontWeight: 600, color: '#94a3b8', marginBottom: '6px', display: 'block' }}>
+                      <label style={{ fontSize: '0.8rem', fontWeight: 700, color: '#475569', marginBottom: '6px', display: 'block' }}>
                         Complete Street Address / Office / House No. *
                       </label>
                       <div style={{ position: 'relative' }}>
-                        <MapPin size={15} color="#64748b" style={{ position: 'absolute', left: '12px', top: '14px' }} />
+                        <MapPin size={15} color="#94a3b8" style={{ position: 'absolute', left: '12px', top: '14px' }} />
                         <input
                           type="text"
                           name="address"
@@ -240,7 +236,7 @@ export default function CheckoutPage() {
                     </div>
 
                     <div>
-                      <label style={{ fontSize: '0.8rem', fontWeight: 600, color: '#94a3b8', marginBottom: '6px', display: 'block' }}>
+                      <label style={{ fontSize: '0.8rem', fontWeight: 700, color: '#475569', marginBottom: '6px', display: 'block' }}>
                         City *
                       </label>
                       <input
@@ -255,7 +251,7 @@ export default function CheckoutPage() {
                     </div>
 
                     <div>
-                      <label style={{ fontSize: '0.8rem', fontWeight: 600, color: '#94a3b8', marginBottom: '6px', display: 'block' }}>
+                      <label style={{ fontSize: '0.8rem', fontWeight: 700, color: '#475569', marginBottom: '6px', display: 'block' }}>
                         Pincode / Postal Code *
                       </label>
                       <input
@@ -271,14 +267,14 @@ export default function CheckoutPage() {
                   </div>
 
                   {/* B2B Invoicing Checkbox */}
-                  <div style={{ marginTop: '20px', borderTop: '1px solid rgba(255, 255, 255, 0.08)', paddingTop: '16px' }}>
-                    <label style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer', fontSize: '0.88rem', color: '#cbd5e1' }}>
+                  <div style={{ marginTop: '20px', borderTop: '1px solid #f1f5f9', paddingTop: '16px' }}>
+                    <label style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer', fontSize: '0.88rem', color: '#334155', fontWeight: 600 }}>
                       <input
                         type="checkbox"
                         name="isB2B"
                         checked={formData.isB2B}
                         onChange={handleInputChange}
-                        style={{ accentColor: '#06b6d4' }}
+                        style={{ accentColor: '#2563eb' }}
                       />
                       <span>Claim GST Input Credit (B2B Purchase with Company GSTIN)</span>
                     </label>
@@ -286,7 +282,7 @@ export default function CheckoutPage() {
                     {formData.isB2B && (
                       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px', marginTop: '14px' }}>
                         <div>
-                          <label style={{ fontSize: '0.78rem', color: '#94a3b8', display: 'block', marginBottom: '4px' }}>
+                          <label style={{ fontSize: '0.78rem', color: '#475569', display: 'block', marginBottom: '4px', fontWeight: 700 }}>
                             Company Name
                           </label>
                           <input
@@ -299,7 +295,7 @@ export default function CheckoutPage() {
                           />
                         </div>
                         <div>
-                          <label style={{ fontSize: '0.78rem', color: '#94a3b8', display: 'block', marginBottom: '4px' }}>
+                          <label style={{ fontSize: '0.78rem', color: '#475569', display: 'block', marginBottom: '4px', fontWeight: 700 }}>
                             GSTIN (15 Digits)
                           </label>
                           <input
@@ -316,14 +312,14 @@ export default function CheckoutPage() {
                   </div>
                 </div>
 
-                {/* 2. Payment Method (Cash on Delivery / WhatsApp Order) */}
-                <div className="glass-panel" style={{ padding: '28px' }}>
+                {/* 2. Payment Method */}
+                <div className="glass-panel" style={{ padding: '28px', background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '24px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
                     <div style={{
                       width: '32px',
                       height: '32px',
                       borderRadius: '50%',
-                      background: 'rgba(16, 185, 129, 0.15)',
+                      background: '#ecfdf5',
                       color: '#10b981',
                       fontWeight: 800,
                       display: 'flex',
@@ -332,16 +328,16 @@ export default function CheckoutPage() {
                     }}>
                       2
                     </div>
-                    <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#ffffff' }}>
+                    <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#0f172a' }}>
                       Payment Method
                     </h3>
                   </div>
 
                   <div style={{
                     padding: '20px',
-                    borderRadius: '14px',
-                    background: 'rgba(16, 185, 129, 0.1)',
-                    border: '1.5px solid #10b981',
+                    borderRadius: '16px',
+                    background: '#f0fdf4',
+                    border: '1.5px solid #bbf7d0',
                     display: 'flex',
                     alignItems: 'flex-start',
                     gap: '14px'
@@ -349,23 +345,23 @@ export default function CheckoutPage() {
                     <div style={{
                       width: '42px',
                       height: '42px',
-                      borderRadius: '10px',
-                      background: 'rgba(16, 185, 129, 0.2)',
+                      borderRadius: '12px',
+                      background: '#dcfce7',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      color: '#10b981',
+                      color: '#16a34a',
                       flexShrink: 0
                     }}>
                       <Truck size={22} />
                     </div>
 
                     <div>
-                      <div style={{ fontWeight: 800, fontSize: '1.05rem', color: '#ffffff', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                      <div style={{ fontWeight: 800, fontSize: '1.05rem', color: '#0f172a', display: 'flex', alignItems: 'center', gap: '6px' }}>
                         Cash on Delivery (COD) / Pay on Delivery
-                        <CheckCircle2 size={16} color="#10b981" />
+                        <CheckCircle2 size={16} color="#16a34a" />
                       </div>
-                      <p style={{ color: '#94a3b8', fontSize: '0.85rem', marginTop: '4px', lineHeight: 1.5 }}>
+                      <p style={{ color: '#475569', fontSize: '0.88rem', marginTop: '4px', lineHeight: 1.5 }}>
                         Pay securely with Cash, UPI (GPay/PhonePe) or Card when your order arrives at your doorstep. Order confirmation will be sent directly to your WhatsApp.
                       </p>
                     </div>
@@ -375,23 +371,23 @@ export default function CheckoutPage() {
               </div>
 
               {/* Right Column: Order Summary & Place Order */}
-              <div className="glass-panel" style={{ padding: '28px', display: 'flex', flexDirection: 'column', gap: '20px', position: 'sticky', top: '90px' }}>
-                <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#ffffff' }}>
+              <div className="glass-panel" style={{ padding: '28px', display: 'flex', flexDirection: 'column', gap: '20px', position: 'sticky', top: '90px', background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '24px' }}>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 900, color: '#0f172a' }}>
                   Review Order ({cart.length} Items)
                 </h3>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', maxHeight: '240px', overflowY: 'auto' }}>
                   {cart.map((item) => (
-                    <div key={item.product.id} style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', fontSize: '0.85rem' }}>
+                    <div key={item.product.id} style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', fontSize: '0.88rem' }}>
                       <div style={{ flex: 1, minWidth: 0 }}>
-                        <div style={{ color: '#f8fafc', fontWeight: 600, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                        <div style={{ color: '#0f172a', fontWeight: 700, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                           {item.product.name}
                         </div>
                         <div style={{ color: '#64748b', fontSize: '0.78rem' }}>
                           Qty: {item.quantity} &times; ₹{item.product.price.toLocaleString('en-IN')}
                         </div>
                       </div>
-                      <div style={{ fontWeight: 700, color: '#38bdf8' }}>
+                      <div style={{ fontWeight: 800, color: '#2563eb' }}>
                         ₹{(item.product.price * item.quantity).toLocaleString('en-IN')}
                       </div>
                     </div>
@@ -399,51 +395,51 @@ export default function CheckoutPage() {
                 </div>
 
                 <div style={{
-                  borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+                  borderTop: '1px solid #f1f5f9',
                   paddingTop: '16px',
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '8px',
                   fontSize: '0.88rem',
-                  color: '#94a3b8'
+                  color: '#64748b'
                 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                     <span>Subtotal</span>
-                    <span style={{ color: '#f8fafc' }}>₹{subtotal.toLocaleString('en-IN')}</span>
+                    <span style={{ color: '#0f172a', fontWeight: 700 }}>₹{subtotal.toLocaleString('en-IN')}</span>
                   </div>
                   {discount > 0 && (
-                    <div style={{ display: 'flex', justifyContent: 'space-between', color: '#34d399' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', color: '#16a34a', fontWeight: 700 }}>
                       <span>Discount</span>
                       <span>-₹{discount.toLocaleString('en-IN')}</span>
                     </div>
                   )}
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                     <span>GST (18% IT Tax)</span>
-                    <span style={{ color: '#f8fafc' }}>₹{tax.toLocaleString('en-IN')}</span>
+                    <span style={{ color: '#0f172a' }}>₹{tax.toLocaleString('en-IN')}</span>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                     <span>Shipping</span>
-                    <span style={{ color: shipping === 0 ? '#34d399' : '#f8fafc' }}>
+                    <span style={{ color: shipping === 0 ? '#16a34a' : '#0f172a', fontWeight: shipping === 0 ? 800 : 600 }}>
                       {shipping === 0 ? 'FREE' : `₹${shipping}`}
                     </span>
                   </div>
 
                   <div style={{
-                    borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+                    borderTop: '1px solid #f1f5f9',
                     paddingTop: '12px',
                     marginTop: '4px',
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'baseline'
                   }}>
-                    <span style={{ fontSize: '1.1rem', fontWeight: 800, color: '#ffffff' }}>Total Payable (COD)</span>
-                    <span style={{ fontSize: '1.6rem', fontWeight: 900 }} className="text-gradient">
+                    <span style={{ fontSize: '1.1rem', fontWeight: 900, color: '#0f172a' }}>Total Payable (COD)</span>
+                    <span style={{ fontSize: '1.6rem', fontWeight: 900, color: '#2563eb' }}>
                       ₹{total.toLocaleString('en-IN')}
                     </span>
                   </div>
                 </div>
 
-                {/* Only Single WhatsApp Order Button */}
+                {/* Single WhatsApp Order Button */}
                 <button
                   type="submit"
                   style={{
@@ -470,7 +466,7 @@ export default function CheckoutPage() {
                   Place Order via WhatsApp (Instant Order)
                 </button>
 
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', fontSize: '0.75rem', color: '#64748b' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', fontSize: '0.78rem', color: '#64748b' }}>
                   <Lock size={14} color="#10b981" /> 100% Genuine Hardware & Verified WhatsApp Fulfillment
                 </div>
               </div>

@@ -85,7 +85,7 @@ function ProductsCatalogContent() {
   const filteredProducts = useMemo(() => {
     return products
       .filter((p) => {
-        // Category (Case-insensitive & trimmed)
+        // Category
         if (selectedCategory !== 'all') {
           const productCat = (p.category || '').trim().toLowerCase();
           const targetCat = selectedCategory.trim().toLowerCase();
@@ -126,7 +126,7 @@ function ProductsCatalogContent() {
         if (sortBy === 'price-high') return b.price - a.price;
         if (sortBy === 'rating') return b.rating - a.rating;
         if (sortBy === 'discount') return b.discountPercent - a.discountPercent;
-        return 0; // default / featured
+        return 0;
       });
   }, [products, selectedCategory, searchQuery, selectedBrands, maxPrice, inStockOnly, onlyWishlist, sortBy, wishlist]);
 
@@ -149,12 +149,16 @@ function ProductsCatalogContent() {
   const getCategoryIcon = (slug: string) => {
     switch (slug) {
       case 'laptops-desktops':
+      case 'laptop':
         return <Laptop size={16} />;
       case 'pc-components':
+      case 'desktop':
         return <Cpu size={16} />;
       case 'networking-servers':
+      case 'network':
         return <Server size={16} />;
       case 'peripherals-accessories':
+      case 'accessories':
         return <Monitor size={16} />;
       case 'storage-memory':
         return <HardDrive size={16} />;
@@ -174,7 +178,7 @@ function ProductsCatalogContent() {
     onlyWishlist;
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#f8fafc' }}>
       <Navbar onOpenQuoteModal={() => setIsQuoteModalOpen(true)} />
 
       <main style={{ flex: 1, padding: '24px 0 60px 0' }}>
@@ -183,30 +187,30 @@ function ProductsCatalogContent() {
           {/* Store Banner Hero */}
           <div
             style={{
-              borderRadius: '20px',
-              background: 'radial-gradient(ellipse at 80% 50%, rgba(6, 182, 212, 0.2), rgba(15, 23, 42, 0.95)), #0b1120',
-              border: '1px solid rgba(6, 182, 212, 0.3)',
-              padding: '30px',
+              borderRadius: '24px',
+              background: 'linear-gradient(135deg, #ffffff 0%, #eff6ff 50%, #f0fdf4 100%)',
+              border: '1.5px solid #bfdbfe',
+              padding: '32px',
               marginBottom: '28px',
               display: 'flex',
               flexDirection: 'column',
               gap: '16px',
-              boxShadow: '0 15px 35px rgba(0, 0, 0, 0.6)'
+              boxShadow: '0 12px 32px -4px rgba(15, 23, 42, 0.06)'
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
               <div>
-                <div style={{ fontSize: '0.78rem', color: '#06b6d4', fontWeight: 800, letterSpacing: '1px', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <div style={{ fontSize: '0.78rem', color: '#0284c7', fontWeight: 800, letterSpacing: '1px', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: '6px' }}>
                   <Sparkles size={14} /> EVOLUTION INFOTECH OFFICIAL STORE
                 </div>
-                <h1 style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.5rem)', fontWeight: 900, color: '#ffffff', marginTop: '4px' }}>
+                <h1 style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.5rem)', fontWeight: 900, color: '#0f172a', marginTop: '4px' }}>
                   {onlyWishlist
                     ? 'Your Saved Wishlist'
                     : selectedCategory !== 'all'
                     ? categories.find((c) => c.slug.toLowerCase() === selectedCategory.toLowerCase())?.name || selectedCategory
                     : 'Evolution Infotech Store'}
                 </h1>
-                <p style={{ fontSize: '0.92rem', color: '#94a3b8', maxWidth: '680px', marginTop: '4px' }}>
+                <p style={{ fontSize: '0.94rem', color: '#475569', maxWidth: '680px', marginTop: '4px' }}>
                   {selectedCategory !== 'all'
                     ? `Explore our range of ${categories.find((c) => c.slug.toLowerCase() === selectedCategory.toLowerCase())?.name || selectedCategory} with genuine manufacturer warranty and instant WhatsApp ordering.`
                     : 'Explore high-performance Laptops, Desktops, Printers, Networking, CCTV, and Accessories with genuine warranty and GST Invoices.'}
@@ -217,7 +221,7 @@ function ProductsCatalogContent() {
                 <button
                   onClick={() => setIsQuoteModalOpen(true)}
                   className="btn-primary"
-                  style={{ padding: '10px 18px', fontSize: '0.85rem' }}
+                  style={{ padding: '11px 20px', fontSize: '0.88rem' }}
                 >
                   Request B2B Wholesale Quote
                 </button>
@@ -225,15 +229,15 @@ function ProductsCatalogContent() {
             </div>
 
             {/* Benefit Badges */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', borderTop: '1px solid rgba(255, 255, 255, 0.08)', paddingTop: '16px', fontSize: '0.8rem', color: '#cbd5e1' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', borderTop: '1px solid #e2e8f0', paddingTop: '16px', fontSize: '0.84rem', color: '#334155' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontWeight: 600 }}>
                 <ShieldCheck size={16} color="#10b981" /> 100% Genuine Brand Warranty
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <Truck size={16} color="#06b6d4" /> Fast Express Shipping Across India
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontWeight: 600 }}>
+                <Truck size={16} color="#0284c7" /> Fast Express Shipping Across India
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <MessageCircle size={16} color="#25D366" /> Instant WhatsApp Ordering & Support
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontWeight: 600 }}>
+                <MessageCircle size={16} color="#16a34a" /> Instant WhatsApp Ordering & Support
               </div>
             </div>
           </div>
@@ -252,9 +256,9 @@ function ProductsCatalogContent() {
             <button
               onClick={() => setSelectedCategory('all')}
               style={{
-                background: selectedCategory === 'all' ? 'linear-gradient(135deg, #06b6d4, #3b82f6)' : 'rgba(15, 23, 42, 0.7)',
-                color: selectedCategory === 'all' ? '#ffffff' : '#94a3b8',
-                border: selectedCategory === 'all' ? 'none' : '1px solid rgba(255, 255, 255, 0.1)',
+                background: selectedCategory === 'all' ? 'linear-gradient(135deg, #0284c7, #2563eb)' : '#ffffff',
+                color: selectedCategory === 'all' ? '#ffffff' : '#475569',
+                border: selectedCategory === 'all' ? 'none' : '1px solid #e2e8f0',
                 padding: '10px 18px',
                 borderRadius: '9999px',
                 fontSize: '0.85rem',
@@ -265,7 +269,7 @@ function ProductsCatalogContent() {
                 whiteSpace: 'nowrap',
                 cursor: 'pointer',
                 transition: 'all 0.2s ease',
-                boxShadow: selectedCategory === 'all' ? '0 4px 15px rgba(6, 182, 212, 0.35)' : 'none'
+                boxShadow: selectedCategory === 'all' ? '0 4px 15px rgba(37, 99, 235, 0.3)' : 'var(--shadow-sm)'
               }}
             >
               <Grid size={15} /> All Products ({products.length})
@@ -283,25 +287,25 @@ function ProductsCatalogContent() {
                   key={cat.id}
                   onClick={() => setSelectedCategory(cat.slug)}
                   style={{
-                    background: isSelected ? 'linear-gradient(135deg, #06b6d4, #3b82f6)' : 'rgba(15, 23, 42, 0.7)',
-                    color: isSelected ? '#ffffff' : '#cbd5e1',
-                    border: isSelected ? 'none' : '1px solid rgba(255, 255, 255, 0.1)',
+                    background: isSelected ? 'linear-gradient(135deg, #0284c7, #2563eb)' : '#ffffff',
+                    color: isSelected ? '#ffffff' : '#475569',
+                    border: isSelected ? 'none' : '1px solid #e2e8f0',
                     padding: '10px 18px',
                     borderRadius: '9999px',
                     fontSize: '0.85rem',
-                    fontWeight: isSelected ? 700 : 500,
+                    fontWeight: isSelected ? 700 : 600,
                     display: 'flex',
                     alignItems: 'center',
                     gap: '8px',
                     whiteSpace: 'nowrap',
                     cursor: 'pointer',
                     transition: 'all 0.2s ease',
-                    boxShadow: isSelected ? '0 4px 15px rgba(6, 182, 212, 0.35)' : 'none'
+                    boxShadow: isSelected ? '0 4px 15px rgba(37, 99, 235, 0.3)' : 'var(--shadow-sm)'
                   }}
                 >
                   {getCategoryIcon(cat.slug)}
                   <span>{cat.name}</span>
-                  <span style={{ opacity: 0.7, fontSize: '0.75rem' }}>({count})</span>
+                  <span style={{ opacity: 0.75, fontSize: '0.75rem' }}>({count})</span>
                 </button>
               );
             })}
@@ -323,12 +327,15 @@ function ProductsCatalogContent() {
                 flexDirection: 'column',
                 gap: '22px',
                 position: 'sticky',
-                top: '90px'
+                top: '90px',
+                background: '#ffffff',
+                border: '1px solid #e2e8f0',
+                borderRadius: '20px'
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 800, fontSize: '1.05rem', color: '#f8fafc' }}>
-                  <SlidersHorizontal size={18} color="#06b6d4" /> Filter Store
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 800, fontSize: '1.05rem', color: '#0f172a' }}>
+                  <SlidersHorizontal size={18} color="#2563eb" /> Filter Store
                 </div>
                 {hasActiveFilters && (
                   <button
@@ -336,7 +343,7 @@ function ProductsCatalogContent() {
                     style={{
                       background: 'none',
                       border: 'none',
-                      color: '#06b6d4',
+                      color: '#2563eb',
                       fontSize: '0.78rem',
                       fontWeight: 700,
                       cursor: 'pointer',
@@ -352,11 +359,11 @@ function ProductsCatalogContent() {
 
               {/* Search Inside Store */}
               <div>
-                <label style={{ fontSize: '0.75rem', fontWeight: 700, color: '#94a3b8', textTransform: 'uppercase', marginBottom: '8px', display: 'block' }}>
+                <label style={{ fontSize: '0.75rem', fontWeight: 800, color: '#475569', textTransform: 'uppercase', marginBottom: '8px', display: 'block' }}>
                   Search Products
                 </label>
                 <div style={{ position: 'relative' }}>
-                  <Search size={16} color="#64748b" style={{ position: 'absolute', left: '12px', top: '13px' }} />
+                  <Search size={16} color="#94a3b8" style={{ position: 'absolute', left: '12px', top: '13px' }} />
                   <input
                     type="text"
                     placeholder="RTX 4090, Asus, Server..."
@@ -371,10 +378,10 @@ function ProductsCatalogContent() {
               {/* Price Filter Slider */}
               <div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-                  <label style={{ fontSize: '0.75rem', fontWeight: 700, color: '#94a3b8', textTransform: 'uppercase' }}>
+                  <label style={{ fontSize: '0.75rem', fontWeight: 800, color: '#475569', textTransform: 'uppercase' }}>
                     Max Price
                   </label>
-                  <span style={{ fontSize: '0.9rem', fontWeight: 800, color: '#06b6d4' }}>
+                  <span style={{ fontSize: '0.92rem', fontWeight: 800, color: '#2563eb' }}>
                     ₹{maxPrice.toLocaleString('en-IN')}
                   </span>
                 </div>
@@ -385,23 +392,23 @@ function ProductsCatalogContent() {
                   step="10000"
                   value={maxPrice}
                   onChange={(e) => setMaxPrice(Number(e.target.value))}
-                  style={{ width: '100%', accentColor: '#06b6d4', cursor: 'pointer' }}
+                  style={{ width: '100%', accentColor: '#2563eb', cursor: 'pointer' }}
                 />
               </div>
 
               {/* Brand Filter */}
               <div>
-                <label style={{ fontSize: '0.75rem', fontWeight: 700, color: '#94a3b8', textTransform: 'uppercase', marginBottom: '10px', display: 'block' }}>
+                <label style={{ fontSize: '0.75rem', fontWeight: 800, color: '#475569', textTransform: 'uppercase', marginBottom: '10px', display: 'block' }}>
                   Brand / Manufacturer
                 </label>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', maxHeight: '180px', overflowY: 'auto' }}>
                   {brands.map((b) => (
-                    <label key={b} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', color: '#cbd5e1', cursor: 'pointer' }}>
+                    <label key={b} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.86rem', color: '#334155', cursor: 'pointer' }}>
                       <input
                         type="checkbox"
                         checked={selectedBrands.includes(b)}
                         onChange={() => handleBrandToggle(b)}
-                        style={{ accentColor: '#06b6d4' }}
+                        style={{ accentColor: '#2563eb' }}
                       />
                       <span>{b}</span>
                     </label>
@@ -410,19 +417,19 @@ function ProductsCatalogContent() {
               </div>
 
               {/* In Stock & Wishlist Toggles */}
-              <div style={{ borderTop: '1px solid rgba(255, 255, 255, 0.08)', paddingTop: '16px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                <label style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', color: '#cbd5e1', cursor: 'pointer' }}>
+              <div style={{ borderTop: '1px solid #f1f5f9', paddingTop: '16px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                <label style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.86rem', color: '#334155', cursor: 'pointer' }}>
                   <input
                     type="checkbox"
                     checked={onlyWishlist}
                     onChange={(e) => setOnlyWishlist(e.target.checked)}
-                    style={{ accentColor: '#ec4899' }}
+                    style={{ accentColor: '#db2777' }}
                   />
-                  <Heart size={15} color="#ec4899" />
+                  <Heart size={15} color="#db2777" />
                   <span>Saved Wishlist ({wishlist.length})</span>
                 </label>
 
-                <label style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', color: '#cbd5e1', cursor: 'pointer' }}>
+                <label style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.86rem', color: '#334155', cursor: 'pointer' }}>
                   <input
                     type="checkbox"
                     checked={inStockOnly}
@@ -445,11 +452,13 @@ function ProductsCatalogContent() {
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 flexWrap: 'wrap',
-                gap: '12px'
+                gap: '12px',
+                background: '#ffffff',
+                border: '1px solid #e2e8f0'
               }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                  <div style={{ fontSize: '0.88rem', color: '#94a3b8' }}>
-                    Showing <strong style={{ color: '#ffffff' }}>{filteredProducts.length}</strong> items
+                  <div style={{ fontSize: '0.9rem', color: '#475569' }}>
+                    Showing <strong style={{ color: '#0f172a' }}>{filteredProducts.length}</strong> items
                   </div>
 
                   {/* Mobile filter button */}
@@ -468,7 +477,7 @@ function ProductsCatalogContent() {
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value)}
                     className="form-input"
-                    style={{ padding: '6px 12px', fontSize: '0.82rem', width: 'auto', background: '#0b1120' }}
+                    style={{ padding: '6px 12px', fontSize: '0.84rem', width: 'auto', background: '#ffffff' }}
                   >
                     <option value="featured">Featured / Best Sellers</option>
                     <option value="price-low">Price: Low to High</option>
@@ -482,7 +491,7 @@ function ProductsCatalogContent() {
               {/* Active Filter Chips */}
               {hasActiveFilters && (
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', marginBottom: '16px' }}>
-                  <span style={{ fontSize: '0.75rem', color: '#64748b', fontWeight: 600 }}>Active Filters:</span>
+                  <span style={{ fontSize: '0.78rem', color: '#64748b', fontWeight: 700 }}>Active Filters:</span>
                   {selectedCategory !== 'all' && (
                     <span className="badge badge-cyan" style={{ cursor: 'pointer' }} onClick={() => setSelectedCategory('all')}>
                       Category: {selectedCategory} <X size={12} />
@@ -519,17 +528,18 @@ function ProductsCatalogContent() {
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
-                  gap: '16px'
+                  gap: '16px',
+                  background: '#ffffff'
                 }}>
-                  <div className="spinner" style={{
+                  <div style={{
                     width: '40px',
                     height: '40px',
-                    border: '3px solid rgba(6, 182, 212, 0.2)',
-                    borderTop: '3px solid #06b6d4',
+                    border: '3px solid #e2e8f0',
+                    borderTop: '3px solid #2563eb',
                     borderRadius: '50%',
                     animation: 'spin 1s linear infinite'
                   }} />
-                  <p style={{ color: '#94a3b8', fontSize: '0.9rem' }}>Loading live hardware catalog from database...</p>
+                  <p style={{ color: '#64748b', fontSize: '0.9rem' }}>Loading live hardware catalog...</p>
                 </div>
               ) : filteredProducts.length === 0 ? (
                 <div className="glass-panel" style={{
@@ -538,13 +548,14 @@ function ProductsCatalogContent() {
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
-                  gap: '14px'
+                  gap: '14px',
+                  background: '#ffffff'
                 }}>
                   <div style={{
                     width: '64px',
                     height: '64px',
                     borderRadius: '50%',
-                    background: 'rgba(255, 255, 255, 0.04)',
+                    background: '#f1f5f9',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -552,8 +563,8 @@ function ProductsCatalogContent() {
                   }}>
                     <Search size={28} />
                   </div>
-                  <h3 style={{ fontSize: '1.2rem', fontWeight: 700, color: '#f8fafc' }}>No matching products found</h3>
-                  <p style={{ fontSize: '0.85rem', color: '#94a3b8', maxWidth: '360px' }}>
+                  <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#0f172a' }}>No matching products found</h3>
+                  <p style={{ fontSize: '0.88rem', color: '#64748b', maxWidth: '360px' }}>
                     Try adjusting your filters or speak with our sales engineer for custom procurement.
                   </p>
                   <button onClick={handleResetFilters} className="btn-primary" style={{ marginTop: '8px' }}>
@@ -577,9 +588,9 @@ function ProductsCatalogContent() {
                 className="glass-panel"
                 style={{
                   marginTop: '40px',
-                  padding: '30px',
-                  background: 'radial-gradient(ellipse at center, rgba(16, 185, 129, 0.15), rgba(15, 23, 42, 0.95))',
-                  border: '1px solid rgba(16, 185, 129, 0.3)',
+                  padding: '32px',
+                  background: 'linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%)',
+                  border: '1.5px solid #bbf7d0',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
@@ -588,13 +599,13 @@ function ProductsCatalogContent() {
                 }}
               >
                 <div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#34d399', fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#16a34a', fontSize: '0.82rem', fontWeight: 800, textTransform: 'uppercase' }}>
                     <MessageCircle size={16} /> CUSTOM HARDWARE PROCUREMENT
                   </div>
-                  <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#ffffff', marginTop: '4px' }}>
+                  <h3 style={{ fontSize: '1.4rem', fontWeight: 900, color: '#0f172a', marginTop: '4px' }}>
                     Need a specific Server Config, GPU Model or Bulk IT Pricing?
                   </h3>
-                  <p style={{ color: '#94a3b8', fontSize: '0.88rem', marginTop: '4px', maxWidth: '600px' }}>
+                  <p style={{ color: '#475569', fontSize: '0.9rem', marginTop: '4px', maxWidth: '600px' }}>
                     Our sales engineers configure custom rigs, provide GST Input tax invoices, and offer special corporate discounts.
                   </p>
                 </div>
@@ -617,7 +628,7 @@ function ProductsCatalogContent() {
                       alignItems: 'center',
                       gap: '8px',
                       cursor: 'pointer',
-                      boxShadow: '0 4px 15px rgba(16, 185, 129, 0.4)'
+                      boxShadow: '0 4px 15px rgba(16, 185, 129, 0.35)'
                     }}
                   >
                     <MessageCircle size={18} /> Chat on WhatsApp Now
@@ -649,7 +660,7 @@ function ProductsCatalogContent() {
 
 export default function ProductsPage() {
   return (
-    <Suspense fallback={<div style={{ padding: '60px', textAlign: 'center', color: '#06b6d4' }}>Loading Catalog...</div>}>
+    <Suspense fallback={<div style={{ padding: '60px', textAlign: 'center', color: '#2563eb' }}>Loading Catalog...</div>}>
       <ProductsCatalogContent />
     </Suspense>
   );

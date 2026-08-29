@@ -32,10 +32,10 @@ export default function Testimonials() {
     <section style={{ padding: '60px 0' }}>
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-          <div style={{ fontSize: '0.8rem', color: '#06b6d4', fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase' }}>
+          <div style={{ fontSize: '0.8rem', color: '#0284c7', fontWeight: 800, letterSpacing: '1px', textTransform: 'uppercase' }}>
             TESTIMONIALS & TRUST
           </div>
-          <h2 style={{ fontSize: '2rem', fontWeight: 800, color: '#f8fafc', marginTop: '6px' }}>
+          <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', marginTop: '6px' }}>
             Trusted by 5,000+ Enterprises & Tech Enthusiasts
           </h2>
         </div>
@@ -54,38 +54,42 @@ export default function Testimonials() {
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
-                position: 'relative'
+                position: 'relative',
+                background: '#ffffff',
+                border: '1px solid #e2e8f0',
+                borderRadius: '20px',
+                boxShadow: 'var(--shadow-sm)'
               }}
             >
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
-                  <div style={{ display: 'flex', gap: '4px', color: '#fbbf24' }}>
+                  <div style={{ display: 'flex', gap: '4px', color: '#f59e0b' }}>
                     {[...Array(rev.rating)].map((_, i) => (
-                      <Star key={i} size={16} fill="#fbbf24" />
+                      <Star key={i} size={16} fill="#f59e0b" />
                     ))}
                   </div>
-                  <Quote size={20} color="rgba(6, 182, 212, 0.3)" />
+                  <Quote size={22} color="#93c5fd" />
                 </div>
 
-                <p style={{ fontSize: '0.9rem', color: '#cbd5e1', lineHeight: 1.6, fontStyle: 'italic' }}>
+                <p style={{ fontSize: '0.92rem', color: '#334155', lineHeight: 1.6, fontStyle: 'italic' }}>
                   &ldquo;{rev.content}&rdquo;
                 </p>
               </div>
 
-              <div style={{ marginTop: '24px', paddingTop: '16px', borderTop: '1px solid rgba(255, 255, 255, 0.06)' }}>
+              <div style={{ marginTop: '24px', paddingTop: '16px', borderTop: '1px solid #f1f5f9' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <div style={{ fontWeight: 700, color: '#ffffff', fontSize: '0.95rem' }}>
+                  <div style={{ fontWeight: 800, color: '#0f172a', fontSize: '0.95rem' }}>
                     {rev.name}
                   </div>
                   <span title="Verified Customer" style={{ display: 'inline-flex' }}>
-                    <CheckCircle2 size={15} color="#10b981" />
+                    <CheckCircle2 size={16} color="#10b981" />
                   </span>
                 </div>
 
-                <div style={{ fontSize: '0.78rem', color: '#94a3b8', marginTop: '2px' }}>
+                <div style={{ fontSize: '0.78rem', color: '#64748b', marginTop: '2px' }}>
                   {rev.role}
                 </div>
-                <div style={{ fontSize: '0.72rem', color: '#06b6d4', marginTop: '6px', fontWeight: 600 }}>
+                <div style={{ fontSize: '0.74rem', color: '#0284c7', marginTop: '6px', fontWeight: 700 }}>
                   Verified Purchase: {rev.product}
                 </div>
               </div>

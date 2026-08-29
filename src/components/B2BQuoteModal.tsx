@@ -6,7 +6,6 @@ import { WHATSAPP_PHONE_NUMBER, COMPANY_NAME } from '@/utils/whatsapp';
 import {
   X,
   Building2,
-  Cpu,
   Mail,
   Phone,
   User,
@@ -78,8 +77,8 @@ Please connect with our corporate procurement desk.`;
       position: 'fixed',
       inset: 0,
       zIndex: 1200,
-      backgroundColor: 'rgba(0, 0, 0, 0.85)',
-      backdropFilter: 'blur(14px)',
+      backgroundColor: 'rgba(15, 23, 42, 0.45)',
+      backdropFilter: 'blur(10px)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -92,11 +91,11 @@ Please connect with our corporate procurement desk.`;
         zIndex: 1201,
         width: '100%',
         maxWidth: '580px',
-        backgroundColor: '#0b1120',
+        backgroundColor: '#ffffff',
         borderRadius: '24px',
-        border: '1px solid rgba(6, 182, 212, 0.35)',
-        boxShadow: '0 25px 60px rgba(0, 0, 0, 0.9), 0 0 30px rgba(6, 182, 212, 0.2)',
-        padding: '30px',
+        border: '1px solid #e2e8f0',
+        boxShadow: '0 25px 60px -12px rgba(15, 23, 42, 0.18)',
+        padding: '32px',
         maxHeight: '90vh',
         overflowY: 'auto'
       }}>
@@ -107,15 +106,15 @@ Please connect with our corporate procurement desk.`;
             position: 'absolute',
             top: '20px',
             right: '20px',
-            background: 'rgba(255, 255, 255, 0.05)',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
+            background: '#f8fafc',
+            border: '1px solid #e2e8f0',
             borderRadius: '50%',
             width: '36px',
             height: '36px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            color: '#94a3b8',
+            color: '#64748b',
             cursor: 'pointer'
           }}
         >
@@ -123,25 +122,25 @@ Please connect with our corporate procurement desk.`;
         </button>
 
         <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '22px' }}>
             <div style={{
               width: '46px',
               height: '46px',
-              borderRadius: '12px',
-              background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(59, 130, 246, 0.2))',
-              border: '1px solid rgba(6, 182, 212, 0.4)',
+              borderRadius: '14px',
+              background: '#eff6ff',
+              border: '1px solid #bfdbfe',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: '#38bdf8'
+              color: '#2563eb'
             }}>
               <Building2 size={24} />
             </div>
             <div>
-              <h2 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#ffffff' }}>
+              <h2 style={{ fontSize: '1.4rem', fontWeight: 900, color: '#0f172a' }}>
                 B2B Corporate & Bulk Quote
               </h2>
-              <p style={{ fontSize: '0.8rem', color: '#94a3b8' }}>
+              <p style={{ fontSize: '0.82rem', color: '#64748b' }}>
                 {COMPANY_NAME} &bull; GST Invoicing & Wholesale Corporate Discounts
               </p>
             </div>
@@ -150,11 +149,11 @@ Please connect with our corporate procurement desk.`;
           <form onSubmit={handleSendWhatsApp} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
               <div>
-                <label style={{ fontSize: '0.78rem', color: '#94a3b8', marginBottom: '4px', display: 'block', fontWeight: 600 }}>
+                <label style={{ fontSize: '0.78rem', color: '#475569', marginBottom: '4px', display: 'block', fontWeight: 700 }}>
                   Company / Organization
                 </label>
                 <div style={{ position: 'relative' }}>
-                  <Building2 size={16} color="#64748b" style={{ position: 'absolute', left: '12px', top: '14px' }} />
+                  <Building2 size={16} color="#94a3b8" style={{ position: 'absolute', left: '12px', top: '14px' }} />
                   <input
                     type="text"
                     placeholder="e.g. Infotech Solutions Ltd"
@@ -167,11 +166,11 @@ Please connect with our corporate procurement desk.`;
               </div>
 
               <div>
-                <label style={{ fontSize: '0.78rem', color: '#94a3b8', marginBottom: '4px', display: 'block', fontWeight: 600 }}>
+                <label style={{ fontSize: '0.78rem', color: '#475569', marginBottom: '4px', display: 'block', fontWeight: 700 }}>
                   Contact Person *
                 </label>
                 <div style={{ position: 'relative' }}>
-                  <User size={16} color="#64748b" style={{ position: 'absolute', left: '12px', top: '14px' }} />
+                  <User size={16} color="#94a3b8" style={{ position: 'absolute', left: '12px', top: '14px' }} />
                   <input
                     type="text"
                     required
@@ -187,11 +186,11 @@ Please connect with our corporate procurement desk.`;
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
               <div>
-                <label style={{ fontSize: '0.78rem', color: '#94a3b8', marginBottom: '4px', display: 'block', fontWeight: 600 }}>
+                <label style={{ fontSize: '0.78rem', color: '#475569', marginBottom: '4px', display: 'block', fontWeight: 700 }}>
                   Official Email
                 </label>
                 <div style={{ position: 'relative' }}>
-                  <Mail size={16} color="#64748b" style={{ position: 'absolute', left: '12px', top: '14px' }} />
+                  <Mail size={16} color="#94a3b8" style={{ position: 'absolute', left: '12px', top: '14px' }} />
                   <input
                     type="email"
                     placeholder="name@company.com"
@@ -204,11 +203,11 @@ Please connect with our corporate procurement desk.`;
               </div>
 
               <div>
-                <label style={{ fontSize: '0.78rem', color: '#94a3b8', marginBottom: '4px', display: 'block', fontWeight: 600 }}>
+                <label style={{ fontSize: '0.78rem', color: '#475569', marginBottom: '4px', display: 'block', fontWeight: 700 }}>
                   Phone / WhatsApp *
                 </label>
                 <div style={{ position: 'relative' }}>
-                  <Phone size={16} color="#64748b" style={{ position: 'absolute', left: '12px', top: '14px' }} />
+                  <Phone size={16} color="#94a3b8" style={{ position: 'absolute', left: '12px', top: '14px' }} />
                   <input
                     type="tel"
                     required
@@ -222,14 +221,13 @@ Please connect with our corporate procurement desk.`;
               </div>
             </div>
 
-            {/* Manual Requirement & Manual Budget (No dropdowns) */}
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
               <div>
-                <label style={{ fontSize: '0.78rem', color: '#94a3b8', marginBottom: '4px', display: 'block', fontWeight: 600 }}>
+                <label style={{ fontSize: '0.78rem', color: '#475569', marginBottom: '4px', display: 'block', fontWeight: 700 }}>
                   Requirement / Products Needed
                 </label>
                 <div style={{ position: 'relative' }}>
-                  <PackageCheck size={16} color="#64748b" style={{ position: 'absolute', left: '12px', top: '14px' }} />
+                  <PackageCheck size={16} color="#94a3b8" style={{ position: 'absolute', left: '12px', top: '14px' }} />
                   <input
                     type="text"
                     placeholder="e.g. 20 Laptops / 5 Server Racks..."
@@ -242,11 +240,11 @@ Please connect with our corporate procurement desk.`;
               </div>
 
               <div>
-                <label style={{ fontSize: '0.78rem', color: '#94a3b8', marginBottom: '4px', display: 'block', fontWeight: 600 }}>
+                <label style={{ fontSize: '0.78rem', color: '#475569', marginBottom: '4px', display: 'block', fontWeight: 700 }}>
                   Estimated Budget
                 </label>
                 <div style={{ position: 'relative' }}>
-                  <IndianRupee size={16} color="#64748b" style={{ position: 'absolute', left: '12px', top: '14px' }} />
+                  <IndianRupee size={16} color="#94a3b8" style={{ position: 'absolute', left: '12px', top: '14px' }} />
                   <input
                     type="text"
                     placeholder="e.g. ₹2,00,000 / Flexible"
@@ -260,7 +258,7 @@ Please connect with our corporate procurement desk.`;
             </div>
 
             <div>
-              <label style={{ fontSize: '0.78rem', color: '#94a3b8', marginBottom: '4px', display: 'block', fontWeight: 600 }}>
+              <label style={{ fontSize: '0.78rem', color: '#475569', marginBottom: '4px', display: 'block', fontWeight: 700 }}>
                 Detailed Specifications / Model Requirements
               </label>
               <textarea
@@ -273,7 +271,7 @@ Please connect with our corporate procurement desk.`;
               />
             </div>
 
-            {/* Single Full-Width Direct WhatsApp Button */}
+            {/* Direct WhatsApp Button */}
             <div style={{ marginTop: '8px' }}>
               <button
                 type="submit"
@@ -291,7 +289,7 @@ Please connect with our corporate procurement desk.`;
                   justifyContent: 'center',
                   gap: '8px',
                   cursor: 'pointer',
-                  boxShadow: '0 4px 20px rgba(16, 185, 129, 0.45)',
+                  boxShadow: '0 4px 20px rgba(16, 185, 129, 0.35)',
                   transition: 'transform 0.2s ease'
                 }}
                 onMouseEnter={(e) => (e.currentTarget.style.transform = 'translateY(-2px)')}

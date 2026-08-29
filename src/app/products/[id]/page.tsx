@@ -20,7 +20,6 @@ import {
   Truck,
   RotateCcw,
   CheckCircle2,
-  PhoneCall,
   Share2,
   ChevronRight,
   Zap,
@@ -113,18 +112,18 @@ export default function ProductDetailPage({
   };
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#f8fafc' }}>
       <Navbar onOpenQuoteModal={() => setIsQuoteModalOpen(true)} />
 
       <main style={{ flex: 1, padding: '30px 0 60px 0' }}>
         <div className="container">
           {/* Breadcrumbs */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', color: '#64748b', marginBottom: '24px' }}>
-            <Link href="/" style={{ color: '#94a3b8', textDecoration: 'none' }}>Home</Link>
+            <Link href="/" style={{ color: '#64748b', textDecoration: 'none' }}>Home</Link>
             <ChevronRight size={14} />
-            <Link href="/products" style={{ color: '#94a3b8', textDecoration: 'none' }}>Catalog</Link>
+            <Link href="/products" style={{ color: '#64748b', textDecoration: 'none' }}>Catalog</Link>
             <ChevronRight size={14} />
-            <span style={{ color: '#06b6d4', fontWeight: 600 }}>{product.name}</span>
+            <span style={{ color: '#2563eb', fontWeight: 700 }}>{product.name}</span>
           </div>
 
           {/* Top Product Hero Layout */}
@@ -139,20 +138,21 @@ export default function ProductDetailPage({
             <div>
               <div style={{
                 width: '100%',
-                height: '420px',
-                borderRadius: '20px',
+                height: '440px',
+                borderRadius: '24px',
                 overflow: 'hidden',
-                background: '#0b1120',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
-                boxShadow: '0 20px 40px rgba(0, 0, 0, 0.6)',
+                background: '#ffffff',
+                border: '1px solid #e2e8f0',
+                boxShadow: 'var(--shadow-sm)',
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'center'
+                justifyContent: 'center',
+                padding: '16px'
               }}>
                 <img
                   src={images[selectedImage] || product.image}
                   alt={product.name}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }}
                 />
               </div>
 
@@ -166,16 +166,16 @@ export default function ProductDetailPage({
                       style={{
                         width: '80px',
                         height: '80px',
-                        borderRadius: '12px',
+                        borderRadius: '14px',
                         overflow: 'hidden',
-                        border: selectedImage === idx ? '2px solid #06b6d4' : '1px solid rgba(255, 255, 255, 0.1)',
-                        padding: 0,
-                        background: '#0b1120',
+                        border: selectedImage === idx ? '2px solid #2563eb' : '1px solid #e2e8f0',
+                        padding: '4px',
+                        background: '#ffffff',
                         cursor: 'pointer',
-                        boxShadow: selectedImage === idx ? '0 0 15px rgba(6, 182, 212, 0.4)' : 'none'
+                        boxShadow: selectedImage === idx ? '0 0 15px rgba(37, 99, 235, 0.25)' : 'none'
                       }}
                     >
-                      <img src={img} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                      <img src={img} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '10px' }} />
                     </button>
                   ))}
                 </div>
@@ -183,7 +183,7 @@ export default function ProductDetailPage({
             </div>
 
             {/* Product Details Column */}
-            <div className="glass-panel" style={{ padding: '32px', display: 'flex', flexDirection: 'column', gap: '18px' }}>
+            <div className="glass-panel" style={{ padding: '32px', display: 'flex', flexDirection: 'column', gap: '18px', background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '24px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                 <div>
                   <span className="badge badge-cyan">{product.brand}</span>
@@ -199,16 +199,15 @@ export default function ProductDetailPage({
                     style={{
                       width: '42px',
                       height: '42px',
-                      borderRadius: '10px',
-                      background: isCopied ? 'rgba(16, 185, 129, 0.25)' : 'rgba(255, 255, 255, 0.06)',
-                      border: isCopied ? '1px solid #10b981' : '1px solid rgba(255, 255, 255, 0.12)',
-                      color: isCopied ? '#34d399' : '#cbd5e1',
+                      borderRadius: '12px',
+                      background: isCopied ? '#ecfdf5' : '#f8fafc',
+                      border: isCopied ? '1px solid #a7f3d0' : '1px solid #e2e8f0',
+                      color: isCopied ? '#15803d' : '#64748b',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       cursor: 'pointer',
-                      transition: 'all 0.2s ease',
-                      boxShadow: isCopied ? '0 0 15px rgba(16, 185, 129, 0.4)' : 'none'
+                      transition: 'all 0.2s ease'
                     }}
                     title={isCopied ? 'Link Copied!' : 'Share Product Link'}
                     aria-label="Share Product"
@@ -222,16 +221,15 @@ export default function ProductDetailPage({
                     style={{
                       width: '42px',
                       height: '42px',
-                      borderRadius: '10px',
-                      background: inWishlist ? 'rgba(236, 72, 153, 0.25)' : 'rgba(255, 255, 255, 0.06)',
-                      border: inWishlist ? '1px solid #ec4899' : '1px solid rgba(255, 255, 255, 0.12)',
-                      color: inWishlist ? '#ec4899' : '#cbd5e1',
+                      borderRadius: '12px',
+                      background: inWishlist ? '#fdf2f8' : '#f8fafc',
+                      border: inWishlist ? '1px solid #fbcfe8' : '1px solid #e2e8f0',
+                      color: inWishlist ? '#ec4899' : '#64748b',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       cursor: 'pointer',
-                      transition: 'all 0.2s ease',
-                      boxShadow: inWishlist ? '0 0 15px rgba(236, 72, 153, 0.4)' : 'none'
+                      transition: 'all 0.2s ease'
                     }}
                     title={inWishlist ? 'Remove from Wishlist' : 'Add to Wishlist'}
                     aria-label="Toggle Wishlist"
@@ -241,43 +239,43 @@ export default function ProductDetailPage({
                 </div>
               </div>
 
-              <h1 style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2rem)', fontWeight: 800, color: '#ffffff', lineHeight: 1.25 }}>
+              <h1 style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2rem)', fontWeight: 900, color: '#0f172a', lineHeight: 1.25 }}>
                 {product.name}
               </h1>
 
               {/* Rating */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '4px', color: '#fbbf24' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '4px', color: '#f59e0b' }}>
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={16} fill="#fbbf24" />
+                    <Star key={i} size={16} fill="#f59e0b" />
                   ))}
-                  <span style={{ fontWeight: 700, color: '#ffffff', marginLeft: '4px', fontSize: '0.9rem' }}>
+                  <span style={{ fontWeight: 800, color: '#0f172a', marginLeft: '4px', fontSize: '0.9rem' }}>
                     {product.rating}
                   </span>
                 </div>
                 <span style={{ color: '#64748b', fontSize: '0.85rem' }}>
                   ({product.reviewCount} Verified Buyer Ratings)
                 </span>
-                <span style={{ color: '#10b981', fontSize: '0.82rem', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '4px' }}>
+                <span style={{ color: '#16a34a', fontSize: '0.84rem', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '4px' }}>
                   <CheckCircle2 size={14} /> In Stock ({product.stockCount} units)
                 </span>
               </div>
 
               {/* Price Row */}
               <div style={{
-                background: 'rgba(0, 0, 0, 0.3)',
-                padding: '16px 20px',
-                borderRadius: '12px',
-                border: '1px solid rgba(255, 255, 255, 0.06)',
+                background: '#f8fafc',
+                padding: '18px 20px',
+                borderRadius: '16px',
+                border: '1px solid #e2e8f0',
                 display: 'flex',
                 alignItems: 'baseline',
                 gap: '16px'
               }}>
-                <div style={{ fontSize: '2.2rem', fontWeight: 900, color: '#ffffff' }}>
+                <div style={{ fontSize: '2.2rem', fontWeight: 900, color: '#0f172a' }}>
                   ₹{product.price.toLocaleString('en-IN')}
                 </div>
                 {product.originalPrice > product.price && (
-                  <div style={{ fontSize: '1.2rem', color: '#64748b', textDecoration: 'line-through' }}>
+                  <div style={{ fontSize: '1.2rem', color: '#94a3b8', textDecoration: 'line-through' }}>
                     ₹{product.originalPrice.toLocaleString('en-IN')}
                   </div>
                 )}
@@ -286,7 +284,7 @@ export default function ProductDetailPage({
                 </span>
               </div>
 
-              <p style={{ fontSize: '0.92rem', color: '#cbd5e1', lineHeight: 1.6 }}>
+              <p style={{ fontSize: '0.94rem', color: '#475569', lineHeight: 1.6 }}>
                 {product.description}
               </p>
 
@@ -296,21 +294,21 @@ export default function ProductDetailPage({
                 <div style={{
                   display: 'flex',
                   alignItems: 'center',
-                  background: 'rgba(0, 0, 0, 0.5)',
-                  borderRadius: '10px',
-                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  background: '#f8fafc',
+                  borderRadius: '12px',
+                  border: '1px solid #e2e8f0',
                   padding: '6px'
                 }}>
                   <button
                     onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                    style={{ background: 'none', border: 'none', color: '#fff', width: '32px', height: '32px', cursor: 'pointer', fontSize: '1.1rem' }}
+                    style={{ background: 'none', border: 'none', color: '#0f172a', width: '32px', height: '32px', cursor: 'pointer', fontSize: '1.1rem', fontWeight: 800 }}
                   >
                     -
                   </button>
-                  <span style={{ width: '36px', textAlign: 'center', fontWeight: 800, fontSize: '1rem' }}>{quantity}</span>
+                  <span style={{ width: '36px', textAlign: 'center', fontWeight: 800, fontSize: '1rem', color: '#0f172a' }}>{quantity}</span>
                   <button
                     onClick={() => setQuantity((q) => q + 1)}
-                    style={{ background: 'none', border: 'none', color: '#fff', width: '32px', height: '32px', cursor: 'pointer', fontSize: '1.1rem' }}
+                    style={{ background: 'none', border: 'none', color: '#0f172a', width: '32px', height: '32px', cursor: 'pointer', fontSize: '1.1rem', fontWeight: 800 }}
                   >
                     +
                   </button>
@@ -321,7 +319,7 @@ export default function ProductDetailPage({
                   className="btn-secondary"
                   style={{ flex: 1, padding: '14px 20px', fontSize: '0.95rem' }}
                 >
-                  <ShoppingCart size={20} color="#06b6d4" /> Add to Cart
+                  <ShoppingCart size={20} color="#2563eb" /> Add to Cart
                 </button>
 
                 <button
@@ -343,10 +341,10 @@ export default function ProductDetailPage({
                   background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
                   color: '#ffffff',
                   border: 'none',
-                  borderRadius: '12px',
+                  borderRadius: '14px',
                   padding: '14px 24px',
                   fontSize: '1rem',
-                  fontWeight: 700,
+                  fontWeight: 800,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -367,24 +365,24 @@ export default function ProductDetailPage({
               <div style={{
                 marginTop: '10px',
                 padding: '12px 16px',
-                borderRadius: '10px',
-                background: 'rgba(6, 182, 212, 0.08)',
-                border: '1px solid rgba(6, 182, 212, 0.2)',
+                borderRadius: '12px',
+                background: '#eff6ff',
+                border: '1px solid #bfdbfe',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                fontSize: '0.85rem'
+                fontSize: '0.88rem'
               }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#cbd5e1' }}>
-                  <Building2 size={16} color="#06b6d4" /> Buying for business or in bulk?
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#1e40af', fontWeight: 600 }}>
+                  <Building2 size={16} color="#2563eb" /> Buying for business or in bulk?
                 </div>
                 <button
                   onClick={() => setIsQuoteModalOpen(true)}
                   style={{
                     background: 'none',
                     border: 'none',
-                    color: '#38bdf8',
-                    fontWeight: 700,
+                    color: '#2563eb',
+                    fontWeight: 800,
                     cursor: 'pointer',
                     textDecoration: 'underline'
                   }}
@@ -399,36 +397,36 @@ export default function ProductDetailPage({
                 gridTemplateColumns: 'repeat(3, 1fr)',
                 gap: '10px',
                 marginTop: '8px',
-                borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+                borderTop: '1px solid #f1f5f9',
                 paddingTop: '16px'
               }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.75rem', color: '#94a3b8' }}>
-                  <Truck size={16} color="#06b6d4" /> Express Dispatch
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', color: '#475569', fontWeight: 600 }}>
+                  <Truck size={16} color="#2563eb" /> Express Dispatch
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.75rem', color: '#94a3b8' }}>
-                  <ShieldCheck size={16} color="#10b981" /> 100% Genuine Tech
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', color: '#475569', fontWeight: 600 }}>
+                  <ShieldCheck size={16} color="#16a34a" /> 100% Genuine Tech
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.75rem', color: '#94a3b8' }}>
-                  <RotateCcw size={16} color="#8b5cf6" /> 7 Days Replacement
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', color: '#475569', fontWeight: 600 }}>
+                  <RotateCcw size={16} color="#7c3aed" /> 7 Days Replacement
                 </div>
               </div>
             </div>
           </div>
 
           {/* Deep Information Tabs */}
-          <div className="glass-panel" style={{ padding: '32px', marginBottom: '50px' }}>
-            <div style={{ display: 'flex', gap: '16px', borderBottom: '1px solid rgba(255, 255, 255, 0.08)', paddingBottom: '16px', overflowX: 'auto' }}>
+          <div className="glass-panel" style={{ padding: '32px', marginBottom: '50px', background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '24px' }}>
+            <div style={{ display: 'flex', gap: '16px', borderBottom: '1px solid #f1f5f9', paddingBottom: '16px', overflowX: 'auto' }}>
               <button
                 onClick={() => setActiveTab('specs')}
                 style={{
                   background: 'none',
                   border: 'none',
-                  color: activeTab === 'specs' ? '#06b6d4' : '#94a3b8',
-                  fontWeight: 700,
+                  color: activeTab === 'specs' ? '#2563eb' : '#64748b',
+                  fontWeight: 800,
                   fontSize: '1rem',
                   cursor: 'pointer',
                   paddingBottom: '8px',
-                  borderBottom: activeTab === 'specs' ? '2px solid #06b6d4' : 'none'
+                  borderBottom: activeTab === 'specs' ? '2px solid #2563eb' : 'none'
                 }}
               >
                 Technical Specifications
@@ -438,12 +436,12 @@ export default function ProductDetailPage({
                 style={{
                   background: 'none',
                   border: 'none',
-                  color: activeTab === 'highlights' ? '#06b6d4' : '#94a3b8',
-                  fontWeight: 700,
+                  color: activeTab === 'highlights' ? '#2563eb' : '#64748b',
+                  fontWeight: 800,
                   fontSize: '1rem',
                   cursor: 'pointer',
                   paddingBottom: '8px',
-                  borderBottom: activeTab === 'highlights' ? '2px solid #06b6d4' : 'none'
+                  borderBottom: activeTab === 'highlights' ? '2px solid #2563eb' : 'none'
                 }}
               >
                 Key Features
@@ -453,12 +451,12 @@ export default function ProductDetailPage({
                 style={{
                   background: 'none',
                   border: 'none',
-                  color: activeTab === 'warranty' ? '#06b6d4' : '#94a3b8',
-                  fontWeight: 700,
+                  color: activeTab === 'warranty' ? '#2563eb' : '#64748b',
+                  fontWeight: 800,
                   fontSize: '1rem',
                   cursor: 'pointer',
                   paddingBottom: '8px',
-                  borderBottom: activeTab === 'warranty' ? '2px solid #06b6d4' : 'none'
+                  borderBottom: activeTab === 'warranty' ? '2px solid #2563eb' : 'none'
                 }}
               >
                 Warranty & Support
@@ -474,16 +472,16 @@ export default function ProductDetailPage({
                       style={{
                         display: 'flex',
                         flexDirection: 'column',
-                        padding: '12px 16px',
-                        background: 'rgba(0, 0, 0, 0.3)',
-                        borderRadius: '8px',
-                        border: '1px solid rgba(255, 255, 255, 0.04)'
+                        padding: '14px 18px',
+                        background: '#f8fafc',
+                        borderRadius: '12px',
+                        border: '1px solid #e2e8f0'
                       }}
                     >
-                      <span style={{ fontSize: '0.78rem', color: '#64748b', textTransform: 'uppercase', fontWeight: 600 }}>
+                      <span style={{ fontSize: '0.78rem', color: '#64748b', textTransform: 'uppercase', fontWeight: 700 }}>
                         {key}
                       </span>
-                      <span style={{ fontSize: '0.92rem', color: '#f8fafc', fontWeight: 600, marginTop: '2px' }}>
+                      <span style={{ fontSize: '0.94rem', color: '#0f172a', fontWeight: 700, marginTop: '2px' }}>
                         {value}
                       </span>
                     </div>
@@ -494,8 +492,8 @@ export default function ProductDetailPage({
               {activeTab === 'highlights' && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                   {product.highlights.map((h, i) => (
-                    <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '0.95rem', color: '#cbd5e1' }}>
-                      <CheckCircle2 size={18} color="#10b981" style={{ flexShrink: 0, marginTop: '3px' }} />
+                    <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '0.95rem', color: '#334155', fontWeight: 500 }}>
+                      <CheckCircle2 size={18} color="#16a34a" style={{ flexShrink: 0, marginTop: '3px' }} />
                       <span>{h}</span>
                     </div>
                   ))}
@@ -505,14 +503,14 @@ export default function ProductDetailPage({
               {activeTab === 'warranty' && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', maxWidth: '600px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <ShieldCheck size={28} color="#10b981" />
+                    <ShieldCheck size={28} color="#16a34a" />
                     <div>
-                      <h4 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#ffffff' }}>Official Manufacturer Warranty</h4>
-                      <p style={{ fontSize: '0.88rem', color: '#94a3b8' }}>{product.warranty}</p>
+                      <h4 style={{ fontSize: '1.1rem', fontWeight: 800, color: '#0f172a' }}>Official Manufacturer Warranty</h4>
+                      <p style={{ fontSize: '0.88rem', color: '#64748b' }}>{product.warranty}</p>
                     </div>
                   </div>
-                  <p style={{ fontSize: '0.85rem', color: '#94a3b8', lineHeight: 1.6 }}>
-                    All products sold by Evolution Infotech are sourced directly through official brand distribution networks. In case of any hardware issue, you can reach out to our dedicated support desk at <strong>support@evolutioninfotech.in</strong> or visit any authorized service center nationwide.
+                  <p style={{ fontSize: '0.9rem', color: '#475569', lineHeight: 1.6 }}>
+                    All products sold by Evolution Infotech are sourced directly through official brand distribution networks. In case of any hardware issue, you can reach out to our dedicated support desk at <strong>support.evolution2026@gmail.com</strong> or visit any authorized service center nationwide.
                   </p>
                 </div>
               )}
@@ -523,10 +521,10 @@ export default function ProductDetailPage({
           {relatedProducts.length > 0 && (
             <div>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px' }}>
-                <h3 style={{ fontSize: '1.6rem', fontWeight: 800, color: '#ffffff' }}>
+                <h3 style={{ fontSize: '1.6rem', fontWeight: 900, color: '#0f172a' }}>
                   Related Technology Hardware
                 </h3>
-                <Link href={`/products?category=${product.category}`} className="btn-outline-cyan" style={{ fontSize: '0.85rem' }}>
+                <Link href={`/products?category=${product.category}`} className="btn-secondary" style={{ fontSize: '0.85rem' }}>
                   View More in Category
                 </Link>
               </div>

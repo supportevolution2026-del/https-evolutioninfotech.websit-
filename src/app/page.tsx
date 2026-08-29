@@ -32,7 +32,7 @@ export default function HomePage() {
   const dealOfTheDay = products.length > 0 ? products[0] : null;
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#f8fafc' }}>
       <Navbar onOpenQuoteModal={() => setIsQuoteModalOpen(true)} />
 
       <main style={{ flex: 1 }}>
@@ -50,10 +50,10 @@ export default function HomePage() {
           <div className="container">
             <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: '30px' }}>
               <div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.8rem', color: '#06b6d4', fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.8rem', color: '#0284c7', fontWeight: 800, letterSpacing: '1px', textTransform: 'uppercase' }}>
                   <Sparkles size={16} /> TOP RECOMMENDED
                 </div>
-                <h2 style={{ fontSize: '2rem', fontWeight: 800, color: '#ffffff', marginTop: '4px' }}>
+                <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', marginTop: '4px' }}>
                   Featured AI & Enterprise Tech
                 </h2>
               </div>
@@ -80,39 +80,39 @@ export default function HomePage() {
           <section style={{ padding: '30px 0 60px 0' }}>
             <div className="container">
               <div style={{
-                borderRadius: '24px',
-                background: 'radial-gradient(ellipse at 80% 50%, rgba(6, 182, 212, 0.2), rgba(15, 23, 42, 0.95)), #0b1120',
-                border: '1px solid rgba(6, 182, 212, 0.4)',
-                padding: '40px',
+                borderRadius: '28px',
+                background: 'linear-gradient(135deg, #ffffff 0%, #eff6ff 50%, #f0fdf4 100%)',
+                border: '1.5px solid #bfdbfe',
+                padding: '44px 40px',
                 display: 'grid',
                 gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
                 gap: '40px',
                 alignItems: 'center',
-                boxShadow: '0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(6, 182, 212, 0.15)'
+                boxShadow: '0 20px 48px -12px rgba(37, 99, 235, 0.12), 0 4px 16px rgba(0,0,0,0.04)'
               }}>
                 <div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
                     <span className="badge badge-amber" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                       <Flame size={14} /> DEAL OF THE DAY
                     </span>
-                    <span style={{ fontSize: '0.8rem', color: '#10b981', fontWeight: 700 }}>
+                    <span style={{ fontSize: '0.82rem', color: '#15803d', fontWeight: 800 }}>
                       SAVE {dealOfTheDay.discountPercent}% TODAY
                     </span>
                   </div>
 
-                  <h3 style={{ fontSize: 'clamp(1.6rem, 3vw, 2.4rem)', fontWeight: 900, color: '#ffffff', lineHeight: 1.2 }}>
+                  <h3 style={{ fontSize: 'clamp(1.6rem, 3vw, 2.4rem)', fontWeight: 900, color: '#0f172a', lineHeight: 1.2 }}>
                     {dealOfTheDay.name}
                   </h3>
 
-                  <p style={{ fontSize: '0.95rem', color: '#94a3b8', marginTop: '12px', lineHeight: 1.6 }}>
+                  <p style={{ fontSize: '0.98rem', color: '#475569', marginTop: '12px', lineHeight: 1.6 }}>
                     {dealOfTheDay.description}
                   </p>
 
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: '16px', marginTop: '20px' }}>
-                    <span style={{ fontSize: '2.2rem', fontWeight: 900, color: '#38bdf8' }}>
+                    <span style={{ fontSize: '2.4rem', fontWeight: 900, color: '#2563eb' }}>
                       ₹{dealOfTheDay.price.toLocaleString('en-IN')}
                     </span>
-                    <span style={{ fontSize: '1.2rem', color: '#64748b', textDecoration: 'line-through' }}>
+                    <span style={{ fontSize: '1.25rem', color: '#94a3b8', textDecoration: 'line-through' }}>
                       ₹{dealOfTheDay.originalPrice.toLocaleString('en-IN')}
                     </span>
                   </div>
@@ -136,10 +136,11 @@ export default function HomePage() {
                     width: '100%',
                     maxWidth: '440px',
                     height: '300px',
-                    borderRadius: '16px',
+                    borderRadius: '20px',
                     overflow: 'hidden',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
-                    boxShadow: '0 20px 40px rgba(0, 0, 0, 0.8)'
+                    border: '1px solid #e2e8f0',
+                    boxShadow: '0 20px 40px -10px rgba(15, 23, 42, 0.15)',
+                    background: '#ffffff'
                   }}>
                     <img
                       src={dealOfTheDay.image}
@@ -158,10 +159,10 @@ export default function HomePage() {
           <div className="container">
             <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: '30px' }}>
               <div>
-                <div style={{ fontSize: '0.8rem', color: '#10b981', fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase' }}>
+                <div style={{ fontSize: '0.8rem', color: '#16a34a', fontWeight: 800, letterSpacing: '1px', textTransform: 'uppercase' }}>
                   POPULAR WITH DEVELOPERS & BUSINESSES
                 </div>
-                <h2 style={{ fontSize: '2rem', fontWeight: 800, color: '#ffffff', marginTop: '4px' }}>
+                <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', marginTop: '4px' }}>
                   Best Selling Hardware & Components
                 </h2>
               </div>
@@ -186,8 +187,8 @@ export default function HomePage() {
         {/* Enterprise Services Callout */}
         <section style={{
           padding: '60px 0',
-          background: 'linear-gradient(180deg, rgba(8, 12, 20, 0) 0%, rgba(15, 23, 42, 0.6) 100%)',
-          borderTop: '1px solid rgba(255, 255, 255, 0.05)'
+          background: 'linear-gradient(180deg, #f8fafc 0%, #ffffff 100%)',
+          borderTop: '1px solid #e2e8f0'
         }}>
           <div className="container">
             <div className="glass-panel" style={{
@@ -196,29 +197,30 @@ export default function HomePage() {
               gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
               gap: '30px',
               alignItems: 'center',
-              border: '1px solid rgba(6, 182, 212, 0.25)'
+              background: '#ffffff',
+              border: '1.5px solid #bfdbfe'
             }}>
               <div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#06b6d4', fontWeight: 700, fontSize: '0.82rem', textTransform: 'uppercase' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#0284c7', fontWeight: 800, fontSize: '0.82rem', textTransform: 'uppercase' }}>
                   <Server size={18} /> ENTERPRISE IT SOLUTIONS
                 </div>
-                <h3 style={{ fontSize: '1.8rem', fontWeight: 800, color: '#f8fafc', marginTop: '8px', lineHeight: 1.3 }}>
+                <h3 style={{ fontSize: '1.8rem', fontWeight: 900, color: '#0f172a', marginTop: '8px', lineHeight: 1.3 }}>
                   Need Custom Enterprise Hardware or Turnkey IT Setup?
                 </h3>
-                <p style={{ color: '#94a3b8', fontSize: '0.92rem', marginTop: '10px', lineHeight: 1.6 }}>
+                <p style={{ color: '#475569', fontSize: '0.94rem', marginTop: '10px', lineHeight: 1.6 }}>
                   Evolution Infotech deploys end-to-end datacenter infrastructure, Cisco networking, multi-GPU AI servers, and Microsoft cloud licenses for businesses across India.
                 </p>
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'flex-start' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#cbd5e1', fontSize: '0.9rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#334155', fontSize: '0.92rem', fontWeight: 600 }}>
                   <ShieldCheck size={18} color="#10b981" /> 100% Tax Deductible GST Invoicing
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#cbd5e1', fontSize: '0.9rem' }}>
-                  <Zap size={18} color="#06b6d4" /> Custom Rack & Blade Server Assembly
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#334155', fontSize: '0.92rem', fontWeight: 600 }}>
+                  <Zap size={18} color="#0284c7" /> Custom Rack & Blade Server Assembly
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#cbd5e1', fontSize: '0.9rem' }}>
-                  <Code2 size={18} color="#8b5cf6" /> Annual IT Maintenance (AMC) Contracts
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#334155', fontSize: '0.92rem', fontWeight: 600 }}>
+                  <Code2 size={18} color="#7c3aed" /> Annual IT Maintenance (AMC) Contracts
                 </div>
 
                 <div style={{ display: 'flex', gap: '12px', marginTop: '10px' }}>

@@ -8,15 +8,8 @@ import Footer from '@/components/Footer';
 import { OrderDetails } from '@/types';
 import {
   CheckCircle2,
-  Package,
   Truck,
-  MapPin,
-  FileText,
-  Printer,
-  ArrowRight,
-  ShieldCheck,
-  Building2,
-  Sparkles
+  Printer
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
@@ -26,7 +19,6 @@ function OrderSuccessContent() {
   const [order, setOrder] = useState<OrderDetails | null>(null);
 
   useEffect(() => {
-    // Fire celebratory confetti
     try {
       confetti({
         particleCount: 100,
@@ -37,7 +29,6 @@ function OrderSuccessContent() {
       console.log('Confetti not available', e);
     }
 
-    // Retrieve order
     try {
       const saved = localStorage.getItem('evo_last_order');
       if (saved) {
@@ -55,45 +46,46 @@ function OrderSuccessContent() {
   };
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#f8fafc' }}>
       <Navbar />
 
       <main style={{ flex: 1, padding: '40px 0 60px 0' }}>
         <div className="container" style={{ maxWidth: '850px' }}>
           {/* Success Banner */}
           <div className="glass-panel" style={{
-            padding: '36px',
+            padding: '40px',
             textAlign: 'center',
             marginBottom: '30px',
-            border: '1px solid rgba(16, 185, 129, 0.4)',
-            background: 'radial-gradient(ellipse at center, rgba(16, 185, 129, 0.1), rgba(15, 23, 42, 0.9))'
+            border: '1.5px solid #a7f3d0',
+            background: 'linear-gradient(135deg, #ffffff 0%, #ecfdf5 100%)',
+            borderRadius: '24px'
           }}>
             <div style={{
               width: '72px',
               height: '72px',
               borderRadius: '50%',
-              background: 'rgba(16, 185, 129, 0.2)',
+              background: '#dcfce7',
               border: '2px solid #10b981',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               color: '#10b981',
               margin: '0 auto 16px auto',
-              boxShadow: '0 0 25px rgba(16, 185, 129, 0.4)'
+              boxShadow: '0 8px 20px rgba(16, 185, 129, 0.25)'
             }}>
               <CheckCircle2 size={40} />
             </div>
 
-            <div style={{ fontSize: '0.85rem', color: '#10b981', fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase' }}>
-              PAYMENT & ORDER CONFIRMED
+            <div style={{ fontSize: '0.85rem', color: '#15803d', fontWeight: 800, letterSpacing: '1px', textTransform: 'uppercase' }}>
+              ORDER DISPATCHED ON WHATSAPP
             </div>
 
-            <h1 style={{ fontSize: '2rem', fontWeight: 900, color: '#ffffff', marginTop: '6px' }}>
+            <h1 style={{ fontSize: '2.2rem', fontWeight: 900, color: '#0f172a', marginTop: '6px' }}>
               Thank you for your order!
             </h1>
 
-            <p style={{ color: '#94a3b8', fontSize: '0.95rem', marginTop: '8px', maxWidth: '520px', margin: '8px auto 0 auto' }}>
-              Your order <strong style={{ color: '#06b6d4' }}>#{order?.orderId || orderId || 'EVO-892401'}</strong> has been registered with Evolution Infotech. A confirmation email and tax invoice have been dispatched.
+            <p style={{ color: '#475569', fontSize: '0.95rem', marginTop: '8px', maxWidth: '520px', margin: '8px auto 0 auto' }}>
+              Your order <strong style={{ color: '#2563eb' }}>#{order?.orderId || orderId || 'EVO-892401'}</strong> has been registered with Evolution Infotech. Our dispatch manager will verify and confirm tracking via WhatsApp.
             </p>
 
             <div style={{ display: 'flex', justifyContent: 'center', gap: '14px', marginTop: '24px' }}>
@@ -107,8 +99,8 @@ function OrderSuccessContent() {
           </div>
 
           {/* Tracking Progress Timeline */}
-          <div className="glass-panel" style={{ padding: '28px', marginBottom: '30px' }}>
-            <h3 style={{ fontSize: '1.1rem', fontWeight: 800, color: '#ffffff', marginBottom: '20px' }}>
+          <div className="glass-panel" style={{ padding: '28px', marginBottom: '30px', background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '24px' }}>
+            <h3 style={{ fontSize: '1.15rem', fontWeight: 900, color: '#0f172a', marginBottom: '20px' }}>
               Consignment Shipment Progress
             </h3>
 
@@ -124,8 +116,8 @@ function OrderSuccessContent() {
                     width: '36px',
                     height: '36px',
                     borderRadius: '50%',
-                    background: step.status === 'done' || step.status === 'active' ? '#06b6d4' : 'rgba(255, 255, 255, 0.08)',
-                    color: step.status === 'done' || step.status === 'active' ? '#080c14' : '#64748b',
+                    background: step.status === 'done' || step.status === 'active' ? '#2563eb' : '#f1f5f9',
+                    color: step.status === 'done' || step.status === 'active' ? '#ffffff' : '#64748b',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -134,84 +126,21 @@ function OrderSuccessContent() {
                   }}>
                     {idx + 1}
                   </div>
-                  <div style={{ fontSize: '0.82rem', fontWeight: 700, color: step.status === 'pending' ? '#64748b' : '#f8fafc' }}>
+                  <div style={{ fontSize: '0.82rem', fontWeight: 700, color: step.status === 'pending' ? '#64748b' : '#0f172a' }}>
                     {step.label}
                   </div>
-                  <div style={{ fontSize: '0.72rem', color: '#06b6d4' }}>
+                  <div style={{ fontSize: '0.74rem', color: '#2563eb', fontWeight: 700 }}>
                     {step.date}
                   </div>
                 </div>
               ))}
             </div>
 
-            <div style={{ marginTop: '20px', paddingTop: '16px', borderTop: '1px solid rgba(255, 255, 255, 0.08)', display: 'flex', justifyContent: 'space-between', fontSize: '0.82rem', color: '#94a3b8' }}>
+            <div style={{ marginTop: '20px', paddingTop: '16px', borderTop: '1px solid #f1f5f9', display: 'flex', justifyContent: 'space-between', fontSize: '0.84rem', color: '#475569' }}>
               <span>Courier Partner: <strong>BlueDart / Delhivery Air Cargo</strong></span>
-              <span>AWB Airway Bill: <strong style={{ color: '#38bdf8' }}>{order?.trackingNumber || 'IND-EXPRESS-928412'}</strong></span>
+              <span>AWB Airway Bill: <strong style={{ color: '#2563eb' }}>{order?.trackingNumber || 'IND-EXPRESS-928412'}</strong></span>
             </div>
           </div>
-
-          {/* Invoice Summary Box */}
-          {order && (
-            <div className="glass-panel" style={{ padding: '30px' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(255, 255, 255, 0.08)', paddingBottom: '16px', marginBottom: '20px' }}>
-                <div>
-                  <div style={{ fontSize: '0.8rem', color: '#06b6d4', fontWeight: 700 }}>TAX INVOICE DETAILS</div>
-                  <div style={{ fontSize: '1.2rem', fontWeight: 800, color: '#ffffff' }}>Order #{order.orderId}</div>
-                </div>
-                <div style={{ textAlign: 'right', fontSize: '0.82rem', color: '#94a3b8' }}>
-                  <div>Date: {order.date}</div>
-                  <div>Payment: {order.paymentMethod} (Paid)</div>
-                </div>
-              </div>
-
-              {/* Items */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '20px' }}>
-                {order.items.map((item) => (
-                  <div key={item.product.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.9rem' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                      <img src={item.product.image} alt="" style={{ width: '45px', height: '45px', borderRadius: '6px', objectFit: 'cover' }} />
-                      <div>
-                        <div style={{ color: '#ffffff', fontWeight: 600 }}>{item.product.name}</div>
-                        <div style={{ fontSize: '0.78rem', color: '#64748b' }}>Qty: {item.quantity} &bull; {item.product.warranty}</div>
-                      </div>
-                    </div>
-                    <div style={{ fontWeight: 700, color: '#38bdf8' }}>
-                      ₹{(item.product.price * item.quantity).toLocaleString('en-IN')}
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Breakdown */}
-              <div style={{ borderTop: '1px solid rgba(255, 255, 255, 0.08)', paddingTop: '16px', display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '0.85rem', color: '#94a3b8' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                  <span>Subtotal:</span>
-                  <span>₹{order.subtotal.toLocaleString('en-IN')}</span>
-                </div>
-                {order.discount > 0 && (
-                  <div style={{ display: 'flex', justifyContent: 'space-between', color: '#34d399' }}>
-                    <span>Discount:</span>
-                    <span>-₹{order.discount.toLocaleString('en-IN')}</span>
-                  </div>
-                )}
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                  <span>GST (18% IT Tax):</span>
-                  <span>₹{order.tax.toLocaleString('en-IN')}</span>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '1.2rem', fontWeight: 800, color: '#ffffff', borderTop: '1px solid rgba(255, 255, 255, 0.1)', paddingTop: '10px', marginTop: '6px' }}>
-                  <span>Total Amount Paid:</span>
-                  <span className="text-gradient">₹{order.total.toLocaleString('en-IN')}</span>
-                </div>
-              </div>
-
-              {/* Delivery Address */}
-              <div style={{ marginTop: '20px', padding: '16px', background: 'rgba(0, 0, 0, 0.3)', borderRadius: '10px', fontSize: '0.85rem', color: '#cbd5e1' }}>
-                <div style={{ fontWeight: 700, color: '#06b6d4', marginBottom: '4px' }}>Shipping Address:</div>
-                <div>{order.customer.fullName} &bull; {order.customer.phone}</div>
-                <div>{order.customer.address}, {order.customer.city}, {order.customer.state} - {order.customer.pincode}</div>
-              </div>
-            </div>
-          )}
 
           <div style={{ textAlign: 'center', marginTop: '30px' }}>
             <Link href="/" className="btn-secondary" style={{ padding: '12px 24px' }}>
@@ -228,7 +157,7 @@ function OrderSuccessContent() {
 
 export default function OrderSuccessPage() {
   return (
-    <Suspense fallback={<div style={{ padding: '60px', textAlign: 'center', color: '#06b6d4' }}>Loading Order Status...</div>}>
+    <Suspense fallback={<div style={{ padding: '60px', textAlign: 'center', color: '#2563eb' }}>Loading Order Status...</div>}>
       <OrderSuccessContent />
     </Suspense>
   );

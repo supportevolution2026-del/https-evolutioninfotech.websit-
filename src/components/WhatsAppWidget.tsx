@@ -28,11 +28,11 @@ export default function WhatsAppWidget() {
         className="desktop-only"
         onClick={handleOpenWhatsApp}
         style={{
-          background: 'rgba(8, 12, 20, 0.92)',
-          border: '1px solid rgba(16, 185, 129, 0.4)',
-          borderRadius: '12px',
+          background: '#ffffff',
+          border: '1.5px solid #bbf7d0',
+          borderRadius: '14px',
           padding: '8px 14px',
-          boxShadow: '0 10px 25px rgba(0, 0, 0, 0.7)',
+          boxShadow: '0 8px 24px -4px rgba(16, 185, 129, 0.2), 0 2px 6px rgba(0,0,0,0.04)',
           cursor: 'pointer',
           display: 'flex',
           flexDirection: 'column',
@@ -40,11 +40,11 @@ export default function WhatsAppWidget() {
           backdropFilter: 'blur(10px)'
         }}
       >
-        <span style={{ fontSize: '0.8rem', fontWeight: 800, color: '#ffffff' }}>
+        <span style={{ fontSize: '0.82rem', fontWeight: 800, color: '#0f172a' }}>
           Chat with Us Live
         </span>
-        <span style={{ fontSize: '0.7rem', color: '#34d399', display: 'flex', alignItems: 'center', gap: '4px' }}>
-          <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#10b981', display: 'inline-block' }} />
+        <span style={{ fontSize: '0.72rem', color: '#16a34a', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '4px' }}>
+          <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#16a34a', display: 'inline-block' }} />
           Online on WhatsApp
         </span>
       </div>
@@ -55,13 +55,13 @@ export default function WhatsAppWidget() {
         aria-label="Direct WhatsApp Chat"
         className="sonar-pulse"
         style={{
-          width: '58px',
-          height: '58px',
+          width: '56px',
+          height: '56px',
           borderRadius: '50%',
           background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
           color: '#ffffff',
-          border: '2px solid rgba(255, 255, 255, 0.2)',
-          boxShadow: '0 8px 30px rgba(16, 185, 129, 0.5), 0 0 20px rgba(16, 185, 129, 0.35)',
+          border: '2px solid #ffffff',
+          boxShadow: '0 8px 25px rgba(16, 185, 129, 0.45)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -70,11 +70,11 @@ export default function WhatsAppWidget() {
         }}
         onMouseEnter={(e) => {
           e.currentTarget.style.transform = 'scale(1.1) translateY(-3px)';
-          e.currentTarget.style.boxShadow = '0 12px 35px rgba(16, 185, 129, 0.7)';
+          e.currentTarget.style.boxShadow = '0 12px 30px rgba(16, 185, 129, 0.6)';
         }}
         onMouseLeave={(e) => {
           e.currentTarget.style.transform = 'scale(1) translateY(0)';
-          e.currentTarget.style.boxShadow = '0 8px 30px rgba(16, 185, 129, 0.5), 0 0 20px rgba(16, 185, 129, 0.35)';
+          e.currentTarget.style.boxShadow = '0 8px 25px rgba(16, 185, 129, 0.45)';
         }}
       >
         <MessageCircle size={28} />

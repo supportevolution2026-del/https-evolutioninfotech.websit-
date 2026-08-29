@@ -44,16 +44,16 @@ export default function CartPage() {
   };
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#f8fafc' }}>
       <Navbar />
 
       <main style={{ flex: 1, padding: '40px 0 60px 0' }}>
         <div className="container">
           <div style={{ marginBottom: '28px' }}>
-            <div style={{ fontSize: '0.8rem', color: '#06b6d4', fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase' }}>
+            <div style={{ fontSize: '0.78rem', color: '#0284c7', fontWeight: 800, letterSpacing: '1px', textTransform: 'uppercase' }}>
               CHECKOUT PREPARATION
             </div>
-            <h1 style={{ fontSize: '2.2rem', fontWeight: 900, color: '#ffffff', marginTop: '4px' }}>
+            <h1 style={{ fontSize: '2.2rem', fontWeight: 900, color: '#0f172a', marginTop: '4px' }}>
               Your Shopping Cart ({cart.length} Items)
             </h1>
           </div>
@@ -65,14 +65,16 @@ export default function CartPage() {
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-              gap: '16px'
+              gap: '16px',
+              background: '#ffffff',
+              border: '1px solid #e2e8f0'
             }}>
               <div style={{
                 width: '80px',
                 height: '80px',
                 borderRadius: '50%',
-                background: 'rgba(255, 255, 255, 0.03)',
-                border: '1px dashed rgba(255, 255, 255, 0.1)',
+                background: '#f1f5f9',
+                border: '1px dashed #cbd5e1',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -80,8 +82,8 @@ export default function CartPage() {
               }}>
                 <ShoppingBag size={36} />
               </div>
-              <h2 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#ffffff' }}>Your cart is currently empty</h2>
-              <p style={{ fontSize: '0.9rem', color: '#94a3b8', maxWidth: '380px' }}>
+              <h2 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#0f172a' }}>Your cart is currently empty</h2>
+              <p style={{ fontSize: '0.9rem', color: '#64748b', maxWidth: '380px' }}>
                 Discover ultra-performance computing hardware, RTX GPUs, server systems, and cloud software.
               </p>
               <Link href="/products" className="btn-primary" style={{ marginTop: '10px' }}>
@@ -96,22 +98,22 @@ export default function CartPage() {
               alignItems: 'start'
             }}>
               {/* Items List */}
-              <div className="glass-panel" style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+              <div className="glass-panel" style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '20px', background: '#ffffff', border: '1px solid #e2e8f0' }}>
                 <div style={{
                   display: 'flex',
                   alignItems: 'center',
                   gap: '8px',
                   padding: '12px 16px',
-                  background: 'rgba(6, 182, 212, 0.08)',
-                  borderRadius: '10px',
-                  border: '1px solid rgba(6, 182, 212, 0.2)',
-                  fontSize: '0.85rem',
-                  color: '#38bdf8'
+                  background: '#f0fdf4',
+                  borderRadius: '12px',
+                  border: '1px solid #bbf7d0',
+                  fontSize: '0.88rem',
+                  color: '#15803d'
                 }}>
                   <Truck size={18} />
                   {subtotal >= 5000 ? (
                     <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                      <Sparkles size={16} color="#06b6d4" />
+                      <Sparkles size={16} color="#16a34a" />
                       <span>Your order qualifies for <strong>FREE Pan-India Express Delivery</strong>!</span>
                     </span>
                   ) : (
@@ -127,19 +129,19 @@ export default function CartPage() {
                       gridTemplateColumns: '90px 1fr auto',
                       gap: '20px',
                       padding: '16px 0',
-                      borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
+                      borderBottom: '1px solid #f1f5f9',
                       alignItems: 'center'
                     }}
                   >
                     <img
                       src={item.product.image}
                       alt={item.product.name}
-                      style={{ width: '90px', height: '90px', objectFit: 'cover', borderRadius: '10px', background: '#0b1120' }}
+                      style={{ width: '90px', height: '90px', objectFit: 'cover', borderRadius: '12px', background: '#f8fafc', border: '1px solid #e2e8f0' }}
                     />
 
                     <div>
-                      <div style={{ fontSize: '0.75rem', color: '#06b6d4', fontWeight: 600 }}>{item.product.brand}</div>
-                      <Link href={`/products/${item.product.slug}`} style={{ color: '#ffffff', textDecoration: 'none', fontWeight: 700, fontSize: '1rem' }}>
+                      <div style={{ fontSize: '0.75rem', color: '#2563eb', fontWeight: 700, textTransform: 'uppercase' }}>{item.product.brand}</div>
+                      <Link href={`/products/${item.product.slug}`} style={{ color: '#0f172a', textDecoration: 'none', fontWeight: 800, fontSize: '1rem' }}>
                         {item.product.name}
                       </Link>
                       <div style={{ fontSize: '0.78rem', color: '#64748b', marginTop: '2px' }}>
@@ -150,21 +152,21 @@ export default function CartPage() {
                         <div style={{
                           display: 'flex',
                           alignItems: 'center',
-                          background: 'rgba(0, 0, 0, 0.4)',
+                          background: '#f1f5f9',
                           borderRadius: '8px',
-                          border: '1px solid rgba(255, 255, 255, 0.1)',
+                          border: '1px solid #e2e8f0',
                           padding: '2px'
                         }}>
                           <button
                             onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
-                            style={{ background: 'none', border: 'none', color: '#fff', padding: '6px 10px', cursor: 'pointer' }}
+                            style={{ background: 'none', border: 'none', color: '#0f172a', padding: '6px 10px', cursor: 'pointer', fontWeight: 700 }}
                           >
                             <Minus size={14} />
                           </button>
-                          <span style={{ padding: '0 12px', fontWeight: 700, fontSize: '0.9rem' }}>{item.quantity}</span>
+                          <span style={{ padding: '0 12px', fontWeight: 800, fontSize: '0.9rem', color: '#0f172a' }}>{item.quantity}</span>
                           <button
                             onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
-                            style={{ background: 'none', border: 'none', color: '#fff', padding: '6px 10px', cursor: 'pointer' }}
+                            style={{ background: 'none', border: 'none', color: '#0f172a', padding: '6px 10px', cursor: 'pointer', fontWeight: 700 }}
                           >
                             <Plus size={14} />
                           </button>
@@ -189,10 +191,10 @@ export default function CartPage() {
                     </div>
 
                     <div style={{ textAlign: 'right' }}>
-                      <div style={{ fontSize: '1.2rem', fontWeight: 800, color: '#ffffff' }}>
+                      <div style={{ fontSize: '1.25rem', fontWeight: 900, color: '#0f172a' }}>
                         ₹{(item.product.price * item.quantity).toLocaleString('en-IN')}
                       </div>
-                      <div style={{ fontSize: '0.78rem', color: '#64748b', marginTop: '2px' }}>
+                      <div style={{ fontSize: '0.78rem', color: '#94a3b8', marginTop: '2px' }}>
                         ₹{item.product.price.toLocaleString('en-IN')} each
                       </div>
                     </div>
@@ -200,21 +202,21 @@ export default function CartPage() {
                 ))}
 
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '10px' }}>
-                  <Link href="/products" style={{ color: '#38bdf8', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.9rem', fontWeight: 600 }}>
+                  <Link href="/products" style={{ color: '#2563eb', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.9rem', fontWeight: 700 }}>
                     <ArrowLeft size={16} /> Continue Shopping
                   </Link>
                 </div>
               </div>
 
               {/* Order Summary Column */}
-              <div className="glass-panel" style={{ padding: '28px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#ffffff' }}>
+              <div className="glass-panel" style={{ padding: '28px', display: 'flex', flexDirection: 'column', gap: '20px', background: '#ffffff', border: '1px solid #e2e8f0' }}>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 900, color: '#0f172a' }}>
                   Order Summary
                 </h3>
 
                 {/* Promo Code Form */}
                 <form onSubmit={handleApplyCoupon}>
-                  <label style={{ fontSize: '0.78rem', fontWeight: 600, color: '#94a3b8', marginBottom: '6px', display: 'block' }}>
+                  <label style={{ fontSize: '0.78rem', fontWeight: 700, color: '#475569', marginBottom: '6px', display: 'block' }}>
                     Discount / Promotional Code
                   </label>
                   {appliedCoupon ? (
@@ -222,14 +224,14 @@ export default function CartPage() {
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'space-between',
-                      background: 'rgba(16, 185, 129, 0.15)',
-                      border: '1px solid rgba(16, 185, 129, 0.3)',
+                      background: '#ecfdf5',
+                      border: '1px solid #a7f3d0',
                       padding: '10px 14px',
-                      borderRadius: '8px',
+                      borderRadius: '10px',
                       fontSize: '0.85rem',
-                      color: '#34d399'
+                      color: '#15803d'
                     }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontWeight: 700 }}>
                         <Tag size={16} /> {appliedCoupon} (-₹{discount.toLocaleString('en-IN')})
                       </div>
                       <button
@@ -258,38 +260,38 @@ export default function CartPage() {
                 </form>
 
                 {/* Breakdown */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.9rem', color: '#94a3b8' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.9rem', color: '#64748b' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                     <span>Subtotal</span>
-                    <span style={{ color: '#f8fafc' }}>₹{subtotal.toLocaleString('en-IN')}</span>
+                    <span style={{ color: '#0f172a', fontWeight: 700 }}>₹{subtotal.toLocaleString('en-IN')}</span>
                   </div>
                   {discount > 0 && (
-                    <div style={{ display: 'flex', justifyContent: 'space-between', color: '#34d399' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', color: '#16a34a', fontWeight: 700 }}>
                       <span>Discount Savings</span>
                       <span>-₹{discount.toLocaleString('en-IN')}</span>
                     </div>
                   )}
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                     <span>GST (18% IT Tax)</span>
-                    <span style={{ color: '#f8fafc' }}>₹{tax.toLocaleString('en-IN')}</span>
+                    <span style={{ color: '#0f172a' }}>₹{tax.toLocaleString('en-IN')}</span>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                     <span>Pan-India Shipping</span>
-                    <span style={{ color: shipping === 0 ? '#34d399' : '#f8fafc' }}>
+                    <span style={{ color: shipping === 0 ? '#16a34a' : '#0f172a', fontWeight: shipping === 0 ? 800 : 600 }}>
                       {shipping === 0 ? 'FREE' : `₹${shipping}`}
                     </span>
                   </div>
 
                   <div style={{
-                    borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+                    borderTop: '1px solid #f1f5f9',
                     paddingTop: '14px',
                     marginTop: '6px',
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'baseline'
                   }}>
-                    <span style={{ fontSize: '1.1rem', fontWeight: 800, color: '#ffffff' }}>Grand Total</span>
-                    <span style={{ fontSize: '1.6rem', fontWeight: 900 }} className="text-gradient">
+                    <span style={{ fontSize: '1.1rem', fontWeight: 900, color: '#0f172a' }}>Grand Total</span>
+                    <span style={{ fontSize: '1.6rem', fontWeight: 900, color: '#2563eb' }}>
                       ₹{total.toLocaleString('en-IN')}
                     </span>
                   </div>

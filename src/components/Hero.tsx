@@ -12,7 +12,8 @@ import {
   Cpu,
   ChevronLeft,
   ChevronRight,
-  Headphones
+  Headphones,
+  Sparkles
 } from 'lucide-react';
 
 export default function Hero({ onOpenQuoteModal }: { onOpenQuoteModal?: () => void }) {
@@ -28,17 +29,17 @@ export default function Hero({ onOpenQuoteModal }: { onOpenQuoteModal?: () => vo
   const slide = heroSlides[currentSlide];
 
   return (
-    <section style={{ position: 'relative', overflow: 'hidden', padding: '30px 0 50px 0' }}>
-      {/* Glow Ambient Lights */}
+    <section style={{ position: 'relative', overflow: 'hidden', padding: '24px 0 40px 0' }}>
+      {/* Subtle Ambient Radial Lighting */}
       <div style={{
         position: 'absolute',
         top: '-100px',
-        left: '15%',
-        width: '500px',
-        height: '500px',
+        left: '20%',
+        width: '550px',
+        height: '550px',
         borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(6, 182, 212, 0.15), transparent 70%)',
-        filter: 'blur(60px)',
+        background: 'radial-gradient(circle, rgba(14, 165, 233, 0.12), transparent 70%)',
+        filter: 'blur(50px)',
         zIndex: 0,
         pointerEvents: 'none'
       }} />
@@ -46,12 +47,12 @@ export default function Hero({ onOpenQuoteModal }: { onOpenQuoteModal?: () => vo
       <div style={{
         position: 'absolute',
         bottom: '0',
-        right: '10%',
-        width: '450px',
-        height: '450px',
+        right: '15%',
+        width: '500px',
+        height: '500px',
         borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(139, 92, 246, 0.15), transparent 70%)',
-        filter: 'blur(60px)',
+        background: 'radial-gradient(circle, rgba(139, 92, 246, 0.1), transparent 70%)',
+        filter: 'blur(50px)',
         zIndex: 0,
         pointerEvents: 'none'
       }} />
@@ -60,12 +61,12 @@ export default function Hero({ onOpenQuoteModal }: { onOpenQuoteModal?: () => vo
         {/* Main Hero Card */}
         <div style={{
           position: 'relative',
-          borderRadius: '24px',
+          borderRadius: '28px',
           overflow: 'hidden',
-          background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(8, 12, 20, 0.95) 100%)',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
-          boxShadow: '0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 30px rgba(6, 182, 212, 0.15)',
-          padding: '40px 30px',
+          background: 'linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #f0f9ff 100%)',
+          border: '1px solid #e2e8f0',
+          boxShadow: '0 20px 48px -12px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(0,0,0,0.05)',
+          padding: '44px 36px',
           minHeight: '480px',
           display: 'flex',
           flexDirection: 'column',
@@ -78,29 +79,29 @@ export default function Hero({ onOpenQuoteModal }: { onOpenQuoteModal?: () => vo
             alignItems: 'center'
           }}>
             {/* Left Content */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <span className="badge badge-cyan" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                <span className="badge badge-cyan" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.78rem' }}>
                   <Zap size={14} /> {slide.badge}
                 </span>
-                <span style={{ fontSize: '0.78rem', color: '#94a3b8', fontWeight: 600 }}>
+                <span style={{ fontSize: '0.8rem', color: '#64748b', fontWeight: 700, letterSpacing: '0.5px' }}>
                   EVOLUTION INFOTECH PVT LTD
                 </span>
               </div>
 
               <h1 style={{
-                fontSize: 'clamp(2rem, 4vw, 3.2rem)',
+                fontSize: 'clamp(2.1rem, 4.2vw, 3.4rem)',
                 fontWeight: 900,
                 lineHeight: 1.15,
                 letterSpacing: '-1px',
-                color: '#ffffff'
+                color: '#0f172a'
               }}>
                 {slide.title}
               </h1>
 
               <p style={{
                 fontSize: '1.05rem',
-                color: '#94a3b8',
+                color: '#475569',
                 lineHeight: 1.6,
                 maxWidth: '520px'
               }}>
@@ -133,12 +134,13 @@ export default function Hero({ onOpenQuoteModal }: { onOpenQuoteModal?: () => vo
               <div style={{
                 position: 'relative',
                 width: '100%',
-                maxWidth: '460px',
+                maxWidth: '480px',
                 height: '320px',
-                borderRadius: '18px',
+                borderRadius: '20px',
                 overflow: 'hidden',
-                boxShadow: '0 20px 40px rgba(0, 0, 0, 0.7)',
-                border: '1px solid rgba(6, 182, 212, 0.3)'
+                boxShadow: '0 20px 40px -10px rgba(15, 23, 42, 0.15)',
+                border: '1px solid #e2e8f0',
+                background: '#ffffff'
               }}>
                 <img
                   src={slide.image}
@@ -148,7 +150,7 @@ export default function Hero({ onOpenQuoteModal }: { onOpenQuoteModal?: () => vo
                 <div style={{
                   position: 'absolute',
                   inset: 0,
-                  background: 'linear-gradient(to top, rgba(8, 12, 20, 0.8) 0%, transparent 60%)'
+                  background: 'linear-gradient(to top, rgba(15, 23, 42, 0.25) 0%, transparent 60%)'
                 }} />
               </div>
             </div>
@@ -159,9 +161,9 @@ export default function Hero({ onOpenQuoteModal }: { onOpenQuoteModal?: () => vo
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            marginTop: '30px',
+            marginTop: '32px',
             paddingTop: '20px',
-            borderTop: '1px solid rgba(255, 255, 255, 0.06)'
+            borderTop: '1px solid #e2e8f0'
           }}>
             <div style={{ display: 'flex', gap: '8px' }}>
               {heroSlides.map((_, idx) => (
@@ -172,7 +174,7 @@ export default function Hero({ onOpenQuoteModal }: { onOpenQuoteModal?: () => vo
                     width: currentSlide === idx ? '32px' : '10px',
                     height: '8px',
                     borderRadius: '4px',
-                    backgroundColor: currentSlide === idx ? '#06b6d4' : 'rgba(255, 255, 255, 0.2)',
+                    backgroundColor: currentSlide === idx ? '#2563eb' : '#cbd5e1',
                     border: 'none',
                     cursor: 'pointer',
                     transition: 'all 0.3s ease'
@@ -186,16 +188,26 @@ export default function Hero({ onOpenQuoteModal }: { onOpenQuoteModal?: () => vo
               <button
                 onClick={() => setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)}
                 style={{
-                  width: '36px',
-                  height: '36px',
+                  width: '38px',
+                  height: '38px',
                   borderRadius: '50%',
-                  background: 'rgba(255, 255, 255, 0.05)',
-                  border: '1px solid rgba(255, 255, 255, 0.1)',
-                  color: '#fff',
+                  background: '#ffffff',
+                  border: '1px solid #e2e8f0',
+                  color: '#0f172a',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  cursor: 'pointer'
+                  cursor: 'pointer',
+                  boxShadow: 'var(--shadow-sm)',
+                  transition: 'all 0.2s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = '#2563eb';
+                  e.currentTarget.style.color = '#2563eb';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = '#e2e8f0';
+                  e.currentTarget.style.color = '#0f172a';
                 }}
               >
                 <ChevronLeft size={18} />
@@ -203,16 +215,26 @@ export default function Hero({ onOpenQuoteModal }: { onOpenQuoteModal?: () => vo
               <button
                 onClick={() => setCurrentSlide((prev) => (prev + 1) % heroSlides.length)}
                 style={{
-                  width: '36px',
-                  height: '36px',
+                  width: '38px',
+                  height: '38px',
                   borderRadius: '50%',
-                  background: 'rgba(255, 255, 255, 0.05)',
-                  border: '1px solid rgba(255, 255, 255, 0.1)',
-                  color: '#fff',
+                  background: '#ffffff',
+                  border: '1px solid #e2e8f0',
+                  color: '#0f172a',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  cursor: 'pointer'
+                  cursor: 'pointer',
+                  boxShadow: 'var(--shadow-sm)',
+                  transition: 'all 0.2s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = '#2563eb';
+                  e.currentTarget.style.color = '#2563eb';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = '#e2e8f0';
+                  e.currentTarget.style.color = '#0f172a';
                 }}
               >
                 <ChevronRight size={18} />
@@ -226,45 +248,45 @@ export default function Hero({ onOpenQuoteModal }: { onOpenQuoteModal?: () => vo
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
           gap: '16px',
-          marginTop: '24px'
+          marginTop: '20px'
         }}>
           <div className="glass-panel" style={{ padding: '16px 20px', display: 'flex', alignItems: 'center', gap: '14px' }}>
-            <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: 'rgba(6, 182, 212, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#06b6d4' }}>
+            <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: '#eff6ff', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#2563eb' }}>
               <Truck size={22} />
             </div>
             <div>
-              <div style={{ fontSize: '0.9rem', fontWeight: 700, color: '#f8fafc' }}>Express Delivery</div>
-              <div style={{ fontSize: '0.78rem', color: '#94a3b8' }}>Free above ₹5,000 pan-India</div>
+              <div style={{ fontSize: '0.92rem', fontWeight: 800, color: '#0f172a' }}>Express Delivery</div>
+              <div style={{ fontSize: '0.78rem', color: '#64748b' }}>Free above ₹5,000 pan-India</div>
             </div>
           </div>
 
           <div className="glass-panel" style={{ padding: '16px 20px', display: 'flex', alignItems: 'center', gap: '14px' }}>
-            <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: 'rgba(16, 185, 129, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#10b981' }}>
+            <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: '#ecfdf5', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#10b981' }}>
               <ShieldCheck size={22} />
             </div>
             <div>
-              <div style={{ fontSize: '0.9rem', fontWeight: 700, color: '#f8fafc' }}>100% Genuine Tech</div>
-              <div style={{ fontSize: '0.78rem', color: '#94a3b8' }}>Direct manufacturer warranty</div>
+              <div style={{ fontSize: '0.92rem', fontWeight: 800, color: '#0f172a' }}>100% Genuine Tech</div>
+              <div style={{ fontSize: '0.78rem', color: '#64748b' }}>Direct manufacturer warranty</div>
             </div>
           </div>
 
           <div className="glass-panel" style={{ padding: '16px 20px', display: 'flex', alignItems: 'center', gap: '14px' }}>
-            <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: 'rgba(139, 92, 246, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#8b5cf6' }}>
+            <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: '#f5f3ff', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#7c3aed' }}>
               <Server size={22} />
             </div>
             <div>
-              <div style={{ fontSize: '0.9rem', fontWeight: 700, color: '#f8fafc' }}>Enterprise IT Stacks</div>
-              <div style={{ fontSize: '0.78rem', color: '#94a3b8' }}>B2B invoicing & GST credit</div>
+              <div style={{ fontSize: '0.92rem', fontWeight: 800, color: '#0f172a' }}>Enterprise IT Stacks</div>
+              <div style={{ fontSize: '0.78rem', color: '#64748b' }}>B2B invoicing & GST credit</div>
             </div>
           </div>
 
           <div className="glass-panel" style={{ padding: '16px 20px', display: 'flex', alignItems: 'center', gap: '14px' }}>
-            <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: 'rgba(245, 158, 11, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#f59e0b' }}>
+            <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: '#fffbeb', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#f59e0b' }}>
               <Headphones size={22} />
             </div>
             <div>
-              <div style={{ fontSize: '0.9rem', fontWeight: 700, color: '#f8fafc' }}>24/7 Expert Support</div>
-              <div style={{ fontSize: '0.78rem', color: '#94a3b8' }}>Dedicated IT engineers</div>
+              <div style={{ fontSize: '0.92rem', fontWeight: 800, color: '#0f172a' }}>24/7 Expert Support</div>
+              <div style={{ fontSize: '0.78rem', color: '#64748b' }}>Dedicated IT engineers</div>
             </div>
           </div>
         </div>

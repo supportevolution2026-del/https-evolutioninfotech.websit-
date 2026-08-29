@@ -14,7 +14,7 @@ export default function ToastContainer() {
       position: 'fixed',
       bottom: '24px',
       right: '24px',
-      zIndex: 9999,
+      zIndex: 99999,
       display: 'flex',
       flexDirection: 'column',
       gap: '12px',
@@ -34,34 +34,33 @@ export default function ToastContainer() {
               alignItems: 'flex-start',
               gap: '12px',
               padding: '14px 16px',
-              borderRadius: '12px',
-              background: 'rgba(15, 23, 42, 0.95)',
-              backdropFilter: 'blur(16px)',
+              borderRadius: '16px',
+              background: '#ffffff',
               border: `1px solid ${
                 isSuccess
-                  ? 'rgba(16, 185, 129, 0.5)'
+                  ? '#a7f3d0'
                   : isError
-                  ? 'rgba(244, 63, 94, 0.5)'
+                  ? '#fecdd3'
                   : isWarning
-                  ? 'rgba(245, 158, 11, 0.5)'
-                  : 'rgba(6, 182, 212, 0.5)'
+                  ? '#fde68a'
+                  : '#bfdbfe'
               }`,
-              boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.6)',
-              animation: 'floatAnim 0.3s ease-out'
+              boxShadow: '0 12px 30px -4px rgba(15, 23, 42, 0.15)',
+              animation: 'fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1)'
             }}
           >
             <div style={{ marginTop: '2px', flexShrink: 0 }}>
-              {isSuccess && <CheckCircle2 size={20} color="#10b981" />}
-              {isError && <XCircle size={20} color="#f43f5e" />}
-              {isWarning && <AlertCircle size={20} color="#f59e0b" />}
-              {!isSuccess && !isError && !isWarning && <Info size={20} color="#06b6d4" />}
+              {isSuccess && <CheckCircle2 size={20} color="#16a34a" />}
+              {isError && <XCircle size={20} color="#e11d48" />}
+              {isWarning && <AlertCircle size={20} color="#d97706" />}
+              {!isSuccess && !isError && !isWarning && <Info size={20} color="#2563eb" />}
             </div>
 
             <div style={{ flex: 1 }}>
-              <div style={{ fontSize: '0.9rem', fontWeight: 600, color: '#f8fafc' }}>
+              <div style={{ fontSize: '0.9rem', fontWeight: 800, color: '#0f172a' }}>
                 {toast.title}
               </div>
-              <div style={{ fontSize: '0.82rem', color: '#94a3b8', marginTop: '2px' }}>
+              <div style={{ fontSize: '0.82rem', color: '#475569', marginTop: '2px' }}>
                 {toast.message}
               </div>
             </div>
@@ -71,7 +70,7 @@ export default function ToastContainer() {
               style={{
                 background: 'transparent',
                 border: 'none',
-                color: '#64748b',
+                color: '#94a3b8',
                 cursor: 'pointer',
                 padding: '2px',
                 display: 'flex',

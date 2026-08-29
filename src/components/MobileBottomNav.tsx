@@ -35,15 +35,15 @@ export default function MobileBottomNav() {
         left: 0,
         right: 0,
         zIndex: 1050,
-        backgroundColor: 'rgba(8, 12, 20, 0.95)',
+        backgroundColor: 'rgba(255, 255, 255, 0.95)',
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
-        borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+        borderTop: '1px solid #e2e8f0',
         padding: '8px 12px 10px 12px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-around',
-        boxShadow: '0 -10px 25px rgba(0, 0, 0, 0.7)'
+        boxShadow: '0 -4px 20px rgba(0, 0, 0, 0.06)'
       }}
       className="mobile-only"
     >
@@ -64,7 +64,7 @@ export default function MobileBottomNav() {
                 alignItems: 'center',
                 justifyContent: 'center',
                 textDecoration: 'none',
-                color: '#38bdf8',
+                color: '#2563eb',
                 gap: '4px',
                 padding: '6px 10px',
                 borderRadius: '12px',
@@ -73,8 +73,8 @@ export default function MobileBottomNav() {
                 textAlign: 'center'
               }}
             >
-              <Icon size={20} color="#38bdf8" />
-              <span style={{ fontSize: '0.72rem', fontWeight: 700 }}>
+              <Icon size={20} color="#2563eb" />
+              <span style={{ fontSize: '0.74rem', fontWeight: 700 }}>
                 {item.label}
               </span>
             </a>
@@ -91,18 +91,18 @@ export default function MobileBottomNav() {
               alignItems: 'center',
               justifyContent: 'center',
               textDecoration: 'none',
-              color: isActive ? '#06b6d4' : '#94a3b8',
+              color: isActive ? '#2563eb' : '#64748b',
               gap: '4px',
               padding: '6px 10px',
               borderRadius: '12px',
-              background: isActive ? 'rgba(6, 182, 212, 0.12)' : 'transparent',
+              background: isActive ? '#eff6ff' : 'transparent',
               transition: 'all 0.2s ease',
               flex: 1,
               textAlign: 'center'
             }}
           >
-            <Icon size={20} color={isActive ? '#06b6d4' : '#94a3b8'} />
-            <span style={{ fontSize: '0.72rem', fontWeight: isActive ? 800 : 600 }}>
+            <Icon size={20} color={isActive ? '#2563eb' : '#64748b'} />
+            <span style={{ fontSize: '0.74rem', fontWeight: isActive ? 800 : 600 }}>
               {item.label}
             </span>
           </Link>
@@ -120,7 +120,7 @@ export default function MobileBottomNav() {
           alignItems: 'center',
           justifyContent: 'center',
           textDecoration: 'none',
-          color: '#10b981',
+          color: '#16a34a',
           gap: '4px',
           padding: '6px 10px',
           borderRadius: '12px',
@@ -129,8 +129,8 @@ export default function MobileBottomNav() {
           textAlign: 'center'
         }}
       >
-        <MessageCircle size={20} color="#10b981" />
-        <span style={{ fontSize: '0.72rem', fontWeight: 700 }}>
+        <MessageCircle size={20} color="#16a34a" />
+        <span style={{ fontSize: '0.74rem', fontWeight: 700 }}>
           WhatsApp
         </span>
       </a>

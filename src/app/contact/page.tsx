@@ -16,8 +16,7 @@ import {
   Sparkles,
   User,
   HelpCircle,
-  FileText,
-  Building2
+  FileText
 } from 'lucide-react';
 import {
   WHATSAPP_PHONE_NUMBER,
@@ -86,7 +85,7 @@ Please connect with me.`;
   };
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#f8fafc' }}>
       <Navbar />
 
       <main style={{ flex: 1, padding: '36px 0 70px 0' }}>
@@ -94,13 +93,13 @@ Please connect with me.`;
           
           {/* Header Hero Section */}
           <div style={{
-            borderRadius: '24px',
-            background: 'radial-gradient(ellipse at center, rgba(6, 182, 212, 0.15), rgba(15, 23, 42, 0.95))',
-            border: '1px solid rgba(6, 182, 212, 0.25)',
-            padding: '40px 30px',
+            borderRadius: '28px',
+            background: 'linear-gradient(135deg, #ffffff 0%, #eff6ff 50%, #f0fdf4 100%)',
+            border: '1.5px solid #bfdbfe',
+            padding: '44px 30px',
             textAlign: 'center',
             marginBottom: '40px',
-            boxShadow: '0 20px 50px rgba(0, 0, 0, 0.6)',
+            boxShadow: '0 20px 48px -12px rgba(37, 99, 235, 0.12)',
             position: 'relative',
             overflow: 'hidden'
           }}>
@@ -110,9 +109,9 @@ Please connect with me.`;
               gap: '6px',
               padding: '6px 14px',
               borderRadius: '9999px',
-              background: 'rgba(6, 182, 212, 0.12)',
-              border: '1px solid rgba(6, 182, 212, 0.3)',
-              color: '#38bdf8',
+              background: '#e0f2fe',
+              border: '1px solid #bae6fd',
+              color: '#0284c7',
               fontSize: '0.8rem',
               fontWeight: 800,
               letterSpacing: '1px',
@@ -122,11 +121,11 @@ Please connect with me.`;
               <Sparkles size={14} /> 24/7 CUSTOMER SUPPORT & HARDWARE DESK
             </div>
 
-            <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 900, color: '#ffffff', lineHeight: 1.15 }}>
-              Get in Touch with <span className="text-gradient">Evolution Infotech</span>
+            <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 900, color: '#0f172a', lineHeight: 1.15 }}>
+              Get in Touch with Evolution Infotech
             </h1>
 
-            <p style={{ color: '#94a3b8', fontSize: '1.05rem', maxWidth: '640px', margin: '12px auto 26px auto', lineHeight: 1.6 }}>
+            <p style={{ color: '#475569', fontSize: '1.05rem', maxWidth: '640px', margin: '12px auto 26px auto', lineHeight: 1.6 }}>
               Have questions about hardware procurement, laptop repair, CCTV installations, or custom software projects? We are here to help.
             </p>
 
@@ -139,15 +138,15 @@ Please connect with me.`;
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '8px',
-                  background: 'rgba(15, 23, 42, 0.9)',
-                  border: '1px solid rgba(6, 182, 212, 0.4)',
-                  color: '#38bdf8',
+                  background: '#ffffff',
+                  border: '1px solid #e2e8f0',
+                  color: '#0284c7',
                   padding: '11px 22px',
                   borderRadius: '12px',
                   fontSize: '0.92rem',
                   fontWeight: 700,
                   textDecoration: 'none',
-                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.4)',
+                  boxShadow: 'var(--shadow-sm)',
                   transition: 'all 0.2s ease'
                 }}
               >
@@ -170,7 +169,7 @@ Please connect with me.`;
                   fontSize: '0.92rem',
                   fontWeight: 700,
                   textDecoration: 'none',
-                  boxShadow: '0 4px 20px rgba(16, 185, 129, 0.4)',
+                  boxShadow: '0 4px 15px rgba(16, 185, 129, 0.35)',
                   transition: 'all 0.2s ease'
                 }}
               >
@@ -190,13 +189,13 @@ Please connect with me.`;
             <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
               
               {/* Quick Connect Card */}
-              <div className="glass-panel" style={{ padding: '28px', borderRadius: '20px' }}>
+              <div className="glass-panel" style={{ padding: '28px', borderRadius: '24px', background: '#ffffff', border: '1px solid #e2e8f0' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
                   <div style={{
                     width: '44px',
                     height: '44px',
                     borderRadius: '12px',
-                    background: 'rgba(16, 185, 129, 0.15)',
+                    background: '#ecfdf5',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -205,18 +204,18 @@ Please connect with me.`;
                     <Phone size={22} />
                   </div>
                   <div>
-                    <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#ffffff' }}>Direct Connect</h3>
-                    <p style={{ fontSize: '0.8rem', color: '#94a3b8' }}>Voice Call & WhatsApp Support</p>
+                    <h3 style={{ fontSize: '1.25rem', fontWeight: 900, color: '#0f172a' }}>Direct Connect</h3>
+                    <p style={{ fontSize: '0.82rem', color: '#64748b' }}>Voice Call & WhatsApp Support</p>
                   </div>
                 </div>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
                   {/* Phone / WhatsApp Box */}
                   <div style={{
-                    background: 'rgba(0, 0, 0, 0.4)',
+                    background: '#f8fafc',
                     padding: '16px 18px',
-                    borderRadius: '14px',
-                    border: '1px solid rgba(255, 255, 255, 0.06)',
+                    borderRadius: '16px',
+                    border: '1px solid #e2e8f0',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
@@ -224,10 +223,10 @@ Please connect with me.`;
                     gap: '10px'
                   }}>
                     <div>
-                      <div style={{ fontSize: '0.72rem', color: '#64748b', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                      <div style={{ fontSize: '0.72rem', color: '#64748b', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
                         PHONE & WHATSAPP
                       </div>
-                      <div style={{ fontSize: '1.15rem', fontWeight: 800, color: '#ffffff', marginTop: '2px' }}>
+                      <div style={{ fontSize: '1.15rem', fontWeight: 900, color: '#0f172a', marginTop: '2px' }}>
                         {WHATSAPP_DISPLAY_PHONE}
                       </div>
                     </div>
@@ -237,9 +236,9 @@ Please connect with me.`;
                       target="_blank"
                       rel="noopener noreferrer"
                       style={{
-                        background: 'rgba(16, 185, 129, 0.18)',
-                        border: '1px solid #10b981',
-                        color: '#34d399',
+                        background: '#ecfdf5',
+                        border: '1px solid #a7f3d0',
+                        color: '#15803d',
                         padding: '8px 14px',
                         borderRadius: '10px',
                         fontSize: '0.82rem',
@@ -256,62 +255,62 @@ Please connect with me.`;
 
                   {/* Email Box */}
                   <div style={{
-                    background: 'rgba(0, 0, 0, 0.4)',
+                    background: '#f8fafc',
                     padding: '16px 18px',
-                    borderRadius: '14px',
-                    border: '1px solid rgba(255, 255, 255, 0.06)',
+                    borderRadius: '16px',
+                    border: '1px solid #e2e8f0',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between'
                   }}>
                     <div>
-                      <div style={{ fontSize: '0.72rem', color: '#64748b', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                      <div style={{ fontSize: '0.72rem', color: '#64748b', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
                         OFFICIAL EMAIL
                       </div>
-                      <div style={{ fontSize: '0.95rem', fontWeight: 700, color: '#38bdf8', marginTop: '2px', wordBreak: 'break-all' }}>
+                      <div style={{ fontSize: '0.95rem', fontWeight: 700, color: '#2563eb', marginTop: '2px', wordBreak: 'break-all' }}>
                         {SUPPORT_EMAIL}
                       </div>
                     </div>
-                    <Mail size={20} color="#38bdf8" />
+                    <Mail size={20} color="#2563eb" />
                   </div>
                 </div>
               </div>
 
               {/* Store Location Card */}
-              <div className="glass-panel" style={{ padding: '28px', borderRadius: '20px' }}>
+              <div className="glass-panel" style={{ padding: '28px', borderRadius: '24px', background: '#ffffff', border: '1px solid #e2e8f0' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '18px' }}>
                   <div style={{
                     width: '44px',
                     height: '44px',
                     borderRadius: '12px',
-                    background: 'rgba(6, 182, 212, 0.15)',
+                    background: '#eff6ff',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: '#06b6d4'
+                    color: '#2563eb'
                   }}>
                     <MapPin size={22} />
                   </div>
                   <div>
-                    <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#ffffff' }}>Store Location</h3>
-                    <p style={{ fontSize: '0.8rem', color: '#94a3b8' }}>Walk-in Service & Hardware Center</p>
+                    <h3 style={{ fontSize: '1.25rem', fontWeight: 900, color: '#0f172a' }}>Store Location</h3>
+                    <p style={{ fontSize: '0.82rem', color: '#64748b' }}>Walk-in Service & Hardware Center</p>
                   </div>
                 </div>
 
                 <div style={{
-                  background: 'rgba(0, 0, 0, 0.4)',
+                  background: '#f8fafc',
                   padding: '18px 20px',
-                  borderRadius: '14px',
-                  border: '1px solid rgba(255, 255, 255, 0.06)',
+                  borderRadius: '16px',
+                  border: '1px solid #e2e8f0',
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '14px'
                 }}>
                   <div>
-                    <div style={{ fontSize: '0.72rem', color: '#64748b', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                    <div style={{ fontSize: '0.72rem', color: '#64748b', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
                       AHMEDABAD HEADQUARTERS
                     </div>
-                    <div style={{ fontSize: '0.95rem', fontWeight: 700, color: '#f8fafc', marginTop: '4px', lineHeight: 1.5 }}>
+                    <div style={{ fontSize: '0.95rem', fontWeight: 700, color: '#0f172a', marginTop: '4px', lineHeight: 1.5 }}>
                       {STORE_ADDRESS}
                     </div>
                   </div>
@@ -325,9 +324,9 @@ Please connect with me.`;
                       alignItems: 'center',
                       justifyContent: 'center',
                       gap: '8px',
-                      background: 'rgba(6, 182, 212, 0.12)',
-                      border: '1px solid rgba(6, 182, 212, 0.4)',
-                      color: '#38bdf8',
+                      background: '#eff6ff',
+                      border: '1px solid #bfdbfe',
+                      color: '#2563eb',
                       padding: '10px 16px',
                       borderRadius: '10px',
                       fontSize: '0.85rem',
@@ -342,13 +341,13 @@ Please connect with me.`;
               </div>
 
               {/* Business Hours Card */}
-              <div className="glass-panel" style={{ padding: '28px', borderRadius: '20px' }}>
+              <div className="glass-panel" style={{ padding: '28px', borderRadius: '24px', background: '#ffffff', border: '1px solid #e2e8f0' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '18px' }}>
                   <div style={{
                     width: '44px',
                     height: '44px',
                     borderRadius: '12px',
-                    background: 'rgba(245, 158, 11, 0.15)',
+                    background: '#fffbeb',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -357,23 +356,23 @@ Please connect with me.`;
                     <Clock size={22} />
                   </div>
                   <div>
-                    <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#ffffff' }}>Working Hours</h3>
-                    <p style={{ fontSize: '0.8rem', color: '#94a3b8' }}>Support & Repair Timings</p>
+                    <h3 style={{ fontSize: '1.25rem', fontWeight: 900, color: '#0f172a' }}>Working Hours</h3>
+                    <p style={{ fontSize: '0.82rem', color: '#64748b' }}>Support & Repair Timings</p>
                   </div>
                 </div>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.88rem' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: '1px solid rgba(255, 255, 255, 0.06)' }}>
-                    <span style={{ color: '#cbd5e1', fontWeight: 600 }}>Monday - Friday:</span>
-                    <span style={{ color: '#38bdf8', fontWeight: 800 }}>10:00 AM - 8:00 PM</span>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: '1px solid #f1f5f9' }}>
+                    <span style={{ color: '#475569', fontWeight: 600 }}>Monday - Friday:</span>
+                    <span style={{ color: '#2563eb', fontWeight: 800 }}>10:00 AM - 8:00 PM</span>
                   </div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: '1px solid rgba(255, 255, 255, 0.06)' }}>
-                    <span style={{ color: '#cbd5e1', fontWeight: 600 }}>Saturday:</span>
-                    <span style={{ color: '#38bdf8', fontWeight: 800 }}>10:00 AM - 8:00 PM</span>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: '1px solid #f1f5f9' }}>
+                    <span style={{ color: '#475569', fontWeight: 600 }}>Saturday:</span>
+                    <span style={{ color: '#2563eb', fontWeight: 800 }}>10:00 AM - 8:00 PM</span>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0' }}>
-                    <span style={{ color: '#cbd5e1', fontWeight: 600 }}>Sunday:</span>
-                    <span style={{ color: '#fbbf24', fontWeight: 800 }}>10:00 AM - 2:00 PM</span>
+                    <span style={{ color: '#475569', fontWeight: 600 }}>Sunday:</span>
+                    <span style={{ color: '#b45309', fontWeight: 800 }}>10:00 AM - 2:00 PM</span>
                   </div>
                 </div>
               </div>
@@ -381,12 +380,12 @@ Please connect with me.`;
             </div>
 
             {/* Right Column: Send Us an Inquiry Form */}
-            <div className="glass-panel" style={{ padding: '36px', borderRadius: '24px' }}>
+            <div className="glass-panel" style={{ padding: '36px', borderRadius: '24px', background: '#ffffff', border: '1px solid #e2e8f0' }}>
               <div style={{ marginBottom: '22px' }}>
-                <h3 style={{ fontSize: '1.45rem', fontWeight: 800, color: '#ffffff' }}>
+                <h3 style={{ fontSize: '1.45rem', fontWeight: 900, color: '#0f172a' }}>
                   Send an Inquiry
                 </h3>
-                <p style={{ fontSize: '0.88rem', color: '#94a3b8', marginTop: '4px' }}>
+                <p style={{ fontSize: '0.88rem', color: '#64748b', marginTop: '4px' }}>
                   Provide your requirements below and submit directly via WhatsApp or web form.
                 </p>
               </div>
@@ -395,13 +394,13 @@ Please connect with me.`;
                 <div style={{
                   padding: '40px 20px',
                   textAlign: 'center',
-                  background: 'rgba(16, 185, 129, 0.1)',
-                  borderRadius: '16px',
-                  border: '1px solid rgba(16, 185, 129, 0.3)'
+                  background: '#ecfdf5',
+                  borderRadius: '18px',
+                  border: '1px solid #a7f3d0'
                 }}>
                   <CheckCircle2 size={46} color="#10b981" style={{ margin: '0 auto 14px auto' }} />
-                  <h4 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#ffffff' }}>Message Received!</h4>
-                  <p style={{ color: '#94a3b8', fontSize: '0.88rem', marginTop: '6px' }}>
+                  <h4 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0f172a' }}>Message Received!</h4>
+                  <p style={{ color: '#475569', fontSize: '0.88rem', marginTop: '6px' }}>
                     Thank you. We will contact you or reply on WhatsApp shortly.
                   </p>
                   <button
@@ -418,8 +417,8 @@ Please connect with me.`;
               ) : (
                 <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
                   <div>
-                    <label style={{ fontSize: '0.82rem', color: '#cbd5e1', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '6px', fontWeight: 700 }}>
-                      <User size={14} color="#06b6d4" /> Full Name *
+                    <label style={{ fontSize: '0.82rem', color: '#475569', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '6px', fontWeight: 700 }}>
+                      <User size={14} color="#0284c7" /> Full Name *
                     </label>
                     <input
                       type="text"
@@ -428,13 +427,12 @@ Please connect with me.`;
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       className="form-input"
-                      style={{ borderRadius: '10px' }}
                     />
                   </div>
 
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px' }}>
                     <div>
-                      <label style={{ fontSize: '0.82rem', color: '#cbd5e1', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '6px', fontWeight: 700 }}>
+                      <label style={{ fontSize: '0.82rem', color: '#475569', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '6px', fontWeight: 700 }}>
                         <Phone size={14} color="#10b981" /> Phone / WhatsApp Number *
                       </label>
                       <input
@@ -444,13 +442,12 @@ Please connect with me.`;
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         className="form-input"
-                        style={{ borderRadius: '10px' }}
                       />
                     </div>
 
                     <div>
-                      <label style={{ fontSize: '0.82rem', color: '#cbd5e1', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '6px', fontWeight: 700 }}>
-                        <Mail size={14} color="#3b82f6" /> Email Address
+                      <label style={{ fontSize: '0.82rem', color: '#475569', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '6px', fontWeight: 700 }}>
+                        <Mail size={14} color="#2563eb" /> Email Address
                       </label>
                       <input
                         type="email"
@@ -458,13 +455,12 @@ Please connect with me.`;
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         className="form-input"
-                        style={{ borderRadius: '10px' }}
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label style={{ fontSize: '0.82rem', color: '#cbd5e1', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '6px', fontWeight: 700 }}>
+                    <label style={{ fontSize: '0.82rem', color: '#475569', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '6px', fontWeight: 700 }}>
                       <HelpCircle size={14} color="#f59e0b" /> Service / Inquiry Topic
                     </label>
                     <input
@@ -473,13 +469,12 @@ Please connect with me.`;
                       value={formData.subject}
                       onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                       className="form-input"
-                      style={{ borderRadius: '10px' }}
                     />
                   </div>
 
                   <div>
-                    <label style={{ fontSize: '0.82rem', color: '#cbd5e1', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '6px', fontWeight: 700 }}>
-                      <FileText size={14} color="#a855f7" /> Message / Specific Requirements
+                    <label style={{ fontSize: '0.82rem', color: '#475569', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '6px', fontWeight: 700 }}>
+                      <FileText size={14} color="#7c3aed" /> Message / Specific Requirements
                     </label>
                     <textarea
                       rows={4}
@@ -487,7 +482,7 @@ Please connect with me.`;
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       className="form-input"
-                      style={{ resize: 'vertical', borderRadius: '10px' }}
+                      style={{ resize: 'vertical' }}
                     />
                   </div>
 
@@ -511,7 +506,7 @@ Please connect with me.`;
                         justifyContent: 'center',
                         gap: '8px',
                         cursor: 'pointer',
-                        boxShadow: '0 4px 20px rgba(16, 185, 129, 0.4)',
+                        boxShadow: '0 4px 20px rgba(16, 185, 129, 0.35)',
                         transition: 'transform 0.2s ease'
                       }}
                       onMouseEnter={(e) => (e.currentTarget.style.transform = 'translateY(-2px)')}
@@ -524,29 +519,11 @@ Please connect with me.`;
                     <button
                       type="submit"
                       disabled={isSubmitting}
+                      className="btn-secondary"
                       style={{
                         width: '100%',
-                        background: 'rgba(255, 255, 255, 0.05)',
-                        border: '1px solid rgba(255, 255, 255, 0.12)',
-                        color: '#cbd5e1',
-                        borderRadius: '12px',
                         padding: '12px',
-                        fontSize: '0.88rem',
-                        fontWeight: 600,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        gap: '6px',
-                        cursor: 'pointer',
-                        transition: 'all 0.2s ease'
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
-                        e.currentTarget.style.color = '#fff';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)';
-                        e.currentTarget.style.color = '#cbd5e1';
+                        fontSize: '0.88rem'
                       }}
                     >
                       <Send size={15} />

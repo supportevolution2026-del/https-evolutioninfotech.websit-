@@ -79,8 +79,8 @@ export default function BrandMarquee() {
       color: '#1428A0',
       logo: (
         <svg width="22" height="18" viewBox="0 0 24 24" fill="none">
-          <ellipse cx="12" cy="12" rx="11" ry="7" stroke="#3b82f6" strokeWidth="2" />
-          <text x="3.5" y="15" fill="#ffffff" fontSize="8" fontWeight="800" fontFamily="sans-serif">SAMSUNG</text>
+          <ellipse cx="12" cy="12" rx="11" ry="7" stroke="#2563eb" strokeWidth="2" />
+          <text x="3.5" y="15" fill="#2563eb" fontSize="8" fontWeight="800" fontFamily="sans-serif">SAMSUNG</text>
         </svg>
       )
     },
@@ -131,13 +131,13 @@ export default function BrandMarquee() {
   return (
     <section style={{
       padding: '24px 0',
-      borderTop: '1px solid rgba(255, 255, 255, 0.06)',
-      borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
-      background: 'rgba(8, 12, 20, 0.65)'
+      borderTop: '1px solid #e2e8f0',
+      borderBottom: '1px solid #e2e8f0',
+      background: '#ffffff'
     }}>
       <div className="container" style={{ marginBottom: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
-        <span style={{ fontSize: '0.78rem', color: '#64748b', fontWeight: 800, letterSpacing: '1.5px', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: '6px' }}>
-          <Sparkles size={14} color="#06b6d4" /> AUTHORIZED ENTERPRISE HARDWARE & OEM PARTNERS
+        <span style={{ fontSize: '0.78rem', color: '#64748b', fontWeight: 800, letterSpacing: '1px', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: '6px' }}>
+          <Sparkles size={14} color="#0284c7" /> AUTHORIZED ENTERPRISE HARDWARE & OEM PARTNERS
         </span>
       </div>
 
@@ -150,16 +150,27 @@ export default function BrandMarquee() {
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '10px',
-                fontSize: '0.92rem',
+                fontSize: '0.9rem',
                 fontWeight: 800,
-                letterSpacing: '0.5px',
-                color: '#f8fafc',
+                letterSpacing: '0.4px',
+                color: '#0f172a',
                 padding: '8px 20px',
                 borderRadius: '9999px',
-                background: 'rgba(15, 23, 42, 0.85)',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
-                boxShadow: '0 4px 15px rgba(0, 0, 0, 0.4)',
-                whiteSpace: 'nowrap'
+                background: '#ffffff',
+                border: '1px solid #e2e8f0',
+                boxShadow: 'var(--shadow-sm)',
+                whiteSpace: 'nowrap',
+                transition: 'all 0.25s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = '#93c5fd';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = 'var(--shadow-md)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = '#e2e8f0';
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = 'var(--shadow-sm)';
               }}
             >
               <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -178,16 +189,27 @@ export default function BrandMarquee() {
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '10px',
-                fontSize: '0.92rem',
+                fontSize: '0.9rem',
                 fontWeight: 800,
-                letterSpacing: '0.5px',
-                color: '#f8fafc',
+                letterSpacing: '0.4px',
+                color: '#0f172a',
                 padding: '8px 20px',
                 borderRadius: '9999px',
-                background: 'rgba(15, 23, 42, 0.85)',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
-                boxShadow: '0 4px 15px rgba(0, 0, 0, 0.4)',
-                whiteSpace: 'nowrap'
+                background: '#ffffff',
+                border: '1px solid #e2e8f0',
+                boxShadow: 'var(--shadow-sm)',
+                whiteSpace: 'nowrap',
+                transition: 'all 0.25s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = '#93c5fd';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = 'var(--shadow-md)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = '#e2e8f0';
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = 'var(--shadow-sm)';
               }}
             >
               <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>

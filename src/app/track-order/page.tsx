@@ -4,7 +4,7 @@ import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { Search, Truck, CheckCircle2, Clock, MapPin, Package, ShieldCheck } from 'lucide-react';
+import { Search, Truck, CheckCircle2, MapPin, Package, ShieldCheck } from 'lucide-react';
 import { OrderDetails } from '@/types';
 
 function TrackOrderContent() {
@@ -43,7 +43,6 @@ function TrackOrderContent() {
       if (match) {
         setTrackedOrder(match);
       } else {
-        // Mock fallback demo order for demonstration
         setTrackedOrder({
           orderId: query.startsWith('EVO') ? query : 'EVO-982410',
           date: '23 Aug 2026',
@@ -75,19 +74,19 @@ function TrackOrderContent() {
   };
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#f8fafc' }}>
       <Navbar />
 
       <main style={{ flex: 1, padding: '40px 0 60px 0' }}>
         <div className="container" style={{ maxWidth: '800px' }}>
           <div style={{ textAlign: 'center', marginBottom: '36px' }}>
-            <div style={{ fontSize: '0.8rem', color: '#06b6d4', fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase' }}>
+            <div style={{ fontSize: '0.8rem', color: '#0284c7', fontWeight: 800, letterSpacing: '1px', textTransform: 'uppercase' }}>
               REAL-TIME CONSIGNMENT TRACKING
             </div>
-            <h1 style={{ fontSize: '2.2rem', fontWeight: 900, color: '#ffffff', marginTop: '6px' }}>
+            <h1 style={{ fontSize: '2.2rem', fontWeight: 900, color: '#0f172a', marginTop: '6px' }}>
               Track Your Evolution Infotech Order
             </h1>
-            <p style={{ color: '#94a3b8', fontSize: '0.92rem', marginTop: '6px' }}>
+            <p style={{ color: '#475569', fontSize: '0.94rem', marginTop: '6px' }}>
               Enter your Order ID (e.g. <code>EVO-892401</code>) or AWB Tracking Number.
             </p>
 
@@ -120,14 +119,14 @@ function TrackOrderContent() {
 
           {/* Tracking Result Card */}
           {hasSearched && trackedOrder && (
-            <div className="glass-panel" style={{ padding: '32px' }}>
+            <div className="glass-panel" style={{ padding: '32px', background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '24px' }}>
               <div style={{
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
                 flexWrap: 'wrap',
                 gap: '16px',
-                borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+                borderBottom: '1px solid #f1f5f9',
                 paddingBottom: '20px',
                 marginBottom: '24px'
               }}>
@@ -135,17 +134,17 @@ function TrackOrderContent() {
                   <span className="badge badge-cyan" style={{ marginBottom: '6px' }}>
                     Status: {trackedOrder.orderStatus}
                   </span>
-                  <h3 style={{ fontSize: '1.3rem', fontWeight: 800, color: '#ffffff' }}>
+                  <h3 style={{ fontSize: '1.3rem', fontWeight: 900, color: '#0f172a' }}>
                     Order #{trackedOrder.orderId}
                   </h3>
-                  <p style={{ fontSize: '0.82rem', color: '#94a3b8' }}>
-                    AWB: <strong style={{ color: '#38bdf8' }}>{trackedOrder.trackingNumber}</strong> &bull; BlueDart Air Cargo
+                  <p style={{ fontSize: '0.84rem', color: '#64748b' }}>
+                    AWB: <strong style={{ color: '#2563eb' }}>{trackedOrder.trackingNumber}</strong> &bull; BlueDart Air Cargo
                   </p>
                 </div>
 
                 <div style={{ textAlign: 'right' }}>
                   <div style={{ fontSize: '0.78rem', color: '#64748b' }}>Estimated Delivery Date</div>
-                  <div style={{ fontSize: '1.2rem', fontWeight: 800, color: '#10b981' }}>
+                  <div style={{ fontSize: '1.2rem', fontWeight: 800, color: '#16a34a' }}>
                     {trackedOrder.estimatedDelivery}
                   </div>
                 </div>
@@ -154,47 +153,47 @@ function TrackOrderContent() {
               {/* Progress Milestones */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', position: 'relative' }}>
                 <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
-                  <div style={{ width: '36px', height: '36px', borderRadius: '50%', background: 'rgba(16, 185, 129, 0.2)', border: '2px solid #10b981', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#10b981', flexShrink: 0 }}>
+                  <div style={{ width: '36px', height: '36px', borderRadius: '50%', background: '#ecfdf5', border: '2px solid #10b981', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#10b981', flexShrink: 0 }}>
                     <CheckCircle2 size={20} />
                   </div>
                   <div>
-                    <div style={{ fontWeight: 700, color: '#ffffff', fontSize: '0.95rem' }}>Order Placed & Payment Verified</div>
-                    <div style={{ fontSize: '0.8rem', color: '#94a3b8' }}>Evolution Infotech Warehouse Dispatch Queue &bull; {trackedOrder.date}</div>
+                    <div style={{ fontWeight: 800, color: '#0f172a', fontSize: '0.95rem' }}>Order Placed & Payment Verified</div>
+                    <div style={{ fontSize: '0.82rem', color: '#64748b' }}>Evolution Infotech Warehouse Dispatch Queue &bull; {trackedOrder.date}</div>
                   </div>
                 </div>
 
                 <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
-                  <div style={{ width: '36px', height: '36px', borderRadius: '50%', background: 'rgba(16, 185, 129, 0.2)', border: '2px solid #10b981', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#10b981', flexShrink: 0 }}>
+                  <div style={{ width: '36px', height: '36px', borderRadius: '50%', background: '#ecfdf5', border: '2px solid #10b981', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#10b981', flexShrink: 0 }}>
                     <Package size={20} />
                   </div>
                   <div>
-                    <div style={{ fontWeight: 700, color: '#ffffff', fontSize: '0.95rem' }}>Hardware Quality Audit & Packaging Complete</div>
-                    <div style={{ fontSize: '0.8rem', color: '#94a3b8' }}>Serial numbers logged and anti-static moisture-sealed &bull; Automated System</div>
+                    <div style={{ fontWeight: 800, color: '#0f172a', fontSize: '0.95rem' }}>Hardware Quality Audit & Packaging Complete</div>
+                    <div style={{ fontSize: '0.82rem', color: '#64748b' }}>Serial numbers logged and anti-static moisture-sealed</div>
                   </div>
                 </div>
 
                 <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
-                  <div style={{ width: '36px', height: '36px', borderRadius: '50%', background: 'rgba(6, 182, 212, 0.2)', border: '2px solid #06b6d4', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#06b6d4', flexShrink: 0 }}>
+                  <div style={{ width: '36px', height: '36px', borderRadius: '50%', background: '#eff6ff', border: '2px solid #2563eb', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#2563eb', flexShrink: 0 }}>
                     <Truck size={20} />
                   </div>
                   <div>
-                    <div style={{ fontWeight: 700, color: '#38bdf8', fontSize: '0.95rem' }}>In Transit via Air Cargo Courier</div>
-                    <div style={{ fontSize: '0.8rem', color: '#94a3b8' }}>En-route to destination distribution hub &bull; BlueDart Logistics</div>
+                    <div style={{ fontWeight: 800, color: '#2563eb', fontSize: '0.95rem' }}>In Transit via Air Cargo Courier</div>
+                    <div style={{ fontSize: '0.82rem', color: '#64748b' }}>En-route to destination distribution hub &bull; BlueDart Logistics</div>
                   </div>
                 </div>
 
-                <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start', opacity: 0.5 }}>
-                  <div style={{ width: '36px', height: '36px', borderRadius: '50%', background: 'rgba(255, 255, 255, 0.05)', border: '2px solid rgba(255, 255, 255, 0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#64748b', flexShrink: 0 }}>
+                <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start', opacity: 0.6 }}>
+                  <div style={{ width: '36px', height: '36px', borderRadius: '50%', background: '#f1f5f9', border: '2px solid #cbd5e1', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#64748b', flexShrink: 0 }}>
                     <MapPin size={20} />
                   </div>
                   <div>
-                    <div style={{ fontWeight: 700, color: '#ffffff', fontSize: '0.95rem' }}>Out for Final Delivery</div>
-                    <div style={{ fontSize: '0.8rem', color: '#94a3b8' }}>{trackedOrder.customer.city}, {trackedOrder.customer.state} - {trackedOrder.customer.pincode}</div>
+                    <div style={{ fontWeight: 800, color: '#0f172a', fontSize: '0.95rem' }}>Out for Final Delivery</div>
+                    <div style={{ fontSize: '0.82rem', color: '#64748b' }}>{trackedOrder.customer.city}, {trackedOrder.customer.state} - {trackedOrder.customer.pincode}</div>
                   </div>
                 </div>
               </div>
 
-              <div style={{ marginTop: '28px', paddingTop: '20px', borderTop: '1px solid rgba(255, 255, 255, 0.08)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.85rem', color: '#94a3b8' }}>
+              <div style={{ marginTop: '28px', paddingTop: '20px', borderTop: '1px solid #f1f5f9', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.85rem', color: '#475569' }}>
                 <span>Recipient: <strong>{trackedOrder.customer.fullName}</strong></span>
                 <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                   <ShieldCheck size={16} color="#10b981" /> Full Transit Insurance Protected
@@ -212,7 +211,7 @@ function TrackOrderContent() {
 
 export default function TrackOrderPage() {
   return (
-    <Suspense fallback={<div style={{ padding: '60px', textAlign: 'center', color: '#06b6d4' }}>Loading Tracking Tool...</div>}>
+    <Suspense fallback={<div style={{ padding: '60px', textAlign: 'center', color: '#2563eb' }}>Loading Tracking Tool...</div>}>
       <TrackOrderContent />
     </Suspense>
   );

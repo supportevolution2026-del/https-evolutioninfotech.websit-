@@ -3,16 +3,13 @@
 import React from 'react';
 import Link from 'next/link';
 import {
-  Cpu,
   Mail,
   Phone,
   MapPin,
   Code2,
   MessageCircle,
-  Sparkles
 } from 'lucide-react';
 import {
-  WHATSAPP_PHONE_NUMBER,
   WHATSAPP_DISPLAY_PHONE,
   SUPPORT_EMAIL,
   COMPANY_NAME,
@@ -25,10 +22,10 @@ import BrandLogo from './BrandLogo';
 export default function Footer() {
   return (
     <footer style={{
-      background: '#070a10',
-      borderTop: '1px solid rgba(255, 255, 255, 0.08)',
-      paddingTop: '45px',
-      paddingBottom: '30px',
+      background: '#ffffff',
+      borderTop: '1px solid #e2e8f0',
+      paddingTop: '48px',
+      paddingBottom: '32px',
       marginTop: '60px'
     }}>
       <div className="container">
@@ -44,17 +41,17 @@ export default function Footer() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
             <BrandLogo size="md" showSubtitle={true} />
 
-            <p style={{ fontSize: '0.85rem', color: '#94a3b8', lineHeight: 1.6 }}>
+            <p style={{ fontSize: '0.88rem', color: '#64748b', lineHeight: 1.6 }}>
               Your trusted partner for genuine IT hardware, laptop & computer repairs, networking, and technology solutions in Ahmedabad.
             </p>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.82rem', color: '#cbd5e1' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.85rem', color: '#475569' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <Phone size={15} color="#10b981" />
-                <strong style={{ color: '#ffffff' }}>{WHATSAPP_DISPLAY_PHONE}</strong>
+                <strong style={{ color: '#0f172a' }}>{WHATSAPP_DISPLAY_PHONE}</strong>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Mail size={15} color="#06b6d4" />
+                <Mail size={15} color="#0284c7" />
                 <span>{SUPPORT_EMAIL}</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
@@ -63,9 +60,9 @@ export default function Footer() {
                   href={GOOGLE_MAPS_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ color: '#cbd5e1', textDecoration: 'none', lineHeight: 1.4 }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = '#38bdf8')}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = '#cbd5e1')}
+                  style={{ color: '#475569', textDecoration: 'none', lineHeight: 1.4 }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = '#2563eb')}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = '#475569')}
                 >
                   {STORE_ADDRESS}
                 </a>
@@ -75,26 +72,26 @@ export default function Footer() {
 
           {/* Column 2: Hardware Products */}
           <div>
-            <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#f8fafc', marginBottom: '16px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+            <h4 style={{ fontSize: '0.95rem', fontWeight: 800, color: '#0f172a', marginBottom: '16px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
               Hardware Products
             </h4>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.85rem' }}>
-              <Link href="/products?category=laptop" style={{ color: '#94a3b8', textDecoration: 'none', transition: 'color 0.2s' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.88rem' }}>
+              <Link href="/products?category=laptop" style={{ color: '#64748b', textDecoration: 'none', transition: 'color 0.2s' }}>
                 Laptop
               </Link>
-              <Link href="/products?category=desktop" style={{ color: '#94a3b8', textDecoration: 'none', transition: 'color 0.2s' }}>
+              <Link href="/products?category=desktop" style={{ color: '#64748b', textDecoration: 'none', transition: 'color 0.2s' }}>
                 Desktop
               </Link>
-              <Link href="/products?category=printer" style={{ color: '#94a3b8', textDecoration: 'none', transition: 'color 0.2s' }}>
+              <Link href="/products?category=printer" style={{ color: '#64748b', textDecoration: 'none', transition: 'color 0.2s' }}>
                 Printer
               </Link>
-              <Link href="/products?category=network" style={{ color: '#94a3b8', textDecoration: 'none', transition: 'color 0.2s' }}>
+              <Link href="/products?category=network" style={{ color: '#64748b', textDecoration: 'none', transition: 'color 0.2s' }}>
                 Network
               </Link>
-              <Link href="/products?category=cctv" style={{ color: '#94a3b8', textDecoration: 'none', transition: 'color 0.2s' }}>
+              <Link href="/products?category=cctv" style={{ color: '#64748b', textDecoration: 'none', transition: 'color 0.2s' }}>
                 CCTV
               </Link>
-              <Link href="/products?category=accessories" style={{ color: '#94a3b8', textDecoration: 'none', transition: 'color 0.2s' }}>
+              <Link href="/products?category=accessories" style={{ color: '#64748b', textDecoration: 'none', transition: 'color 0.2s' }}>
                 Accessories
               </Link>
             </div>
@@ -102,15 +99,15 @@ export default function Footer() {
 
           {/* Column 3: IT Services & AMC */}
           <div>
-            <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#f8fafc', marginBottom: '16px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+            <h4 style={{ fontSize: '0.95rem', fontWeight: 800, color: '#0f172a', marginBottom: '16px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
               IT Services & Repair
             </h4>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.85rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.88rem' }}>
               <a
                 href={getCustomWhatsAppUrl('Laptop Motherboard Chip Repair', 'Hello Evolution Infotech! I need laptop motherboard / chip repair service.')}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ color: '#94a3b8', textDecoration: 'none', transition: 'color 0.2s' }}
+                style={{ color: '#64748b', textDecoration: 'none', transition: 'color 0.2s' }}
               >
                 Laptop Motherboard Chip Repair
               </a>
@@ -118,7 +115,7 @@ export default function Footer() {
                 href={getCustomWhatsAppUrl('Yearly AMC Maintenance Contract', 'Hello Evolution Infotech! I want a quote for corporate yearly AMC IT support.')}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ color: '#94a3b8', textDecoration: 'none', transition: 'color 0.2s' }}
+                style={{ color: '#64748b', textDecoration: 'none', transition: 'color 0.2s' }}
               >
                 Yearly AMC Maintenance Contract
               </a>
@@ -126,7 +123,7 @@ export default function Footer() {
                 href={getCustomWhatsAppUrl('Office Networking & WiFi Setup', 'Hello Evolution Infotech! I need office networking, router & server rack setup.')}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ color: '#94a3b8', textDecoration: 'none', transition: 'color 0.2s' }}
+                style={{ color: '#64748b', textDecoration: 'none', transition: 'color 0.2s' }}
               >
                 Office Networking & WiFi Setup
               </a>
@@ -134,7 +131,7 @@ export default function Footer() {
                 href={getCustomWhatsAppUrl('Printer Repair & Cartridge Refill', 'Hello Evolution Infotech! I need printer repair / toner refill service.')}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ color: '#94a3b8', textDecoration: 'none', transition: 'color 0.2s' }}
+                style={{ color: '#64748b', textDecoration: 'none', transition: 'color 0.2s' }}
               >
                 Printer Repair & Cartridge Refill
               </a>
@@ -142,18 +139,60 @@ export default function Footer() {
                 href={getCustomWhatsAppUrl('Software & Windows Installation', 'Hello Evolution Infotech! I need licensed software / Windows OS installation.')}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ color: '#94a3b8', textDecoration: 'none', transition: 'color 0.2s' }}
+                style={{ color: '#64748b', textDecoration: 'none', transition: 'color 0.2s' }}
               >
                 Software & Windows Installation
               </a>
             </div>
           </div>
 
-          {/* Column 4: Software & Dev Inquiries (Clean Direct WhatsApp Action) */}
+          {/* Column 4: Software & Development Services */}
           <div>
-            <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#38bdf8', marginBottom: '16px', textTransform: 'uppercase', letterSpacing: '0.5px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <Code2 size={16} /> Software & Dev Inquiries
+            <h4 style={{ fontSize: '0.95rem', fontWeight: 800, color: '#0284c7', marginBottom: '16px', textTransform: 'uppercase', letterSpacing: '0.5px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <Code2 size={16} /> Software Development
             </h4>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.88rem', marginBottom: '16px' }}>
+              <a
+                href={getCustomWhatsAppUrl('Web Application Inquiry', 'Hello Evolution Infotech! I want to inquire about Web Application / Website development.')}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: '#64748b', textDecoration: 'none', transition: 'color 0.2s' }}
+              >
+                Web Application / Website
+              </a>
+              <a
+                href={getCustomWhatsAppUrl('Mobile Application Inquiry', 'Hello Evolution Infotech! I want to inquire about Mobile Application (iOS & Android) development.')}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: '#64748b', textDecoration: 'none', transition: 'color 0.2s' }}
+              >
+                Mobile Application
+              </a>
+              <a
+                href={getCustomWhatsAppUrl('Desktop Application Inquiry', 'Hello Evolution Infotech! I want to inquire about Desktop Application development.')}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: '#64748b', textDecoration: 'none', transition: 'color 0.2s' }}
+              >
+                Desktop Application
+              </a>
+              <a
+                href={getCustomWhatsAppUrl('E-commerce Website Inquiry', 'Hello Evolution Infotech! I want to inquire about E-commerce Website / Application development.')}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: '#64748b', textDecoration: 'none', transition: 'color 0.2s' }}
+              >
+                E-commerce Website / Application
+              </a>
+              <a
+                href={getCustomWhatsAppUrl('General Software Inquiry', 'Hello Evolution Infotech! I have a general software / IT inquiry.')}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: '#64748b', textDecoration: 'none', transition: 'color 0.2s' }}
+              >
+                Other / General Inquiry
+              </a>
+            </div>
 
             <a
               href={getCustomWhatsAppUrl('Software & Mobile App Project Inquiry', 'Hello Evolution Infotech! I want to consult and get a quote for custom software / website / mobile app development.')}
@@ -164,36 +203,36 @@ export default function Footer() {
                 color: '#ffffff',
                 border: 'none',
                 borderRadius: '12px',
-                padding: '13px 18px',
-                fontSize: '0.92rem',
+                padding: '11px 16px',
+                fontSize: '0.88rem',
                 fontWeight: 700,
                 textDecoration: 'none',
                 display: 'inline-flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 gap: '8px',
-                boxShadow: '0 4px 15px rgba(16, 185, 129, 0.4)',
+                boxShadow: '0 4px 15px rgba(16, 185, 129, 0.35)',
                 width: '100%',
                 transition: 'transform 0.2s ease'
               }}
               onMouseEnter={(e) => (e.currentTarget.style.transform = 'translateY(-2px)')}
               onMouseLeave={(e) => (e.currentTarget.style.transform = 'translateY(0)')}
             >
-              <MessageCircle size={18} /> Inquire for Software
+              <MessageCircle size={16} /> Inquire for Software
             </a>
           </div>
         </div>
 
         {/* Bottom Copyright Bar */}
         <div style={{
-          borderTop: '1px solid rgba(255, 255, 255, 0.06)',
+          borderTop: '1px solid #f1f5f9',
           paddingTop: '20px',
           display: 'flex',
           flexWrap: 'wrap',
           alignItems: 'center',
           justifyContent: 'space-between',
           gap: '16px',
-          fontSize: '0.8rem',
+          fontSize: '0.82rem',
           color: '#64748b'
         }}>
           <div>
@@ -201,8 +240,8 @@ export default function Footer() {
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-            <Link href="/privacy-policy" style={{ color: '#94a3b8', textDecoration: 'none', transition: 'color 0.2s' }}>Privacy Policy</Link>
-            <Link href="/terms-of-service" style={{ color: '#94a3b8', textDecoration: 'none', transition: 'color 0.2s' }}>Terms of Service</Link>
+            <Link href="/privacy-policy" style={{ color: '#64748b', textDecoration: 'none', transition: 'color 0.2s' }}>Privacy Policy</Link>
+            <Link href="/terms-of-service" style={{ color: '#64748b', textDecoration: 'none', transition: 'color 0.2s' }}>Terms of Service</Link>
           </div>
         </div>
       </div>

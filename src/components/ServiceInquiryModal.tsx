@@ -8,13 +8,10 @@ import {
   Send,
   Wrench,
   CheckCircle2,
-  Cpu,
   Mail,
   Phone,
   User,
-  MessageCircle,
-  Code2,
-  ShieldCheck
+  MessageCircle
 } from 'lucide-react';
 
 interface ServiceInquiryModalProps {
@@ -93,8 +90,8 @@ Please connect with me regarding service estimation and dispatch.`;
       position: 'fixed',
       inset: 0,
       zIndex: 1250,
-      backgroundColor: 'rgba(0, 0, 0, 0.85)',
-      backdropFilter: 'blur(14px)',
+      backgroundColor: 'rgba(15, 23, 42, 0.45)',
+      backdropFilter: 'blur(10px)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -107,11 +104,11 @@ Please connect with me regarding service estimation and dispatch.`;
         zIndex: 1251,
         width: '100%',
         maxWidth: '560px',
-        backgroundColor: '#0b1120',
+        backgroundColor: '#ffffff',
         borderRadius: '24px',
-        border: '1px solid rgba(6, 182, 212, 0.4)',
-        boxShadow: '0 25px 60px rgba(0, 0, 0, 0.9), 0 0 30px rgba(6, 182, 212, 0.2)',
-        padding: '30px',
+        border: '1px solid #e2e8f0',
+        boxShadow: '0 25px 60px -12px rgba(15, 23, 42, 0.18)',
+        padding: '32px',
         maxHeight: '90vh',
         overflowY: 'auto'
       }}>
@@ -122,15 +119,15 @@ Please connect with me regarding service estimation and dispatch.`;
             position: 'absolute',
             top: '20px',
             right: '20px',
-            background: 'rgba(255, 255, 255, 0.05)',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
+            background: '#f8fafc',
+            border: '1px solid #e2e8f0',
             borderRadius: '50%',
             width: '36px',
             height: '36px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            color: '#94a3b8',
+            color: '#64748b',
             cursor: 'pointer'
           }}
         >
@@ -143,7 +140,8 @@ Please connect with me regarding service estimation and dispatch.`;
               width: '64px',
               height: '64px',
               borderRadius: '50%',
-              background: 'rgba(16, 185, 129, 0.15)',
+              background: '#ecfdf5',
+              border: '1px solid #a7f3d0',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -152,11 +150,11 @@ Please connect with me regarding service estimation and dispatch.`;
             }}>
               <CheckCircle2 size={36} />
             </div>
-            <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#ffffff', marginBottom: '8px' }}>
+            <h3 style={{ fontSize: '1.5rem', fontWeight: 900, color: '#0f172a', marginBottom: '8px' }}>
               Inquiry Submitted Successfully!
             </h3>
-            <p style={{ color: '#94a3b8', fontSize: '0.9rem', lineHeight: 1.6, maxWidth: '420px', margin: '0 auto 24px auto' }}>
-              Thank you {formData.name}. Our IT / Software support team will reach out to you at {formData.phone || 'your number'} within 30 minutes.
+            <p style={{ color: '#475569', fontSize: '0.92rem', lineHeight: 1.6, maxWidth: '420px', margin: '0 auto 24px auto' }}>
+              Thank you {formData.name}. Our IT & Software support team will reach out to you at {formData.phone || 'your number'} within 30 minutes.
             </p>
             <div style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
               <button
@@ -165,14 +163,15 @@ Please connect with me regarding service estimation and dispatch.`;
                   background: 'linear-gradient(135deg, #10b981, #059669)',
                   color: '#ffffff',
                   border: 'none',
-                  borderRadius: '10px',
+                  borderRadius: '12px',
                   padding: '12px 20px',
                   fontSize: '0.9rem',
                   fontWeight: 700,
                   display: 'flex',
                   alignItems: 'center',
                   gap: '8px',
-                  cursor: 'pointer'
+                  cursor: 'pointer',
+                  boxShadow: '0 4px 15px rgba(16, 185, 129, 0.35)'
                 }}
               >
                 <MessageCircle size={18} /> Chat on WhatsApp Live
@@ -184,24 +183,25 @@ Please connect with me regarding service estimation and dispatch.`;
           </div>
         ) : (
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '22px' }}>
               <div style={{
                 width: '46px',
                 height: '46px',
-                borderRadius: '12px',
-                background: 'rgba(6, 182, 212, 0.15)',
+                borderRadius: '14px',
+                background: '#eff6ff',
+                border: '1px solid #bfdbfe',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                color: '#06b6d4'
+                color: '#2563eb'
               }}>
                 <Wrench size={24} />
               </div>
               <div>
-                <h2 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#ffffff' }}>
+                <h2 style={{ fontSize: '1.4rem', fontWeight: 900, color: '#0f172a' }}>
                   Service & Software Inquiry
                 </h2>
-                <p style={{ fontSize: '0.8rem', color: '#94a3b8' }}>
+                <p style={{ fontSize: '0.82rem', color: '#64748b' }}>
                   Evolution Infotech &bull; 24/7 Support Desk
                 </p>
               </div>
@@ -209,33 +209,33 @@ Please connect with me regarding service estimation and dispatch.`;
 
             <form onSubmit={handleSubmitWeb} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
               <div>
-                <label style={{ fontSize: '0.78rem', color: '#94a3b8', marginBottom: '4px', display: 'block', fontWeight: 700, textTransform: 'uppercase' }}>
+                <label style={{ fontSize: '0.78rem', color: '#475569', marginBottom: '4px', display: 'block', fontWeight: 700, textTransform: 'uppercase' }}>
                   Select Service Required *
                 </label>
                 <select
                   value={formData.serviceType}
                   onChange={(e) => setFormData({ ...formData, serviceType: e.target.value })}
                   className="form-input"
-                  style={{ fontSize: '0.9rem', fontWeight: 600, color: '#38bdf8' }}
+                  style={{ fontSize: '0.9rem', fontWeight: 700, color: '#2563eb', background: '#ffffff' }}
                 >
-                  <option value="Computer Repair">Computer / Laptop Repair (Hardware, Virus, OS)</option>
-                  <option value="AMC Support">AMC Support (Yearly Maintenance Plan)</option>
-                  <option value="Networking">Networking (WiFi, LAN, Router & Switch Setup)</option>
-                  <option value="Printer Service">Printer Service (Repair, Refill, Cartridge)</option>
-                  <option value="Software Install">Software Install (Windows, Office, Antivirus)</option>
-                  <option value="CCTV Setup">CCTV Setup & Security Surveillance</option>
-                  <option value="Software & App Development">Custom Software & Mobile/Web App Development</option>
-                  <option value="Dedicated Developer Hiring">Hire Dedicated Software Developer</option>
+                  <option value="Web Application / Website">Web Application / Website</option>
+                  <option value="Mobile Application (iOS & Android)">Mobile Application (iOS & Android)</option>
+                  <option value="Desktop Application">Desktop Application</option>
+                  <option value="E-commerce Website / Application">E-commerce Website / Application</option>
+                  <option value="Computer / Laptop Repair">Computer / Laptop Repair & Hardware</option>
+                  <option value="Yearly AMC Support">Yearly AMC Support & Maintenance</option>
+                  <option value="Networking & CCTV">Networking, WiFi & CCTV Setup</option>
+                  <option value="Other / General Inquiry">Other / General Inquiry</option>
                 </select>
               </div>
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
                 <div>
-                  <label style={{ fontSize: '0.78rem', color: '#94a3b8', marginBottom: '4px', display: 'block', fontWeight: 600 }}>
+                  <label style={{ fontSize: '0.78rem', color: '#475569', marginBottom: '4px', display: 'block', fontWeight: 700 }}>
                     Your Name *
                   </label>
                   <div style={{ position: 'relative' }}>
-                    <User size={15} color="#64748b" style={{ position: 'absolute', left: '12px', top: '13px' }} />
+                    <User size={15} color="#94a3b8" style={{ position: 'absolute', left: '12px', top: '13px' }} />
                     <input
                       type="text"
                       required
@@ -249,11 +249,11 @@ Please connect with me regarding service estimation and dispatch.`;
                 </div>
 
                 <div>
-                  <label style={{ fontSize: '0.78rem', color: '#94a3b8', marginBottom: '4px', display: 'block', fontWeight: 600 }}>
+                  <label style={{ fontSize: '0.78rem', color: '#475569', marginBottom: '4px', display: 'block', fontWeight: 700 }}>
                     Phone / WhatsApp *
                   </label>
                   <div style={{ position: 'relative' }}>
-                    <Phone size={15} color="#64748b" style={{ position: 'absolute', left: '12px', top: '13px' }} />
+                    <Phone size={15} color="#94a3b8" style={{ position: 'absolute', left: '12px', top: '13px' }} />
                     <input
                       type="tel"
                       required
@@ -269,7 +269,7 @@ Please connect with me regarding service estimation and dispatch.`;
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
                 <div>
-                  <label style={{ fontSize: '0.78rem', color: '#94a3b8', marginBottom: '4px', display: 'block', fontWeight: 600 }}>
+                  <label style={{ fontSize: '0.78rem', color: '#475569', marginBottom: '4px', display: 'block', fontWeight: 700 }}>
                     Email Address (Optional)
                   </label>
                   <input
@@ -283,7 +283,7 @@ Please connect with me regarding service estimation and dispatch.`;
                 </div>
 
                 <div>
-                  <label style={{ fontSize: '0.78rem', color: '#94a3b8', marginBottom: '4px', display: 'block', fontWeight: 600 }}>
+                  <label style={{ fontSize: '0.78rem', color: '#475569', marginBottom: '4px', display: 'block', fontWeight: 700 }}>
                     City / Location
                   </label>
                   <input
@@ -298,7 +298,7 @@ Please connect with me regarding service estimation and dispatch.`;
               </div>
 
               <div>
-                <label style={{ fontSize: '0.78rem', color: '#94a3b8', marginBottom: '4px', display: 'block', fontWeight: 600 }}>
+                <label style={{ fontSize: '0.78rem', color: '#475569', marginBottom: '4px', display: 'block', fontWeight: 700 }}>
                   Describe the Issue or Software Project Requirements
                 </label>
                 <textarea
