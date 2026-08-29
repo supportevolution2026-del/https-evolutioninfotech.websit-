@@ -3,7 +3,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useToast } from '@/context/ToastContext';
 import { supabase, isSupabaseConfigured } from '@/lib/supabase';
-import { products as initialProducts } from '@/data/products';
 import { Product } from '@/types';
 import {
   ShieldCheck,

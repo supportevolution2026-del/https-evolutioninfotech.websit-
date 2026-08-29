@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useCart } from '@/context/CartContext';
-import { products } from '@/data/products';
+import { useProducts } from '@/hooks/useProducts';
 import { getCustomWhatsAppUrl } from '@/utils/whatsapp';
 import BrandLogo from './BrandLogo';
 import {
@@ -29,11 +29,12 @@ interface NavbarProps {
 
 export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
   const router = useRouter();
+  const { products } = useProducts();
   const { totalItems, wishlist, setIsCartOpen } = useCart();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearchFocused, setIsSearchFocused] = useState(false);
-  const [searchResults, setSearchResults] = useState(products);
+  const [searchResults, setSearchResults] = useState<typeof products>([]);
   const searchRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -50,7 +51,7 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
       );
       setSearchResults(filtered);
     }
-  }, [searchQuery]);
+  }, [searchQuery, products]);
 
   // Click outside to close search dropdown
   useEffect(() => {
