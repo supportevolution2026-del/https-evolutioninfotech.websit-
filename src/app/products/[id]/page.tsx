@@ -32,12 +32,12 @@ import {
 export default function ProductDetailPage({
   params
 }: {
-  params: Promise<{ id: string }> | { id: string };
+  params: Promise<{ id: string }>;
 }) {
   const router = useRouter();
   const { addToast } = useToast();
   const { products } = useProducts();
-  const unwrappedParams = typeof (params as any)?.then === 'function' ? React.use(params as Promise<{ id: string }>) : (params as { id: string });
+  const unwrappedParams = React.use(params);
   const clientParams = useParams();
   const rawId = unwrappedParams?.id || clientParams?.id;
   const slug = Array.isArray(rawId) ? rawId[0] : (rawId as string);
