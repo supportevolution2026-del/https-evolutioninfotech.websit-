@@ -382,14 +382,12 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
             </div>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-              <a
-                href={getCustomWhatsAppUrl('IT Hardware & Repair Services Inquiry', 'Hello Evolution Infotech! I want to inquire about IT Services, Computer / Laptop Repair, and AMC Maintenance.')}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/services"
                 style={{ color: '#0284c7', fontSize: '0.88rem', fontWeight: 700, textDecoration: 'none' }}
               >
                 IT & Software Services
-              </a>
+              </Link>
               <Link href="/contact" style={{ color: '#64748b', fontSize: '0.88rem', fontWeight: 600, textDecoration: 'none' }}>
                 Contact
               </Link>
@@ -423,6 +421,9 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
             <Link href="/products" onClick={() => setMobileMenuOpen(false)} style={{ color: '#2563eb', fontWeight: 700, textDecoration: 'none', padding: '8px 0', borderBottom: '1px solid #f1f5f9' }}>
               All Products Catalog
             </Link>
+            <Link href="/services" onClick={() => setMobileMenuOpen(false)} style={{ color: '#0284c7', fontWeight: 700, textDecoration: 'none', padding: '8px 0', borderBottom: '1px solid #f1f5f9' }}>
+              IT & Software Development Services
+            </Link>
             <Link href="/products?category=laptop" onClick={() => setMobileMenuOpen(false)} style={{ color: '#475569', textDecoration: 'none', padding: '8px 0' }}>
               Laptops & Workstations
             </Link>
@@ -432,20 +433,11 @@ export default function Navbar({ onOpenQuoteModal }: NavbarProps) {
             <Link href="/products?category=network" onClick={() => setMobileMenuOpen(false)} style={{ color: '#475569', textDecoration: 'none', padding: '8px 0' }}>
               Networking & Servers
             </Link>
-            <a
-              href={getCustomWhatsAppUrl('IT Hardware & Repair Services Inquiry', 'Hello Evolution Infotech! I want to inquire about IT Services, Computer / Laptop Repair, and AMC Maintenance.')}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setMobileMenuOpen(false)}
-              style={{ color: '#16a34a', textDecoration: 'none', padding: '8px 0', fontWeight: 700 }}
-            >
-              IT Services & Repair (WhatsApp)
-            </a>
+            <Link href="/contact" onClick={() => setMobileMenuOpen(false)} style={{ color: '#475569', textDecoration: 'none', padding: '8px 0' }}>
+              Contact Us & Store Location
+            </Link>
             <Link href="/track-order" onClick={() => setMobileMenuOpen(false)} style={{ color: '#64748b', textDecoration: 'none', padding: '8px 0' }}>
               Track My Order
-            </Link>
-            <Link href="/contact" onClick={() => setMobileMenuOpen(false)} style={{ color: '#64748b', textDecoration: 'none', padding: '8px 0' }}>
-              Contact Us
             </Link>
           </div>
         )}

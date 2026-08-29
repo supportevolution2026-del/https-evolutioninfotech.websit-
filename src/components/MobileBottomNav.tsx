@@ -15,15 +15,10 @@ import {
 export default function MobileBottomNav() {
   const pathname = usePathname();
 
-  const servicesWhatsAppUrl = getCustomWhatsAppUrl(
-    'IT Services & Computer Repair Inquiry',
-    'Hello Evolution Infotech! I want to inquire about IT Services, Laptop / PC Repair, and AMC Maintenance.'
-  );
-
   const navItems = [
     { label: 'Home', href: '/', icon: Home, isExternal: false },
     { label: 'Store', href: '/products', icon: ShoppingBag, isExternal: false },
-    { label: 'Services', href: servicesWhatsAppUrl, icon: Wrench, isExternal: true },
+    { label: 'Services', href: '/services', icon: Wrench, isExternal: false },
     { label: 'Contact', href: '/contact', icon: PhoneCall, isExternal: false },
   ];
 
